@@ -2,7 +2,7 @@
   "name": "veerakuisma",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./src/js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/eliasfrigard/veerakuisma/issues"
   },
-  "homepage": "https://github.com/eliasfrigard/veerakuisma#readme"
+  "homepage": "https://github.com/eliasfrigard/veerakuisma#readme",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
 }

@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'PT Serif', serif;
+}
+
+header {
+  opacity: 0;
+  position:fixed;
+  height: 80px;
+  width: 100%;
+  background-color:rgba(255, 255, 255, 0.8);
+  transition: 0.5s;
+}
+
+footer {
+  height: 65px;
+  background-color: white;
+  text-align: center;
+}
+
+#intro {
+  animation: fadeIn 0.7s ease forwards;
+
+  display:flex;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../../images/veera-3270-2.jpg");
+  background-size: cover;
+
+  box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.4);
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+#text {
+  color: #F2EFEB;
+  text-align: center;
+  letter-spacing: 3px;
+  align-self: center;
+  flex-grow: 0.2;
+}
+
+.title {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 25px;
+}
+
+#about {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#veeraPic2 {
+  width: 600px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(78, 78, 78, 0.664);
+}
+
+#aboutText {
+  width: 600px;
+}
+
+#subtitle {
+  opacity: 0;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 300;
+  font-size: 30px;
+  animation: fadeIn 1.5s ease forwards 3.5s;
+  text-shadow: 4px 3px 4px rgba(0,0,0,0.4);
+}
+
+#text a {
+  opacity: 0;
+
+  font-weight: 500;
+  padding: 10px;
+  font-size: 27px;
+
+  text-shadow: 2px 2px 2px #594B42;;
+}
+
+#text a:hover {
+  cursor: pointer;
+  color: #BFB3A8;
+
+  border-bottom: 1px solid #F2EFEB;
+}
+
+input[type=button] {
+  box-shadow: 4px 3px 4px 1px rgba(0,0,0,0.4);
+  background-color: #031226ab;
+  display:inline-block;
+  color: white;
+  padding: 12px;
+  margin:0;
+  margin-bottom: 6px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin: 18px;
+}
+
+#read-more {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards 3.5s;
+}
+
+input[type=button]:hover {
+  transition:0.1s;
+  transform: scale(1.05);
+  background-color: #031226;
+}
+
+
+@keyframes opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.custom-hr {
+  display:block;
+  margin: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+#logo {
+  margin-bottom: 25px;
+  margin-top: 40px;
+  animation: fill 1.5s ease forwards 3.5s;
+}
+.veera-title {
+  stroke: white;
+  stroke-width: 0.5px;
+}
+#logo path:nth-child(1){
+  stroke: #735368;
+  stroke-dasharray: 281.6002197265625;
+  stroke-dashoffset: 281.6002197265625;
+  animation: line-anim 3.5s ease forwards;
+}
+#logo path:nth-child(2){
+  stroke: #031226;
+  stroke-dasharray: 332.9482421875;
+  stroke-dashoffset: 332.9482421875;
+  animation: line-anim 3.3s ease forwards 0.2s;
+}
+#logo path:nth-child(3){
+  stroke: #A3BAD9;
+  stroke-dasharray: 332.94842529296875;
+  stroke-dashoffset:332.94842529296875;
+  animation: line-anim 3.1s ease forwards 0.4s;
+}
+#logo path:nth-child(4){
+  stroke: #305473;
+  stroke-dasharray: 340.8448791503906;
+  stroke-dashoffset:340.8448791503906;
+  animation: line-anim 2.9s ease forwards 0.6s;
+}
+#logo path:nth-child(5){
+  stroke:#8C4227;
+  stroke-dasharray: 306.25677490234375;
+  stroke-dashoffset: 306.25677490234375;
+  animation: line-anim 2.7s ease forwards 0.8s;
+}
+#logo path:nth-child(6){
+  stroke: #735368;
+  stroke-dasharray: 349.41748046875;
+  stroke-dashoffset:349.41748046875;
+  animation: line-anim 2.5s ease forwards 1s;
+}
+#logo path:nth-child(7){
+  stroke: #031226;
+  stroke-dasharray: 313.6022033691406;
+  stroke-dashoffset: 313.6022033691406;
+  animation: line-anim 2.3s ease forwards 1.2s;
+}
+#logo path:nth-child(8){
+  stroke: #A3BAD9;
+  stroke-dasharray: 171.9620361328125;
+  stroke-dashoffset: 171.9620361328125;
+  animation: line-anim 2.1s ease forwards 1.4s;
+}
+#logo path:nth-child(9){
+  stroke: #305473;
+  stroke-dasharray: 272.313720703125;
+  stroke-dashoffset: 272.313720703125;
+  animation: line-anim 1.9s ease forwards 1.6s;
+}
+#logo path:nth-child(10){
+  stroke:#8C4227;
+  stroke-dasharray: 513.4306030273438;
+  stroke-dashoffset: 513.4306030273438;
+  animation: line-anim 1.7s ease forwards 1.8s;
+}
+#logo path:nth-child(11){
+  stroke: #735368;
+  stroke-dasharray: 306.2568054199219;
+  stroke-dashoffset: 306.2568054199219;
+  animation: line-anim 1.5s ease forwards 2s;
+}
+
+@keyframes line-anim {
+  to {
+    stroke:white;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill {
+  from {
+    fill: transparent;
+  } to {
+    fill:white;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+#nextInformation {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+}
+
+.divider-pic {
+  height: 700px;
+  width: 100%;
+}
+
+#pic1 {
+  background-image: url("../../images/veera-3405-2.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
