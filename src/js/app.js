@@ -1,16 +1,38 @@
+import './concert-entry.js'
+
+const about = document.querySelector('#about')
+const header = document.querySelector('header')
+const text = document.querySelector('#text')
+const information = document.querySelector('#nextInformation')
+const toTop = document.querySelector('#toTop')
+const intro = document.querySelector('#intro')
+
 document.querySelector('#read-more').addEventListener('click', event => {
-  document.querySelector('#about').scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  about.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 })
 
-const text = document.querySelector('#text')
-top = text.style.top
-
 document.addEventListener('scroll', event => {
-  if (window.scrollY > 10) {
-    document.querySelector('header').style.opacity = 1
+  // Reveal header.
+/*   if (window.scrollY > 10) {
+    header.style.opacity = 1
   } else {
-    document.querySelector('header').style.opacity = 0
+    header.style.opacity = 0
+  } */
+
+  // Reveal toTop button.
+  if (window.scrollY > 67) {
+    toTop.style.opacity = 1;
+  } else {
+    toTop.style.opacity = 0;
   }
 
-  document.querySelector('#text').style.top = 0
+  if (information.getBoundingClientRect().top < 0) {
+    text.style.opacity = 0;
+  } else {
+    text.style.opacity = 1;
+  }
+})
+
+toTop.addEventListener('click', event => {
+  intro.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 })
