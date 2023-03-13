@@ -10,9 +10,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        khorla: ['Khorla', 'sans-serif'],
+        forrest: ['Forrest', 'sans-serif'],
+      },
       colors: {
         primary: '#F2F2F2',
         black: '#000000',
+        secondary: {
+          500: '#d9d1c8',
+        },
         matcha: {
           800: '#3c4c3f',
           500: '#667c6e',

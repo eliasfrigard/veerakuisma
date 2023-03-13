@@ -18,3 +18,17 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Khorla';
+  src: url('/fonts/Khorla.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Forrest';
+  src: url('/fonts/Forrest.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
