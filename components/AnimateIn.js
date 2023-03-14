@@ -7,14 +7,31 @@ const AnimateIn = ({
   children,
   classes = '',
   animationType = 'fade',
+  slideDirection = 'left',
+  delay = 0,
 }) => {
   const [ref, inView] = useInView({ threshold, triggerOnce })
+
+  const getSlideDirection = () => {
+    switch (slideDirection) {
+      case 'left':
+        return '-translate-x-24'
+      case 'right':
+        return 'translate-x-24'
+      case 'top':
+        return '-translate-y-24'
+      case 'bottom':
+        return 'translate-y-24'
+      default:
+        break
+    }
+  }
 
   const getAnimationClasses = () => {
     switch (animationType) {
       case 'slide':
         return `${classes} duration-1000 ${
-          inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-x-24'
+          inView ? 'opacity-100 translate-y-0' : `opacity-0 ${getSlideDirection()}`
         }`
       case 'zoom':
         return `${classes} duration-1000 ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`

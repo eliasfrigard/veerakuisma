@@ -32,3 +32,9 @@ a {
   font-weight: normal;
   font-style: normal;
 }
+
+@layer components {
+  .sideMenuItem {
+    background: linear-gradient(90deg, theme('colors.matcha.200') 0%, theme('colors.matcha.500') 100%);
+  }
+}
