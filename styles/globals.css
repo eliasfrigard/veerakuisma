@@ -34,7 +34,9 @@ a {
 }
 
 @layer components {
-  .sideMenuItem {
-    background: linear-gradient(90deg, theme('colors.matcha.200') 0%, theme('colors.matcha.500') 100%);
+  .fade-in-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
 }
+

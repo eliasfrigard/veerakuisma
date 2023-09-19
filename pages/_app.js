@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
   }, [router])
 
   return (
-    <div id='__next' className='bg-matcha-200'>
+    <div id='__next' className='bg-[#F2EEEB]'>
       <main
         className={`fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
         style={{ transition: 'opacity 1s ease-out' }}

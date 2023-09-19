@@ -20,13 +20,6 @@ module.exports = {
         secondary: {
           500: '#d9d1c8',
         },
-        matcha: {
-          800: '#3c4c3f',
-          500: '#667c6e',
-          400: '#8eb59c',
-          300: '#b3d3af',
-          200: '#d9ead3',
-        },
       },
     },
     container: {

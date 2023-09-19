@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout from '../components/Layouts/default'
 import AnimateIn from '../components/AnimateIn'
 
@@ -6,56 +7,48 @@ export default function Home() {
   return (
     <Layout>
       <div className='font-khorla container w-full h-screen flex flex-col justify-center items-center px-32 font-medium text-primary tracking-wide'>
-        <div className='text-matcha-800'>
-          <AnimateIn animationType='slide'>
-            <h1 className='text-[10rem] leading-none drop-shadow-lg'>Veera</h1>
-          </AnimateIn>
-          <div className='text-[12rem] leading-none ml-36 '>
-            <AnimateIn classes='drop-shadow-lg' animationType='slide' slideDirection='right'>
+        <div className='absolute bg-[#07080D] w-screen h-screen opacity-70'></div>
+
+        {/* Background Image */}
+        <AnimateIn animationType='fade' classes='duration-[1000ms]'>
+          <Image
+            alt="alt-text"
+            src="/veera-3367.jpg"
+            fill
+            className={`block object-cover object-center`}
+          />
+        </AnimateIn>
+
+        <div className='absolute bg-[#07080D] w-screen h-screen opacity-30'></div>
+
+        {/* Overlay */}
+        <AnimateIn animationType='fade' classes='absolute w-screen h-full bg-[#07080D] bg-opacity-60 backdrop-blur-sm delay-[1000ms]'>
+        </AnimateIn>
+
+        {/* Text */}
+        <div className='text-[#F2EEEB] flex flex-col'>
+          <div className='w-full flex justify-end pr-6 -mb-6'>
+            <AnimateIn animationType='slide' classes='delay-[1000ms]'>
+              <h1 className='text-[4.3rem] font-medium leading-none drop-shadow-2xl'>Veera</h1>
+            </AnimateIn>
+          </div>
+
+          <div className='text-[10rem] leading-none'>
+            <AnimateIn classes='delay-[1000ms] drop-shadow-2xl' animationType='slide' slideDirection='right'>
               Kuisma
             </AnimateIn>
-            <AnimateIn animationType='slide' slideDirection='bottom'>
+          </div>
+
+          <div>
+            <AnimateIn animationType='slide' slideDirection='bottom' classes='delay-[1000ms]'>
               <Link href='/about'>
-                <div className='text-3xl w-full flex justify-end mt-6 pr-4'>
+                <div className='text-xl w-full flex justify-end pr-4 -mt-2'>
                   Violinist, Composer & Folk Musician
                 </div>
               </Link>
             </AnimateIn>
           </div>
         </div>
-      </div>
-
-      <div className='h-screen right-0 top-0 fixed flex gap-12 justify-center items-center flex-col'>
-        <AnimateIn
-          animationType='slide'
-          slideDirection='right'
-          classes='flex justify-start items-center h-20 w-[150px] sideMenuItem text-3xl duration-500 delay-[1000ms]'
-        >
-          <Link href='/about' className='absolute -translate-x-[35%] font-bold font-khorla text-matcha-800'>
-            About Me
-          </Link>
-        </AnimateIn>
-        <AnimateIn
-          animationType='slide'
-          slideDirection='right'
-          classes='flex justify-start items-center h-20 w-[150px] sideMenuItem text-3xl duration-500 delay-[1200ms]'
-        >
-          <p className='absolute -translate-x-[35%] font-bold font-khorla text-matcha-800'>Projects</p>
-        </AnimateIn>
-        <AnimateIn
-          animationType='slide'
-          slideDirection='right'
-          classes='flex justify-start items-center h-20 w-[150px] sideMenuItem text-3xl duration-500 delay-[1400ms]'
-        >
-          <p className='absolute -translate-x-[35%] font-bold font-khorla text-matcha-800'>Music</p>
-        </AnimateIn>
-        <AnimateIn
-          animationType='slide'
-          slideDirection='right'
-          classes='flex justify-start items-center h-20 w-[150px] sideMenuItem text-3xl duration-500 delay-[1600ms]'
-        >
-          <p className='absolute -translate-x-[35%] font-bold font-khorla text-matcha-800'>Contact</p>
-        </AnimateIn>
       </div>
     </Layout>
   )

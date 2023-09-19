@@ -10,19 +10,19 @@ export default function Home() {
     <Layout>
       <div className='font-khorla container w-full min-h-screen flex flex-col justify-center items-center px-32 font-medium text-primary tracking-wide p-36 gap-20'>
         <AnimateIn>
-          <h1 className='text-[11rem] leading-none drop-shadow-lg text-matcha-800 uppercase text-center'>
+          <h1 className='text-[11rem] leading-none drop-shadow-lg text-[#F2EEEB] uppercase text-center'>
             About Me
           </h1>
         </AnimateIn>
         <div className='flex gap-10'>
-          <AnimateIn classes='sticky flex flex-col gap-8 top-12 p-4 h-[350px] text-matcha-500 text-3xl drop-shadow-lg'>
+          <AnimateIn classes='sticky flex flex-col gap-8 top-12 p-4 h-[350px] text-[#F2EEEB] text-3xl drop-shadow-lg'>
             <AiOutlineMail className='' />
             <BsFacebook className='' />
             <BsInstagram className='' />
             <BsSpotify className='' />
             <BsYoutube className='' />
           </AnimateIn>
-          <AnimateIn classes='text-matcha-800 prose prose-lg max-w-3xl leading-[2rem] text-lg tracking-wide font-sans'>
+          <AnimateIn classes='text-[#F2EEEB] prose prose-lg max-w-3xl leading-[2rem] text-lg tracking-wide font-sans'>
             Excepteur aute fugiat culpa excepteur consequat sit ullamco commodo reprehenderit enim velit
             veniam occaecat occaecat. Tempor cupidatat cupidatat quis excepteur commodo deserunt occaecat
             occaecat sunt ullamco amet. Labore sint cillum eiusmod laboris Lorem duis aliqua Lorem voluptate
