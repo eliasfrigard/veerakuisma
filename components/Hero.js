@@ -19,7 +19,7 @@ export default function Hero({ children, desktopImg, mobileImg, altText, heroPos
           className='lg:hidden object-cover object-bottom'
         />
 
-        <AnimateIn delay={2000} classes="absolute w-full h-screen bg-black bg-opacity-70 backdrop-blur delay-[1000ms]"></AnimateIn>
+        <AnimateIn delay={2000} classes="absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur delay-[1000ms]"></AnimateIn>
 
         <div className="z-10 mt-85 centerContent">
           {children}

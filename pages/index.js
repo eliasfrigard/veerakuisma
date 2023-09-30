@@ -6,14 +6,14 @@ import Hero from '../components/Hero'
 
 export default function Home() {
   return (
-    <Layout transparent>
+    <Layout transparent footer={false}>
       <Hero
         altText="Hero Image"
         heroPosition="top"
-        desktopImg="/veera-3270-3.jpg"
-        mobileImg="/veera-3270-3.jpg"
+        desktopImg="/veera-3367.jpg"
+        mobileImg="/veera-3367.jpg"
       >
-        <div className='text-[#F2EEEB] flex flex-col font-khorla justify-center items-center tracking-wide'>
+        <div className='text-primary-100 flex flex-col font-khorla justify-center items-center tracking-wide'>
           <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-6'>
             <AnimateIn animationType='slide' classes='delay-[1000ms]'>
               <h1 className='text-[2.6rem] md:text-[4.3rem] font-medium leading-none drop-shadow-2xl'>Veera</h1>

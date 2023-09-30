@@ -5,7 +5,7 @@ import Band from '../../components/Band'
 const bands = [
   {
     name: 'ALDA',
-    image: '/P1110768.jpg',
+    image: '/P1110770.jpg',
     description: 'ALDA’s contemporary instrumental music is full of energetic grooves, majestic harmonies, improvisation and satisfying melodies. Based on traditional Nordic types of tunes such as polskas, schottisches and waltzes, they have created a mind-blowing piece of art for five-string violin, soprano saxophone and piano that transcends borders and genres. Hearing them perform will make you smile and dance, bring tears to your eyes and might even make you go a bit crazy. Immerse yourself in the furiously groovy world of ALDA!'
   },
   {
@@ -15,7 +15,7 @@ const bands = [
   },
   {
     name: 'Veera Kuisma Ensemble',
-    image: '',
+    image: '/veera-ensemble.jpeg',
     description: 'Polenta, a wholehearted ensemble of three fiddles and one guitar, will knock your socks off with its thrilling and soulful renditions of both original and traditional Nordic tunes. The band’s debut album Kaustinen Turbo (released in August 2021) consists of music from the Kaustinen area, strikingly reworked and renewed. Their new material brings out their own voices as composers. The light-footed live performances of Polenta give out instantaneous energy, radiating the joy of music and togetherness!'
   },
   {
@@ -33,7 +33,7 @@ const bands = [
 export default function Bands() {
   return (
     <Layout>
-      <div className='flex flex-col container justify-center items-center w-screen bg-white -mt-[85px] pt-[85px] min-h-screen'>
+      <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
         <div className='my-16 w-full flex flex-col gap-12 md:gap-16'>
           <Band band={bands[0]} />
           <Band band={bands[1]} />

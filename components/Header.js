@@ -70,7 +70,8 @@ export default function Header({
   return (
     <>
       <AnimateIn
-        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-black'} bg-opacity-90 delay-[1000ms]`}
+        disabled
+        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-primary-950'} bg-opacity-90`}
       >
         <div
           className={`
@@ -82,7 +83,7 @@ export default function Header({
           items-center
           h-[85px]
           w-full
-          ${!transparent ? 'shadow-lg text-primary-500' : 'text-white'}
+          ${!transparent ? 'shadow-lg text-primary-100' : 'text-white'}
           tracking-wide
           container
           px-8
@@ -90,7 +91,7 @@ export default function Header({
         `}
         >
           <div id='left'>
-            <Link className='cursor-pointer text-lg font-bold tracking-wider uppercase' href='/'>
+            <Link className='cursor-pointer text-xl font-bold tracking-widest uppercase' href='/'>
               {pageName}
             </Link>
           </div>
@@ -148,7 +149,7 @@ export default function Header({
 
       {/* MOBILE */}
 
-      <div className={`w-screen flex justify-start fixed items-center z-50 bg-black`}>
+      <div className={`w-screen flex justify-start fixed items-center z-50 bg-primary-950`}>
         <div
           className={`
           lg:hidden
@@ -166,7 +167,7 @@ export default function Header({
         >
           <div>
             <Link href='/'>
-              <p className='cursor-pointer text-2xl mt-[5px] font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
+              <p className='cursor-pointer text-2xl mt-[5px] font-bold tracking-widest uppercase text-primary-100'>{pageName}</p>
             </Link>
           </div>
           <div>
@@ -176,10 +177,10 @@ export default function Header({
       </div>
 
       <div
-        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-black z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
+        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-10 text-primary-500 font-khorla'>
+        <div className='container flex flex-col justify-center items-center gap-10 text-primary-100 font-khorla'>
           {
             links.map((link) => (
               <Link key={link.href} href={link.href} className={`${activeLinkStyling(link.href)} mobileNavLink capitalize`}>
@@ -189,7 +190,7 @@ export default function Header({
           }
         </div>
 
-        <div className='flex justify-center items-center gap-8 text-primary-500'>
+        <div className='flex justify-center items-center gap-8 text-primary-100'>
           {
             socialMedia.email && (
               <a href={socialMedia.email}>
@@ -229,7 +230,7 @@ export default function Header({
             )
           }
         </div>
-        <div className='tracking-wide text-sm opacity-70 text-center text-primary-500 font-khorla'>
+        <div className='tracking-wide text-sm opacity-70 text-center text-primary-100 font-khorla'>
           <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
           <a href='mailto:' className='text-xs underline'>
             {emailAddress}

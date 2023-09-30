@@ -10,7 +10,7 @@ export default function Home() {
         <h1 className='text-[11rem] leading-none drop-shadow-lg text-[#F2EEEB] uppercase text-center mb-16'>
           Bands & Projects
         </h1>
-        <AnimateIn animationType='slide' classes='w-full h-[60vh] bg-secondary-500 rounded-xl shadow-md'>
+        <AnimateIn animationType='slide' classes='w-full h-[60vh] bg-primary-950 rounded-xl shadow-md'>
           <Link href='/'>
             <Image
               alt='Veera Hero'

@@ -9,6 +9,7 @@ const AnimateIn = ({
   animationType = 'fade',
   slideDirection = 'left',
   delay = 0,
+  disabled = false,
 }) => {
   const [ref, inView] = useInView({ threshold, triggerOnce })
 
@@ -40,6 +41,14 @@ const AnimateIn = ({
       default:
         return `${classes} duration-1000 ${delayClass} ${inView ? 'opacity-100' : 'opacity-0'}`
     }
+  }
+
+  if (disabled) {
+    return (
+      <div className={classes} ref={ref}>
+        {children}
+      </div>
+    )
   }
 
   return (

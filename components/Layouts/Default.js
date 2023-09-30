@@ -34,8 +34,10 @@ export default function Layout({
     }
   }, [router])
 
-  const title = `${pageTitle} | Veera Kuisma`
-  // TODO: Correct urls.
+  const author = 'Elias Frigård'
+  const pageName = 'Veera Kuisma'
+
+  const title = `${pageTitle} | ${pageName}`
   const baseUrl = 'https://www.veerakuisma.com'
   const faviconUrl = '/path/to/favicon.ico'
 
@@ -47,7 +49,7 @@ export default function Layout({
         <link rel="icon" href={faviconUrl} />
         <link rel='canonical' href={baseUrl + pageUrl} />
         <meta name='description' content={pageDescription} />
-        <meta name='author' content='Elias Frigård' />
+        <meta name='author' content={author} />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta name='robots' content='index,follow' />
         <meta itemProp='image' content={imageUrl} />
@@ -63,12 +65,12 @@ export default function Layout({
       />
       <main
         style={{ transition: 'opacity 200ms ease-out' }}
-        className={`bg-primary-500 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
+        className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
         {children}
       </main>
 
-      {footer && <Footer />}
+      {footer && <Footer author={author} pageName={pageName} />}
     </>
   )
 }
