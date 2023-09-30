@@ -152,8 +152,8 @@ export default function Header({
         <div
           className={`
           lg:hidden
-          grid
-          grid-cols-2
+          flex
+          justify-between
           items-center
           h-[85px]
           w-full
@@ -161,14 +161,15 @@ export default function Header({
           container
           px-8
           font-khorla
+
         `}
         >
-          <div id='left'>
+          <div>
             <Link href='/'>
-              <p className='cursor-pointer text-xl font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
+              <p className='cursor-pointer text-2xl mt-[5px] font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
             </Link>
           </div>
-          <div id='right' className='flex gap-6 justify-end items-center '>
+          <div>
             <Hamburger handleClick={toggleMobileNav} active={mobileNavOpen}></Hamburger>
           </div>
         </div>
