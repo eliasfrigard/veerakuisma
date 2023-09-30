@@ -165,7 +165,7 @@ export default function Header({
         >
           <div id='left'>
             <Link href='/'>
-              <p className='cursor-pointer text-lg font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
+              <p className='cursor-pointer text-xl font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
             </Link>
           </div>
           <div id='right' className='flex gap-6 justify-end items-center '>
