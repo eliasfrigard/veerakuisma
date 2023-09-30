@@ -34,7 +34,7 @@ export default function Bands() {
   return (
     <Layout>
       <div className='flex flex-col container justify-center items-center w-screen bg-white -mt-[85px] pt-[85px] min-h-screen'>
-        <div className='my-16 w-full flex flex-col gap-24'>
+        <div className='my-16 w-full flex flex-col gap-12 md:gap-16'>
           <Band band={bands[0]} />
           <Band band={bands[1]} />
           <Band band={bands[2]} />
