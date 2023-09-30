@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Layout from '../components/Layouts/Default.js'
+import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'

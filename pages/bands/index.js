@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Layout from '../../components/Layouts/Default.js'
+import Layout from '../../components/Layouts/Default'
 import AnimateIn from '../../components/AnimateIn'
 
 import SocialMediaIcons from '../../components/SocialMediaIcons'
