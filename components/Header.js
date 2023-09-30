@@ -178,7 +178,7 @@ export default function Header({
         className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-black z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-10 text-primary-500 font-khorla text-xl'>
+        <div className='container flex flex-col justify-center items-center gap-10 text-primary-500 font-khorla'>
           {
             links.map((link) => (
               <Link key={link.href} href={link.href} className={`${activeLinkStyling(link.href)} mobileNavLink capitalize`}>
@@ -228,7 +228,7 @@ export default function Header({
             )
           }
         </div>
-        <div className='tracking-wide text-center text-primary-500 font-khorla'>
+        <div className='tracking-wide text-sm opacity-70 text-center text-primary-500 font-khorla'>
           <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
           <a href='mailto:' className='text-xs underline'>
             {emailAddress}

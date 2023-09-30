@@ -1,34 +1,21 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import '../styles/globals.css'
 
+import Script from 'next/script'
+
+import { Montserrat } from 'next/font/google'
+
+const mont = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-mont',
+})
+
 function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
-
-  useEffect(() => {
-    const handleStart = () => setLoading(true)
-    const handleComplete = () => setLoading(false)
-
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
-
-    return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-    }
-  }, [router])
-
   return (
-    <div id='__next' className='bg-[#F2EEEB]'>
-      <main
-        className={`fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
-        style={{ transition: 'opacity 1s ease-out' }}
-      >
-        <Component {...pageProps} />
-      </main>
+    <div id='__next' className={`${mont.className} font-mont`}>
+      <Script src='/static/script.js' />
+      <Component {...pageProps} />
     </div>
   )
 }

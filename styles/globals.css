@@ -64,5 +64,32 @@ a {
     transition: all 0.3s ease;
     border-radius: theme('borderRadius.full');
   }
+
+  .desktopNavLink {
+    --tw-border-opacity: 0;
+    padding-bottom: 5px;
+    padding: 6px 10px 6px 10px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    transition-duration: 200ms;
+  }
+  .desktopNavLink:hover {
+    color: theme('colors.accent.500');
+  }
+
+  .mobileNavLink {
+    cursor: pointer;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 500;
+    font-weight: 500;
+    padding: 6px 5px 6px 5px;
+    transition-duration: 200ms;
+  }
+
+  .mobileNavLink:hover {
+    color: theme('colors.accent.500');
+  }
 }
 
