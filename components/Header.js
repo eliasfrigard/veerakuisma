@@ -158,7 +158,6 @@ export default function Header({
           h-[85px]
           w-full
           tracking-wide
-          text-primary-500
           container
           px-8
           font-khorla
@@ -166,7 +165,7 @@ export default function Header({
         >
           <div id='left'>
             <Link href='/'>
-              <p className='cursor-pointer text-xl font-bold tracking-widest uppercase'>{pageName}</p>
+              <p className='cursor-pointer text-lg font-bold tracking-widest uppercase text-primary-500'>{pageName}</p>
             </Link>
           </div>
           <div id='right' className='flex gap-6 justify-end items-center '>
@@ -176,10 +175,10 @@ export default function Header({
       </div>
 
       <div
-        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-secondary-500 z-10 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
+        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-black z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-10'>
+        <div className='container flex flex-col justify-center items-center gap-10 text-primary-500 font-khorla text-xl'>
           {
             links.map((link) => (
               <Link key={link.href} href={link.href} className={`${activeLinkStyling(link.href)} mobileNavLink capitalize`}>
@@ -229,7 +228,7 @@ export default function Header({
             )
           }
         </div>
-        <div className='text-primary-500 tracking-wide text-center'>
+        <div className='tracking-wide text-center text-primary-500 font-khorla'>
           <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
           <a href='mailto:' className='text-xs underline'>
             {emailAddress}
