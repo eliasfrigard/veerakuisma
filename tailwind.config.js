@@ -15,10 +15,16 @@ module.exports = {
         forrest: ['Forrest', 'sans-serif'],
       },
       colors: {
-        primary: '#F2F2F2',
         black: '#000000',
+        white: '#F2F2F2',
+        primary: {
+          500: '#F2F2F2',
+        },
         secondary: {
           500: '#d9d1c8',
+        },
+        accent: {
+          500: '#D9B29C',
         },
       },
     },

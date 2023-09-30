@@ -2,54 +2,41 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '../components/Layouts/default'
 import AnimateIn from '../components/AnimateIn'
+import Hero from '../components/Hero'
 
 export default function Home() {
   return (
     <Layout>
-      <div className='font-khorla container w-full h-screen flex flex-col justify-center items-center px-32 font-medium text-primary tracking-wide'>
-        <div className='absolute bg-[#07080D] w-screen h-screen opacity-70'></div>
-
-        {/* Background Image */}
-        <AnimateIn animationType='fade' classes='duration-[1000ms]'>
-          <Image
-            alt="alt-text"
-            src="/veera-3367.jpg"
-            fill
-            className={`block object-cover object-center`}
-          />
-        </AnimateIn>
-
-        <div className='absolute bg-[#07080D] w-screen h-screen opacity-30'></div>
-
-        {/* Overlay */}
-        <AnimateIn animationType='fade' classes='absolute w-screen h-full bg-[#07080D] bg-opacity-60 backdrop-blur-sm delay-[1000ms]'>
-        </AnimateIn>
-
-        {/* Text */}
-        <div className='text-[#F2EEEB] flex flex-col'>
-          <div className='w-full flex justify-end pr-6 -mb-6'>
+      <Hero
+        altText="Hero Image"
+        heroPosition="top"
+        desktopImg="/veera-3270-3.jpg"
+        mobileImg="/veera-3270-3.jpg"
+      >
+        <div className='text-[#F2EEEB] flex flex-col font-khorla justify-center items-center tracking-wide'>
+          <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-6'>
             <AnimateIn animationType='slide' classes='delay-[1000ms]'>
-              <h1 className='text-[4.3rem] font-medium leading-none drop-shadow-2xl'>Veera</h1>
+              <h1 className='text-[2.6rem] md:text-[4.3rem] font-medium leading-none drop-shadow-2xl'>Veera</h1>
             </AnimateIn>
           </div>
 
-          <div className='text-[10rem] leading-none'>
+          <div className='text-[5rem] md:text-[10rem] leading-none'>
             <AnimateIn classes='delay-[1000ms] drop-shadow-2xl' animationType='slide' slideDirection='right'>
               Kuisma
             </AnimateIn>
           </div>
 
-          <div>
+          <div className='w-full '>
             <AnimateIn animationType='slide' slideDirection='bottom' classes='delay-[1000ms]'>
               <Link href='/about'>
-                <div className='text-xl w-full flex justify-end pr-4 -mt-2'>
+                <div className='text-sm md:text-xl flex justify-end pr-4 -mt-1 md:-mt-2'>
                   Violinist, Composer & Folk Musician
                 </div>
               </Link>
             </AnimateIn>
           </div>
         </div>
-      </div>
+      </Hero>
     </Layout>
   )
 }

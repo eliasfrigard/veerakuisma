@@ -38,5 +38,31 @@ a {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
+
+  .desktopNavLink {
+    --tw-border-opacity: 0;
+    padding-bottom: 5px;
+    padding: 6px 10px 6px 10px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    transition-duration: 200ms;
+  }
+  
+  .desktopNavLink:hover {
+    color: theme('colors.accent.500');
+  }
+
+  .burger {
+    cursor: pointer;
+  }
+
+  .burgerLine {
+    width: 30px;
+    height: 2px;
+    background-color: rgb(230, 230, 230);
+    margin: 7px;
+    transition: all 0.3s ease;
+    border-radius: theme('borderRadius.full');
+  }
 }
 

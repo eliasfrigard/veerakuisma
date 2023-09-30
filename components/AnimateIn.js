@@ -35,7 +35,7 @@ const AnimateIn = ({
         return `${classes} duration-1000 ${delayClass} ${inView ? 'opacity-100 translate-y-0' : `opacity-0 ${getSlideDirection()}`
           }`
       case 'zoom':
-        return `${classes} duration-1000 ${delayClass} ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+        return `${classes} duration-1000 ${delayClass} ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-85'
           }`
       default:
         return `${classes} duration-1000 ${delayClass} ${inView ? 'opacity-100' : 'opacity-0'}`
