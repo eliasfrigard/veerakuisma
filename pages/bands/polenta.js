@@ -1,4 +1,4 @@
-import Layout from '../components/Layouts/default'
+import Layout from '../components/Layouts/Default.js'
 
 export default function Home() {
   return (
