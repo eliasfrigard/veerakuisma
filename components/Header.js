@@ -50,8 +50,8 @@ export default function Header({
       label: 'home'
     },
     {
-      href: '/music',
-      label: 'music'
+      href: '/bands',
+      label: 'bands'
     },
     {
       href: '/about',
@@ -70,7 +70,7 @@ export default function Header({
   return (
     <>
       <AnimateIn
-        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-secondary-500'} bg-opacity-90 delay-[1000ms]`}
+        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-black'} bg-opacity-90 delay-[1000ms]`}
       >
         <div
           className={`

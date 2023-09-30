@@ -34,6 +34,12 @@ a {
 }
 
 @layer components {
+  .centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .fade-in-out {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;

@@ -4,13 +4,16 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Header from '../Header.js'
+import Footer from '../Footer.js'
 
 export default function Layout({
   children,
   pageTitle,
   pageDescription,
   imageUrl,
-  pageUrl
+  pageUrl,
+  footer = true,
+  transparent = false
 }) {
   const router = useRouter()
 
@@ -55,7 +58,7 @@ export default function Layout({
         <meta property="og:type" content="website" />
       </Head>
       <Header
-        transparent
+        transparent={transparent}
         uppercaseLinks={false}
       />
       <main
@@ -64,7 +67,8 @@ export default function Layout({
       >
         {children}
       </main>
-      {/* <Footer /> */}
+
+      {footer && <Footer />}
     </>
   )
 }

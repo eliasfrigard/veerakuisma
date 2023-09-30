@@ -21,7 +21,7 @@ export default function Hero({ children, desktopImg, mobileImg, altText, heroPos
 
         <AnimateIn delay={2000} classes="absolute w-full h-screen bg-black bg-opacity-70 backdrop-blur delay-[1000ms]"></AnimateIn>
 
-        <div className="z-10 centerContent">
+        <div className="z-10 mt-85 centerContent">
           {children}
         </div>
       </div>
