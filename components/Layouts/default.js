@@ -3,8 +3,7 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 
-import Header from '../Header'
-// import Footer from '../Footer'
+import Header from '../Header.js'
 
 export default function Layout({
   children,
@@ -32,9 +31,9 @@ export default function Layout({
     }
   }, [router])
 
-  const title = `${pageTitle} | Klara Källström`
+  const title = `${pageTitle} | Veera Kuisma`
   // TODO: Correct urls.
-  const baseUrl = 'https://www.polentamusic.com'
+  const baseUrl = 'https://www.veerakuisma.com'
   const faviconUrl = '/path/to/favicon.ico'
 
   return (
