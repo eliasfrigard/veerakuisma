@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 
+import AnimateIn from '../components/AnimateIn.js'
 import Hamburger from './Hamburger.js'
 
 export default function Header({
@@ -68,9 +69,8 @@ export default function Header({
 
   return (
     <>
-      <div
-        className={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-secondary-500'} bg-opacity-90
-    `}
+      <AnimateIn
+        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-secondary-500'} bg-opacity-90 delay-[1000ms]`}
       >
         <div
           className={`
@@ -144,7 +144,7 @@ export default function Header({
             }
           </div>
         </div>
-      </div>
+      </AnimateIn>
 
       {/* MOBILE */}
 
