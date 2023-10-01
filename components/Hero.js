@@ -21,7 +21,8 @@ export default function Hero({ children, desktopImg, mobileImg, altText, heroPos
 
         {
           overlay && (
-            <AnimateIn delay={2000} classes="absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur delay-[1000ms]"></AnimateIn>
+            <AnimateIn classes="delay-[1000ms] absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur">
+            </AnimateIn>
           )
         }
 

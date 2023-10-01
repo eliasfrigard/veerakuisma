@@ -152,7 +152,7 @@ export default function Concerts({
           <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
             <Title title='Upcoming' />
             {concerts.upcoming.length > 0 ? (
-              <div className='centerContent flex-col container relative w-full bg-primary-950 rounded shadow-lg'>
+              <div className='centerContent flex-col container relative w-full bg-primary-950 rounded shadow-lg px-6'>
                 {concerts.upcoming.map((concert, index) => (
                   <Event
                     key={concert.sys.id}
