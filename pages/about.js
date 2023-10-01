@@ -29,10 +29,19 @@ export default function Home() {
   return (
     <Layout>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='container centerContent p-6 md:py-16'>
-          <div className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
+        <div className='container centerContent flex-col gap-6 md:gap-16 p-6 md:py-16'>
+          <AnimateIn classes='relative w-full aspect-[9/16] md:aspect-video'>
+            <Image
+              alt='/veera-3367.jpg'
+              src='/veera-3367.jpg'
+              fill
+              className={`object-cover object-center rounded shadow`}
+            />
+          </AnimateIn>
+
+          <AnimateIn classes='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
             <TwoColumnLayout text={text} />
-          </div>
+          </AnimateIn>
         </div>
       </div>
     </Layout>
