@@ -1,6 +1,6 @@
-import Image from "next/image"
+import Image from 'next/image'
 
-import AnimateIn from "../components/AnimateIn"
+import AnimateIn from '../components/AnimateIn'
 
 export default function Hero({ children, desktopImg, mobileImg, altText, heroPosition, overlay = true }) {
   return (
@@ -12,26 +12,17 @@ export default function Hero({ children, desktopImg, mobileImg, altText, heroPos
           fill
           className={`hidden lg:block object-cover object-${heroPosition}`}
         />
-        <Image
-          alt={altText}
-          src={mobileImg}
-          fill
-          className='lg:hidden object-cover object-bottom'
-        />
+        <Image alt={altText} src={mobileImg} fill className='lg:hidden object-cover object-bottom' />
 
-        {
-          overlay && (
-            <AnimateIn classes="delay-[1000ms] absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur">
-            </AnimateIn>
-          )
-        }
+        {overlay && (
+          <AnimateIn
+            delay={1000}
+            className='absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur'
+          ></AnimateIn>
+        )}
 
-
-        <div className="z-10 mt-85 centerContent">
-          {children}
-        </div>
+        <div className='z-10 mt-85 centerContent'>{children}</div>
       </div>
-
     </AnimateIn>
   )
 }

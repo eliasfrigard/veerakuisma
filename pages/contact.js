@@ -37,63 +37,63 @@ export async function getStaticProps() {
     upcoming: [
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
       },
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
-      }
+      },
     ],
     previous: [
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
       },
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
-      }
-    ]
+      },
+    ],
   }
 
   const hero = {
     fields: {
       file: {
-        url: '/veera-3367.jpg'
-      }
-    }
+        url: '/veera-3367.jpg',
+      },
+    },
   }
 
   const page = null
@@ -116,7 +116,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Contact({ }) {
+export default function Contact({}) {
   return (
     <Layout
       pageTitle='Contact'
@@ -126,13 +126,16 @@ export default function Contact({ }) {
       footer={false}
     >
       <Hero
-        altText="Hero Image"
-        heroPosition="center"
-        desktopImg="/veera-3367.jpg"
-        mobileImg="/veera-3367.jpg"
+        altText='Hero Image'
+        heroPosition='center'
+        desktopImg='/veera-3367.jpg'
+        mobileImg='/veera-3367.jpg'
       >
         <div className='relative pt-[85px] w-screen h-screen z-10'>
-          <AnimateIn classes='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-3 delay-[1000ms] text-center'>
+          <AnimateIn
+            delay={1000}
+            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-3 text-center'
+          >
             <p className='text-6xl leading-tight'>Veera Kuisma</p>
             <p className='text-2xl'>mais.kuis@gmail.com</p>
             <p className='text-2xl'>+358(0)45-1234567</p>

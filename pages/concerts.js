@@ -37,63 +37,63 @@ export async function getStaticProps() {
     upcoming: [
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
       },
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
-      }
+      },
     ],
     previous: [
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
       },
       {
         sys: {
-          id: 123
+          id: 123,
         },
         fields: {
           dateTime: Date.now(),
           venue: 'Some Venue',
           address: 'Some Address Somewhere',
           country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app'
+          urlLink: 'https://veerakuisma.vercel.app',
         },
-      }
-    ]
+      },
+    ],
   }
 
   const hero = {
     fields: {
       file: {
-        url: '/veera-3367.jpg'
-      }
-    }
+        url: '/veera-3367.jpg',
+      },
+    },
   }
 
   const page = null
@@ -134,14 +134,16 @@ export default function Concerts({
     >
       {heroImageActive && (
         <Hero
-          altText="Hero Image"
-          heroPosition="center"
-          desktopImg="/veera-3367.jpg"
-          mobileImg="/veera-3367.jpg"
+          altText='Hero Image'
+          heroPosition='center'
+          desktopImg='/veera-3367.jpg'
+          mobileImg='/veera-3367.jpg'
         >
           <div className='pt-[85px]'>
-            <AnimateIn animationType='slide' classes='delay-[1000ms]'>
-              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-60 uppercase font-khorla'>concerts</h1>
+            <AnimateIn animationType='slide' delay={1000}>
+              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-60 uppercase font-khorla'>
+                concerts
+              </h1>
             </AnimateIn>
           </div>
         </Hero>

@@ -4,7 +4,7 @@ import AnimateIn from './AnimateIn.js'
 
 export default function Video({ title, link, prominent = false }) {
   return (
-    <AnimateIn classes='w-full centerContent flex-col'>
+    <AnimateIn className='w-full centerContent flex-col'>
       <iframe
         title={title}
         src={`https://www.youtube.com/embed/${getYoutubeID(link)}`}

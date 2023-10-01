@@ -14,7 +14,7 @@ export default function Layout({
   pageUrl,
   footer = true,
   transparent = false,
-  headerFadeIn = false
+  headerFadeIn = false,
 }) {
   const router = useRouter()
 
@@ -45,9 +45,9 @@ export default function Layout({
   return (
     <>
       <Head>
-        <meta charSet="UTF-8" />
+        <meta charSet='UTF-8' />
         <title>{title}</title>
-        <link rel="icon" href={faviconUrl} />
+        <link rel='icon' href={faviconUrl} />
         <link rel='canonical' href={baseUrl + pageUrl} />
         <meta name='description' content={pageDescription} />
         <meta name='author' content={author} />
@@ -58,13 +58,9 @@ export default function Layout({
         <meta property='og:description' content={pageDescription} />
         <meta property='og:image' content={imageUrl} />
         <meta property='og:url' content={baseUrl + pageUrl} />
-        <meta property="og:type" content="website" />
+        <meta property='og:type' content='website' />
       </Head>
-      <Header
-        transparent={transparent}
-        uppercaseLinks={false}
-        fadeIn={headerFadeIn}
-      />
+      <Header transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} />
       <main
         style={{ transition: 'opacity 200ms ease-out' }}
         className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
