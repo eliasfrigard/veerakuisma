@@ -149,7 +149,7 @@ export default function Concerts({
 
       <div className='flex flex-col gap-10 md:gap-24 py-10 md:py-24'>
         <div>
-          <div className='flex flex-col md:gap-12 px-4 md:px-0'>
+          <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
             <Title title='Upcoming' />
             {concerts.upcoming.length > 0 ? (
               <div className='centerContent flex-col container relative w-full bg-primary-950 rounded shadow-lg'>
@@ -178,7 +178,7 @@ export default function Concerts({
 
         <div>
           {concerts.previous.length > 0 && (
-            <div className='flex flex-col px-4 md:px-0 md:gap-12'>
+            <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
               <Title title='Previous' />{' '}
               <div className='centerContent flex-col container relative w-full px-6 bg-primary-950 rounded shadow-lg'>
                 {concerts.previous.map((concert, index) => (
