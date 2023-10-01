@@ -29,8 +29,8 @@ export default function Home() {
   return (
     <Layout>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='container centerContent my-16'>
-          <div className='md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
+        <div className='container centerContent p-6 md:py-16'>
+          <div className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
             <TwoColumnLayout text={text} />
           </div>
         </div>
