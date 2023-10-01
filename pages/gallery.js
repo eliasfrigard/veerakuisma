@@ -20,7 +20,7 @@ export default function Gallery() {
   return (
     <Layout>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='w-full h-screen grid grid-cols-3 gap-1 container py-16'>
+        <div className='w-full h-screen grid grid-cols-3 gap-1 container px-72 py-6 md:py-16'>
           <ImageLayout image="/veera-3367.jpg" />
           <ImageLayout image="/alda.jpg" />
           <ImageLayout image="/P1110768.jpg" />
