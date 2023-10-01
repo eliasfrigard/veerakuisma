@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle='About'>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='container centerContent flex-col gap-6 md:gap-16 p-6 md:py-16'>
           <AnimateIn classes='relative w-full aspect-[9/16] md:aspect-video'>

@@ -127,7 +127,7 @@ export default function Concerts({
 }) {
   return (
     <Layout
-      pageTitle={pageTitle}
+      pageTitle='Concerts'
       pageDescription={pageDescription}
       imageUrl={`https: + ${hero.fields.file.url}`}
       pageUrl='/concerts'

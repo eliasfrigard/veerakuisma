@@ -119,7 +119,7 @@ export async function getStaticProps() {
 export default function Contact({ }) {
   return (
     <Layout
-      pageTitle='Concerts'
+      pageTitle='Contact'
       pageDescription='Concerts'
       imageUrl={`/veera-3367.jpg`}
       pageUrl='/concerts'

@@ -91,7 +91,7 @@ export default function Gallery() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle='Gallery'>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className="py-6 md:py-16 flex flex-col gap-6 md:gap-16">
           <div className='w-full h-screen grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
