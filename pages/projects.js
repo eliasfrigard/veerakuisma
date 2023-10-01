@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <div className='font-khorla container w-full min-h-screen flex flex-col justify-center px-32 font-medium text-primary tracking-wide p-32 '>
@@ -24,3 +24,5 @@ export default function Home() {
     </Layout>
   )
 }
+
+export default Home

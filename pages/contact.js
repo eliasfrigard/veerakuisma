@@ -1,7 +1,4 @@
 import Layout from '../components/Layouts/Default'
-import Event from '../components/Event'
-import Image from 'next/image'
-import Title from '../components/Title'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
@@ -116,7 +113,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Contact({}) {
+const Contact = ({}) => {
   return (
     <Layout
       pageTitle='Contact'
@@ -145,3 +142,5 @@ export default function Contact({}) {
     </Layout>
   )
 }
+
+export default Contact

@@ -2,7 +2,7 @@ import React from 'react'
 import getYoutubeID from 'get-youtube-id'
 import AnimateIn from './AnimateIn.js'
 
-export default function Video({ title, link, prominent = false }) {
+const Video = ({ title, link, prominent = false }) => {
   return (
     <AnimateIn className='w-full centerContent flex-col'>
       <iframe
@@ -17,3 +17,5 @@ export default function Video({ title, link, prominent = false }) {
     </AnimateIn>
   )
 }
+
+export default Video

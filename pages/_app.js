@@ -11,7 +11,7 @@ const mont = Montserrat({
   variable: '--font-mont',
 })
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <div id='__next' className={`${mont.className} font-mont`}>
       <Script src='/static/script.js' />

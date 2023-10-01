@@ -1,22 +1,11 @@
 import React from 'react'
+import Image from 'next/image'
 
 import AnimateIn from './AnimateIn'
 import SocialMediaIcons from './SocialMediaIcons'
 
-import Image from 'next/image'
-
-export default function Band({ band }) {
+const Band = ({ band }) => {
   const containerRef = React.useRef(null)
-
-  const [fontSize, setFontSize] = React.useState()
-
-  React.useEffect(() => {
-    const containerWidth = containerRef.current.offsetWidth
-    const targetSize = 34
-
-    setFontSize
-    console.log('🚀 || file: Band.js:13 || React.useEffect || containerWidth:', containerWidth)
-  }, [])
 
   return (
     <AnimateIn
@@ -56,3 +45,5 @@ export default function Band({ band }) {
     </AnimateIn>
   )
 }
+
+export default Band

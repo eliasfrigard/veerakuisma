@@ -1,7 +1,7 @@
 import Moment from 'react-moment'
 import SocialMediaIcons from './SocialMediaIcons'
 
-export default function Event({ venue, date, city, country, last = false, first = false, link }) {
+const Event = ({ venue, date, city, country, last = false, first = false, link }) => {
   return (
     <>
       <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 opacity-80 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-8 border-b-2 border-primary-500 border-opacity-20'>
@@ -10,7 +10,9 @@ export default function Event({ venue, date, city, country, last = false, first 
             <Moment format='HH:mm'>{date}</Moment>
           </p>
           <p className='text-base leading-none uppercase drop-shadow-sm'>
-            <Moment format='D MMMM YYYY' className='font-bold'>{date}</Moment>
+            <Moment format='D MMMM YYYY' className='font-bold'>
+              {date}
+            </Moment>
           </p>
         </div>
 
@@ -23,7 +25,9 @@ export default function Event({ venue, date, city, country, last = false, first 
 
       <div className='lg:hidden w-full text-primary-200 flex flex-col gap-7 opacity-80 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-10 border-b-2 border-primary-500 border-opacity-20'>
         <p className='text-xl leading-none uppercase drop-shadow-sm'>
-          <Moment format='D MMMM YYYY' className='font-bold'>{date}</Moment>
+          <Moment format='D MMMM YYYY' className='font-bold'>
+            {date}
+          </Moment>
         </p>
 
         <p className='font-bold text-lg text-center'>ALDA @ Perinnearkku Klubi</p>
@@ -33,3 +37,5 @@ export default function Event({ venue, date, city, country, last = false, first 
     </>
   )
 }
+
+export default Event

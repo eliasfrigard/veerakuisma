@@ -1,11 +1,6 @@
 import AnimateIn from './AnimateIn'
 
-export default function Title({
-  title,
-  subtitle,
-  textColor = 'text-primary-950',
-  borderColor = 'border-black',
-}) {
+const Title = ({ title, subtitle, textColor = 'text-primary-950', borderColor = 'border-black' }) => {
   if (!title) return ''
 
   return (
@@ -19,3 +14,5 @@ export default function Title({
     </AnimateIn>
   )
 }
+
+export default Title

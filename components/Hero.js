@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import AnimateIn from '../components/AnimateIn'
 
-export default function Hero({ children, desktopImg, mobileImg, altText, heroPosition, overlay = true }) {
+const Hero = ({ children, desktopImg, mobileImg, altText, heroPosition, overlay = true }) => {
   return (
     <AnimateIn>
       <div id='hero' className='relative h-screen -mt-[85px] flex justify-center items-center shadow-xl'>
@@ -26,3 +26,5 @@ export default function Hero({ children, desktopImg, mobileImg, altText, heroPos
     </AnimateIn>
   )
 }
+
+export default Hero

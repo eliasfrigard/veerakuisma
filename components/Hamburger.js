@@ -1,4 +1,4 @@
-export default function Hamburger({ active, handleClick }) {
+const Hamburger = ({ active, handleClick }) => {
   return (
     <div className='burger' onClick={handleClick}>
       <div className={`burgerLine duration-300 ${active && 'transform rotate-45 translate-y-[4px]'}`}></div>
@@ -7,3 +7,5 @@ export default function Hamburger({ active, handleClick }) {
     </div>
   )
 }
+
+export default Hamburger
