@@ -34,6 +34,13 @@ a {
 }
 
 @layer components {
+  .video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-radius: theme('borderRadius.lg');
+    box-shadow: theme('boxShadow.xl');
+  }
+  
   .centerContent {
     display: flex;
     justify-content: center;

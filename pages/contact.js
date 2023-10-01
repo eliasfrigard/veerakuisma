@@ -116,25 +116,26 @@ export async function getStaticProps() {
   }
 }
 
-export default function Concerts({ }) {
+export default function Contact({ }) {
   return (
     <Layout
       pageTitle='Concerts'
       pageDescription='Concerts'
       imageUrl={`/veera-3367.jpg`}
       pageUrl='/concerts'
+      footer={false}
     >
       <Hero
         altText="Hero Image"
         heroPosition="center"
         desktopImg="/veera-3367.jpg"
         mobileImg="/veera-3367.jpg"
-        overlay={false}
       >
         <div className='relative pt-[85px] w-screen h-screen z-10'>
-          <div className='absolute bg-primary-950 w-screen h-screen -mt-[85px] opacity-70'></div>
-          <AnimateIn animationType='slide' classes='delay-[1000ms] py-16 h-full container centerContent z-30'>
-            <div className='absolute w-1/2 aspect-video bg-primary-950 backdrop-blur opacity-90 rounded shadow-lg'></div>
+          <AnimateIn classes='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-3 delay-[1000ms] text-center'>
+            <p className='text-6xl leading-tight'>Veera Kuisma</p>
+            <p className='text-2xl'>mais.kuis@gmail.com</p>
+            <p className='text-2xl'>+358(0)45-1234567</p>
           </AnimateIn>
         </div>
       </Hero>
