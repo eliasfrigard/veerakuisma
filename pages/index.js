@@ -6,7 +6,7 @@ import Hero from '../components/Hero'
 
 export default function Home() {
   return (
-    <Layout transparent footer={false}>
+    <Layout transparent footer={false} headerFadeIn>
       <Hero
         altText="Hero Image"
         heroPosition="top"

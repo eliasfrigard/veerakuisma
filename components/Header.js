@@ -11,7 +11,8 @@ import Hamburger from './Hamburger.js'
 
 export default function Header({
   transparent = false,
-  uppercaseLinks = true
+  uppercaseLinks = true,
+  fadeIn = false
 }) {
   const router = useRouter()
 
@@ -74,8 +75,8 @@ export default function Header({
   return (
     <>
       <AnimateIn
-        disabled
-        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-primary-950'} bg-opacity-90`}
+        disabled={!fadeIn}
+        classes={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-primary-950'} bg-opacity-90 delay-[1000ms]`}
       >
         <div
           className={`

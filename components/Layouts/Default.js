@@ -13,7 +13,8 @@ export default function Layout({
   imageUrl,
   pageUrl,
   footer = true,
-  transparent = false
+  transparent = false,
+  headerFadeIn = false
 }) {
   const router = useRouter()
 
@@ -62,6 +63,7 @@ export default function Layout({
       <Header
         transparent={transparent}
         uppercaseLinks={false}
+        fadeIn={headerFadeIn}
       />
       <main
         style={{ transition: 'opacity 200ms ease-out' }}
