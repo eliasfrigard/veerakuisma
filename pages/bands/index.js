@@ -22,7 +22,6 @@ export async function getStaticProps() {
 }
 
 const Bands = ({ bands }) => {
-  console.log('🚀 || file: index.js:25 || Bands || bands:', bands)
   return (
     <Layout pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
