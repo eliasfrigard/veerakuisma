@@ -4,7 +4,7 @@ import React from 'react';
 import Event from './Event';
 import Title from '../Title';
 
-const Events = ({ concerts, bandName }) => {
+const Events = ({ concerts, bandName, className }) => {
   const mapBandProps = (bands) => {
     return bands.map((b) => {
       const name = b?.fields?.name;
@@ -73,7 +73,7 @@ const Events = ({ concerts, bandName }) => {
   })
 
   return (
-    <div className={`flex flex-col ${concerts?.previous?.length && 'gap-10 md:gap-24'} py-10 md:py-24`}>
+    <div className={`flex flex-col ${concerts?.previous?.length && 'gap-10 md:gap-24'} py-10 md:py-24 ${className}`}>
       <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
         <Title title='Upcoming' />
         {upcomingConcerts?.length > 0 ? (

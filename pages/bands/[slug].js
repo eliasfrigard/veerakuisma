@@ -46,7 +46,7 @@ export default function Band({
         <TwoColumnLayout text={biography || description} />
       </AnimateIn>
 
-      <Events concerts={concerts} bandName={name} />
+      <Events concerts={concerts} bandName={name} className='md:py-0 md:pb-24' />
     </Layout>
   )
 }

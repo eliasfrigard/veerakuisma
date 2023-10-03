@@ -39,14 +39,14 @@ const TwoColumnLayout = ({ text }) => {
 
   if (textLength < maxLengthForTwoColumns) {
     return (
-      <div className='prose prose-2xl max-w-3xl prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] tracking-wide font-sans font-medium text-center'>
+      <div className='prose prose-lg max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] tracking-wide font-sans font-medium text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:rounded'>
         {documentToReactComponents(text, options)}
       </div>
     )
   }
 
   return (
-    <div className='prose prose-2xl max-w-7xl lg:columns-2 gap-10 prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] text-center md:text-justify'>
+    <div className='prose max-w-7xl lg:columns-2 gap-10 prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] text-center md:text-justify prose-headings:underline'>
       {documentToReactComponents(text, options)}
     </div>
   )
