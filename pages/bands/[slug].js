@@ -46,7 +46,7 @@ export default function Band({
         <TwoColumnLayout text={biography || description} />
       </AnimateIn>
 
-      <Events concerts={concerts} />
+      <Events concerts={concerts} bandName={name} />
     </Layout>
   )
 }
@@ -92,14 +92,14 @@ export async function getStaticProps({ params: { slug } }) {
 
   const upcomingConcertsRes = await contentful.getEntries({
     content_type: 'concert',
-    'fields.band.sys.id': band.sys.id,
+    'fields.band.sys.id': band?.sys.id,
     order: 'fields.dateTime',
     'fields.dateTime[gte]': currentDate,
   })
 
   const previousConcertsRes = await contentful.getEntries({
     content_type: 'concert',
-    'fields.band.sys.id': band.sys.id,
+    'fields.band.sys.id': band?.sys.id,
     order: '-fields.dateTime',
     'fields.dateTime[lte]': currentDate,
   })

@@ -4,8 +4,7 @@ import React from 'react';
 import Event from './Event';
 import Title from '../Title';
 
-const Events = ({ concerts }) => {
-  console.log('🚀 || file: index.js:8 || ConcertsList || concerts:', concerts)
+const Events = ({ concerts, bandName }) => {
   const mapBandProps = (bands) => {
     return bands.map((b) => {
       const name = b?.fields?.name;
@@ -38,9 +37,17 @@ const Events = ({ concerts }) => {
 
   const noUpcomingConcerts = (
     <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded shadow-lg'>
-      <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
-        No upcoming concerts at this moment.
-      </p>
+      {
+        bandName ? (
+          <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
+            {bandName} has no upcoming concerts at this moment
+          </p>
+        ) : (
+          <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
+            No upcoming concerts at this moment
+          </p>
+        )
+      }
     </div>
   );
 
