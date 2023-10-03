@@ -4,7 +4,7 @@ import React from 'react';
 import Event from './Event';
 import Title from '../Title';
 
-const Events = ({ concerts, bandName, className }) => {
+const Events = ({ concerts, bandName, email, className }) => {
   const mapBandProps = (bands) => {
     return bands.map((b) => {
       const name = b?.fields?.name;
@@ -39,13 +39,27 @@ const Events = ({ concerts, bandName, className }) => {
     <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded shadow-lg'>
       {
         bandName ? (
-          <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
-            {bandName} has no upcoming concerts at this moment
-          </p>
+          <div className='text-center font-khorla text-primary-100 tracking-wider leading-loose'>
+            <p className='text-xl'>
+              {bandName} have no upcoming concerts at this moment
+            </p>
+            {
+              email && (
+                <p>contact <a className='text-accent-500' href={`mailto:${email}`}>{email}</a> to book us for a concert</p>
+              )
+            }
+          </div>
         ) : (
-          <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
-            No upcoming concerts at this moment
-          </p>
+          <div className='text-center font-khorla text-primary-100 tracking-wider leading-loose'>
+            <p className='text-xl'>
+              No upcoming concerts at this moment
+            </p>
+            {
+              email && (
+                <p>contact <a className='text-accent-500' href={`mailto:${email}`}>{email}</a> to book a concert</p>
+              )
+            }
+          </div>
         )
       }
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Avatar from './Avatar'
 
+import { Tooltip } from "@material-tailwind/react"
 import { BsFacebook, BsGlobeEuropeAfrica, BsInstagram, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
 
 const IconHandler = ({
@@ -35,73 +36,75 @@ const IconHandler = ({
     }
   }, [email, websiteName])
 
-  const LinkIcon = ({ children, href }) => {
+  const LinkIcon = ({ children, href, tooltip }) => {
     return (
-      <a
-        href={href}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='duration-200 hover:text-primary-500'
-      >
-        {children}
-      </a>
+      <Tooltip content={tooltip} className='bg-primary-950 border border-primary-100 font-khorla tracking-wider px-3 py-2'>
+        <a
+          href={href}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='duration-200 hover:text-accent-500'
+        >
+          {children}
+        </a>
+      </Tooltip>
     )
   }
 
   return (
-    <div className={`flex text-accent-500 text-2xl justify-center items-center gap-6 z-10 ${className}`}>
+    <div className={`flex text-2xl justify-center items-center gap-5 z-10 ${className}`}>
       {
         address && (
-          <LinkIcon href={addressLink}>
+          <LinkIcon href={addressLink} tooltip='Google Maps'>
             <BsPinMapFill className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         email && (
-          <LinkIcon href={mailLink}>
+          <LinkIcon href={mailLink} tooltip='Email'>
             <BsMailbox className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         website && (
-          <LinkIcon href={website}>
+          <LinkIcon href={website} tooltip='Website'>
             <BsGlobeEuropeAfrica className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         tickets && (
-          <LinkIcon href={tickets}>
+          <LinkIcon href={tickets} tooltip='Tickets'>
             <BsTicketPerforated className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         facebook && (
-          <LinkIcon href={facebook}>
+          <LinkIcon href={facebook} tooltip='Facebook'>
             <BsFacebook className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         instagram && (
-          <LinkIcon href={instagram}>
+          <LinkIcon href={instagram} tooltip='Instagram'>
             <BsInstagram className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         spotify && (
-          <LinkIcon href={spotify}>
+          <LinkIcon href={spotify} tooltip='Spotify'>
             <BsSpotify className='soMeIcon' />
           </LinkIcon>
         )
       }
       {
         youTube && (
-          <LinkIcon href={youTube}>
+          <LinkIcon href={youTube} tooltip='YouTube'>
             <BsYoutube className='soMeIcon' />
           </LinkIcon>
         )

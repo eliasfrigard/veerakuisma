@@ -38,7 +38,7 @@ const Band = ({
               >
                 {name}
               </h1>
-              <IconHandler email={email} spotify={spotify} youTube={youTube} website={website} instagram={instagram} facebook={facebook} />
+              <IconHandler className='text-accent-500' email={email} spotify={spotify} youTube={youTube} website={website} instagram={instagram} facebook={facebook} />
             </div>
           </div>
 

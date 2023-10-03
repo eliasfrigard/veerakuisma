@@ -79,7 +79,7 @@ export default function Concerts({
         </Hero>
       )}
 
-      <Events concerts={concerts} />
+      <Events concerts={concerts} email='mais.kuis@gmail.com' />
     </Layout>
   )
 }

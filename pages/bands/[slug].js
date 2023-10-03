@@ -18,6 +18,7 @@ export default function Band({
   instagram,
   concerts
 }) {
+  console.log('🚀 || file: [slug].js:21 || email:', email)
   let heroUrl, mobileHeroUrl
 
   if (hero) heroUrl = 'https:' + hero?.fields?.file?.url
@@ -46,7 +47,7 @@ export default function Band({
         <TextLayout text={biography || description} />
       </AnimateIn>
 
-      <Events concerts={concerts} bandName={name} className='md:py-0 md:pb-24' />
+      <Events concerts={concerts} bandName={name} email={email} className='md:py-0 md:pb-24' />
     </Layout>
   )
 }
