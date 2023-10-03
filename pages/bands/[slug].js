@@ -42,7 +42,7 @@ export default function Band({
         </Hero>
       )}
 
-      <AnimateIn className='container centerContent z-10 md:px-10 py-16'>
+      <AnimateIn className='container centerContent z-10 md:px-10 pt-24'>
         <TwoColumnLayout text={biography || description} />
       </AnimateIn>
 
