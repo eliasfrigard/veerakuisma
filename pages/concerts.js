@@ -1,7 +1,5 @@
 import Layout from '../components/Layouts/Default'
-import Event from '../components/Event'
-import Image from 'next/image'
-import Title from '../components/Title'
+import Events from '../components/Events'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
@@ -32,7 +30,6 @@ export async function getStaticProps() {
   })
 
   const page = pageRes.items[0].fields
-  console.log('🚀 || file: concerts.js:35 || getStaticProps || page:', page)
 
   return {
     props: {
@@ -82,57 +79,7 @@ export default function Concerts({
         </Hero>
       )}
 
-      <div className={`flex flex-col ${concerts.previous.length && 'gap-10 md:gap-24'} py-10 md:py-24`}>
-        <div>
-          <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
-            <Title title='Upcoming' />
-            {concerts.upcoming.length > 0 ? (
-              <div className='centerContent flex-col container relative w-full bg-primary-950 rounded shadow-lg px-6'>
-                {concerts.upcoming.map((concert, index) => (
-                  <Event
-                    key={concert.sys.id}
-                    date={concert.fields.dateTime}
-                    venue={concert.fields.venue}
-                    city={concert.fields.address}
-                    country={concert.fields.country}
-                    link={concert.fields.urlLink}
-                    first={index === 0}
-                    last={index + 1 === concerts.upcoming.length}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded shadow-lg'>
-                <p className='text-xl leading-loose text-center tracking-wider font-bold font-khorla text-primary-100'>
-                  No upcoming concerts at this moment.
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div>
-          {concerts.previous.length > 0 && (
-            <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
-              <Title title='Previous' />{' '}
-              <div className='centerContent flex-col container relative w-full px-6 bg-primary-950 rounded shadow-lg'>
-                {concerts.previous.map((concert, index) => (
-                  <Event
-                    key={concert.sys.id}
-                    date={concert.fields.dateTime}
-                    venue={concert.fields.venue}
-                    city={concert.fields.address}
-                    country={concert.fields.country}
-                    link={concert.fields.urlLink}
-                    first={index === 0}
-                    last={index + 1 === concerts.previous.length}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
+      <Events concerts={concerts} />
     </Layout>
   )
 }

@@ -12,7 +12,12 @@ const Hero = ({ children, desktopImg, mobileImg, altText, heroPosition, overlay 
           fill
           className={`hidden lg:block object-cover object-${heroPosition}`}
         />
-        <Image alt={altText} src={mobileImg} fill className='lg:hidden object-cover object-bottom' />
+
+        {mobileImg &&
+          (
+            <Image alt={altText} src={mobileImg} fill className='lg:hidden object-cover object-bottom' />
+          )
+        }
 
         {overlay && (
           <AnimateIn
