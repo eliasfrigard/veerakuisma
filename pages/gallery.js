@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import Layout from '../components/Layouts/Default'
 import Video from '../components/Video'
+import AnimateIn from '../components/AnimateIn'
 
 const Gallery = () => {
   const videos = [
@@ -75,13 +76,13 @@ const Gallery = () => {
     },
   ]
 
-  const ImageLayout = ({ image }) => {
+  const ImageLayout = ({ image, index }) => {
     return (
-      <div className='relative h-full w-full'>
+      <AnimateIn delay={index * 1000} className={`relative h-full w-full delay-[${index * 1000}}ms]`} >
         <Image alt={image} src={image} fill className={`object-cover object-center rounded shadow`} />
 
         <div className='absolute bg-primary-950 w-full h-full z-10 opacity-20 hover:opacity-0 duration-300 grayscale'></div>
-      </div>
+      </AnimateIn >
     )
   }
 
@@ -90,15 +91,15 @@ const Gallery = () => {
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='py-6 md:py-16 flex flex-col gap-6 md:gap-16'>
           <div className='w-full h-screen grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
-            <ImageLayout image='/veera-3367.jpg' />
-            <ImageLayout image='/alda.jpg' />
-            <ImageLayout image='/P1110768.jpg' />
-            <ImageLayout image='/P1110770.jpg' />
-            <ImageLayout image='/Polenta-8__c__Tommi_Ahonen.webp' />
-            <ImageLayout image='/veera-3270-3.jpg' />
-            <ImageLayout image='/veera-ensemble.jpeg' />
-            <ImageLayout image='/polentakaustinen.jpeg' />
-            <ImageLayout image='/veeramaister.jpeg' />
+            <ImageLayout index={0} image='/veera-3367.jpg' />
+            <ImageLayout index={1} image='/alda.jpg' />
+            <ImageLayout index={2} image='/P1110768.jpg' />
+            <ImageLayout index={3} image='/P1110770.jpg' />
+            <ImageLayout index={4} image='/Polenta-8__c__Tommi_Ahonen.webp' />
+            <ImageLayout index={5} image='/veera-3270-3.jpg' />
+            <ImageLayout index={6} image='/veera-ensemble.jpeg' />
+            <ImageLayout index={7} image='/polentakaustinen.jpeg' />
+            <ImageLayout index={8} image='/veeramaister.jpeg' />
           </div>
 
           <div className='container flex justify-center items-center flex-wrap'>

@@ -5,109 +5,43 @@ import Title from '../components/Title'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
-// import { createClient } from 'contentful'
+import { createClient } from 'contentful'
 
 export async function getStaticProps() {
-  // const contentful = createClient({
-  //   space: process.env.SPACE_ID,
-  //   accessToken: process.env.ACCESS_TOKEN,
-  // })
+  const contentful = createClient({
+    space: process.env.SPACE_ID,
+    accessToken: process.env.ACCESS_TOKEN,
+  })
 
-  // var currentDate = new Date().toISOString()
+  var currentDate = new Date().toISOString()
 
-  // const upcomingConcertsRes = await contentful.getEntries({
-  //   content_type: 'concert',
-  //   order: 'fields.dateTime',
-  //   'fields.dateTime[gte]': currentDate,
-  // })
+  const upcomingConcertsRes = await contentful.getEntries({
+    content_type: 'concert',
+    order: 'fields.dateTime',
+    'fields.dateTime[gte]': currentDate,
+  })
 
-  // const previousConcertsRes = await contentful.getEntries({
-  //   content_type: 'concert',
-  //   order: '-fields.dateTime',
-  //   'fields.dateTime[lte]': currentDate,
-  // })
+  const previousConcertsRes = await contentful.getEntries({
+    content_type: 'concert',
+    order: '-fields.dateTime',
+    'fields.dateTime[lte]': currentDate,
+  })
 
-  // const pageRes = await contentful.getEntries({
-  //   content_type: 'concertsPage',
-  // })
+  const pageRes = await contentful.getEntries({
+    content_type: 'concertsPage',
+  })
 
-  // const page = pageRes.items[0].fields
-
-  const concerts = {
-    upcoming: [
-      {
-        sys: {
-          id: 123,
-        },
-        fields: {
-          dateTime: Date.now(),
-          venue: 'Some Venue',
-          address: 'Some Address Somewhere',
-          country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app',
-        },
-      },
-      {
-        sys: {
-          id: 123,
-        },
-        fields: {
-          dateTime: Date.now(),
-          venue: 'Some Venue',
-          address: 'Some Address Somewhere',
-          country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app',
-        },
-      },
-    ],
-    previous: [
-      {
-        sys: {
-          id: 123,
-        },
-        fields: {
-          dateTime: Date.now(),
-          venue: 'Some Venue',
-          address: 'Some Address Somewhere',
-          country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app',
-        },
-      },
-      {
-        sys: {
-          id: 123,
-        },
-        fields: {
-          dateTime: Date.now(),
-          venue: 'Some Venue',
-          address: 'Some Address Somewhere',
-          country: 'Finland',
-          urlLink: 'https://veerakuisma.vercel.app',
-        },
-      },
-    ],
-  }
-
-  const hero = {
-    fields: {
-      file: {
-        url: '/veera-3367.jpg',
-      },
-    },
-  }
-
-  const page = null
-  const upcomingConcertsRes = null
-  const previousConcertsRes = null
+  const page = pageRes.items[0].fields
+  console.log('🚀 || file: concerts.js:35 || getStaticProps || page:', page)
 
   return {
     props: {
-      hero: page?.heroImage || hero,
-      mobileHero: page?.mobileHeroImage || hero,
-      heroPosition: page?.heroPosition || 'center',
-      heroImageActive: page?.heroImageActive || true,
-      pageTitle: page?.name || 'concerts',
-      pageDescription: page?.description || 'concerts',
+      ...(page.hero && { hero: page?.hero }),
+      ...(page.mobileHero && { mobileHero: page?.mobileHero }),
+      // heroPosition: page?.heroPosition || 'center',
+      // heroImageActive: page?.heroImageActive || true,
+      pageTitle: page?.title,
+      // pageDescription: page?.description,
       concerts: {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,
         previous: previousConcertsRes?.items || concerts.previous,
@@ -118,10 +52,9 @@ export async function getStaticProps() {
 
 export default function Concerts({
   hero,
+  mobileHero,
   heroPosition,
   concerts,
-  mobileHero,
-  heroImageActive,
   pageTitle,
   pageDescription,
 }) {
@@ -132,7 +65,7 @@ export default function Concerts({
       imageUrl={`https: + ${hero.fields.file.url}`}
       pageUrl='/concerts'
     >
-      {heroImageActive && (
+      {hero && (
         <Hero
           altText='Hero Image'
           heroPosition='center'
@@ -149,7 +82,7 @@ export default function Concerts({
         </Hero>
       )}
 
-      <div className='flex flex-col gap-10 md:gap-24 py-10 md:py-24'>
+      <div className={`flex flex-col ${concerts.previous.length && 'gap-10 md:gap-24'} py-10 md:py-24`}>
         <div>
           <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
             <Title title='Upcoming' />

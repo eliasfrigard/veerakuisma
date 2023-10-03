@@ -31,15 +31,13 @@ const AnimateIn = ({
   const getAnimationClasses = () => {
     switch (animationType) {
       case 'slide':
-        return `${className} duration-1000 delay-[${delay}ms] ${
-          inView ? 'opacity-100 translate-y-0' : `opacity-0 ${getSlideDirection()}`
-        }`
+        return `${className} duration-1000 ${inView ? 'opacity-100 translate-y-0' : `opacity-0 ${getSlideDirection()}`
+          }`
       case 'zoom':
-        return `${className} duration-1000 delay-[${delay}ms] ${
-          inView ? 'opacity-100 scale-100' : 'opacity-0 scale-85'
-        }`
+        return `${className} duration-1000 ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-85'
+          }`
       default:
-        return `${className} duration-1000 delay-[${delay}ms] ${inView ? 'opacity-100' : 'opacity-0'}`
+        return `${className} duration-1000 ${inView ? 'opacity-100' : 'opacity-0'}`
     }
   }
 
