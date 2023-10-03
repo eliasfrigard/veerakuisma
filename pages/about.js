@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
-import TwoColumnLayout from '../components/TwoColumnLayout'
+import TextLayout from '../components/TextLayout'
 
 import { createClient } from 'contentful'
 
@@ -45,7 +45,7 @@ const About = ({
           </AnimateIn>
 
           <AnimateIn className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
-            <TwoColumnLayout text={biography} />
+            <TextLayout text={biography} />
           </AnimateIn>
         </div>
       </div>

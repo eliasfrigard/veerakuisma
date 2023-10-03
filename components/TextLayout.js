@@ -20,7 +20,11 @@ const options = {
   },
 }
 
-const TwoColumnLayout = ({ text }) => {
+const TextLayout = ({
+  text,
+  type = 'dynamic',
+  className
+}) => {
   let textLength = 0
 
   text?.content.forEach(t => {
@@ -37,19 +41,19 @@ const TwoColumnLayout = ({ text }) => {
 
   const maxLengthForTwoColumns = 1500
 
-  if (textLength < maxLengthForTwoColumns) {
+  if (textLength < maxLengthForTwoColumns || type === 'single') {
     return (
-      <div className='prose prose-lg max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] tracking-wide font-sans font-medium text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:rounded'>
+      <div className={`prose prose-lg max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] tracking-wide font-sans font-medium text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:rounded ${className}`}>
         {documentToReactComponents(text, options)}
       </div>
     )
   }
 
   return (
-    <div className='prose max-w-7xl lg:columns-2 gap-10 prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] text-center md:text-justify prose-headings:underline'>
+    <div className={`prose max-w-7xl lg:columns-2 gap-10 prose-img:roundedShadow prose-img:shadow-md leading-[2.4rem] text-center md:text-justify prose-headings:underline ${className}`}>
       {documentToReactComponents(text, options)}
     </div>
   )
 }
 
-export default TwoColumnLayout
+export default TextLayout

@@ -1,7 +1,7 @@
 import Layout from '../../components/Layouts/Default'
 import Hero from '../../components/Hero'
 import AnimateIn from '../../components/AnimateIn'
-import TwoColumnLayout from '../../components/TwoColumnLayout'
+import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 
 import { createClient } from 'contentful'
@@ -43,7 +43,7 @@ export default function Band({
       )}
 
       <AnimateIn className='container centerContent z-10 md:px-10 pt-24'>
-        <TwoColumnLayout text={biography || description} />
+        <TextLayout text={biography || description} />
       </AnimateIn>
 
       <Events concerts={concerts} bandName={name} className='md:py-0 md:pb-24' />
