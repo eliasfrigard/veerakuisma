@@ -5,6 +5,7 @@ import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 import Video from '../../components/Video'
 import ImageLayout from '../../components/ImageLayout'
+import Breadcrumbs from '../../components/Breadcrumbs'
 
 import { createClient } from 'contentful'
 
@@ -28,7 +29,7 @@ export default function Band({
   if (mobileHero) mobileHeroUrl = 'https:' + mobileHero?.fields?.file?.url
 
   return (
-    <Layout>
+    <Layout pageTitle={name}>
       {hero && (
         <Hero
           altText='Hero Image'
@@ -46,12 +47,16 @@ export default function Band({
         </Hero>
       )}
 
-      <div className='flex flex-col py-16 gap-10 md:py-24 md:gap-24 px-4'>
-        <AnimateIn className='container centerContent z-10 md:px-10'>
+      <div className='w-full centerContent mt-10'>
+        <Breadcrumbs />
+      </div>
+
+      <div className='container flex flex-col pt-10 md:pt-8 pb-16 gap-10 md:pb-24 md:gap-24'>
+        <AnimateIn className='container centerContent z-10 px-4 md:px-10'>
           <TextLayout text={biography || description} />
         </AnimateIn>
 
-        <div className='flex flex-col gap-6 md:gap-16'>
+        <div className='flex flex-col gap-6 md:gap-16 px-2'>
           <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
             {
               images.map((image, index) => (
