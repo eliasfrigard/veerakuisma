@@ -3,6 +3,8 @@ import Hero from '../../components/Hero'
 import AnimateIn from '../../components/AnimateIn'
 import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
+import Video from '../../components/Video'
+import ImageLayout from '../../components/ImageLayout'
 
 import { createClient } from 'contentful'
 
@@ -16,9 +18,10 @@ export default function Band({
   spotify,
   facebook,
   instagram,
-  concerts
+  concerts,
+  images,
+  videos,
 }) {
-  console.log('🚀 || file: [slug].js:21 || email:', email)
   let heroUrl, mobileHeroUrl
 
   if (hero) heroUrl = 'https:' + hero?.fields?.file?.url
@@ -43,11 +46,36 @@ export default function Band({
         </Hero>
       )}
 
-      <AnimateIn className='container centerContent z-10 md:px-10 pt-24'>
-        <TextLayout text={biography || description} />
-      </AnimateIn>
+      <div className='flex flex-col py-16 gap-10 md:py-24 md:gap-24 px-4'>
+        <AnimateIn className='container centerContent z-10 md:px-10'>
+          <TextLayout text={biography || description} />
+        </AnimateIn>
 
-      <Events concerts={concerts} bandName={name} email={email} className='md:py-0 md:pb-24' />
+        <div className='flex flex-col gap-6 md:gap-16'>
+          <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
+            {
+              images.map((image, index) => (
+                <ImageLayout key={image} index={index} image={'https:' + image.url} />
+              ))
+            }
+          </div>
+
+          <div className='container flex justify-center items-center flex-wrap'>
+            <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
+              {videos.map((video, index) => (
+                <Video
+                  prominent={index === 0}
+                  key={video.youTubeLink}
+                  title={video.name}
+                  link={video.youTubeLink}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <Events concerts={concerts} bandName={name} email={email} noPadding />
+      </div>
     </Layout>
   )
 }
@@ -104,6 +132,18 @@ export async function getStaticProps({ params: { slug } }) {
     'fields.dateTime[lte]': currentDate,
   })
 
+  const imageRes = await contentful.getAssets({
+    'metadata.tags.sys.id[in]': slug.toLowerCase(),
+  })
+
+  const videoRes = await contentful.getEntries({
+    content_type: 'video',
+    'fields.band.sys.id[in]': band.sys.id,
+  })
+
+  const videos = videoRes.items.map(item => item.fields)
+  const images = imageRes.items.map(item => item.fields.file)
+
   return {
     props: {
       ...band?.fields,
@@ -111,6 +151,8 @@ export async function getStaticProps({ params: { slug } }) {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,
         previous: previousConcertsRes?.items || concerts.previous,
       },
+      images,
+      videos
     },
   }
 }

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import Layout from '../components/Layouts/Default'
 import Video from '../components/Video'
-import AnimateIn from '../components/AnimateIn'
+import ImageLayout from '../components/ImageLayout'
 
 import { createClient } from 'contentful';
 
@@ -30,16 +30,6 @@ export async function getStaticProps() {
 }
 
 const Gallery = ({ videos, images }) => {
-  const ImageLayout = ({ image, index }) => {
-    return (
-      <AnimateIn delay={index * 1000} className={`relative h-full w-full delay-[${index * 1000}}ms]`} >
-        <Image alt={image} src={image} fill className={`object-cover object-center rounded shadow`} />
-
-        <div className='absolute bg-primary-950 w-full h-full z-10 opacity-20 hover:opacity-0 duration-300 grayscale'></div>
-      </AnimateIn >
-    )
-  }
-
   return (
     <Layout pageTitle='Gallery'>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
