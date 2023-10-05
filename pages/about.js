@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import TextLayout from '../components/TextLayout'
+import Hero from '../components/Hero'
 
 import { createClient } from 'contentful'
 
@@ -25,6 +26,7 @@ export async function getStaticProps() {
 
   const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
   const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
+  console.log('🚀 || file: about.js:29 || getStaticProps || mobileHero:', mobileHero)
 
   return {
     props: {
@@ -45,7 +47,7 @@ export async function getStaticProps() {
 
 const About = ({
   hero,
-  mobileHero = undefined,
+  mobileHero,
   pageTitle,
   biography,
   socialMedia
@@ -54,7 +56,13 @@ const About = ({
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='container centerContent flex-col gap-6 md:gap-16 p-6 md:py-16'>
-          <AnimateIn className='relative w-full aspect-[9/16] md:aspect-video'>
+          {
+            mobileHero && (
+              <Hero overlay={false} altText='Hero Image' heroPosition='top' mobileImg={mobileHero} className='md:hidden' />
+            )
+          }
+
+          <AnimateIn className='relative w-full aspect-[9/16] md:aspect-video hidden md:block'>
             <Image
               alt={hero}
               src={hero}

@@ -2,20 +2,25 @@ import Image from 'next/image'
 
 import AnimateIn from '../components/AnimateIn'
 
-const Hero = ({ children, desktopImg, mobileImg, altText, heroPosition, overlay = true }) => {
+const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = true }) => {
   return (
-    <AnimateIn>
-      <div id='hero' className='relative h-screen -mt-[85px] flex justify-center items-center shadow-xl'>
+    <AnimateIn className={className}>
+      <div id='hero' className='relative h-screen w-screen -mt-[85px] flex justify-center items-center shadow-lg'>
         <Image
           alt={altText}
-          src={desktopImg}
+          src={desktopImg || mobileImg}
           fill
-          className={`hidden lg:block object-cover object-${heroPosition}`}
+          className={`hidden md:block object-cover`}
         />
 
         {mobileImg &&
           (
-            <Image alt={altText} src={mobileImg} fill className='lg:hidden object-cover object-bottom' />
+            <Image
+              alt={altText}
+              src={mobileImg || desktopImg}
+              fill
+              className='md:hidden object-cover object-bottom'
+            />
           )
         }
 
