@@ -29,7 +29,7 @@ const Band = ({
 
       <div className={`absolute bg-primary-950 ${image && 'opacity-90'} w-full h-full`}></div>
 
-      <div className='w-full max-w-3xl text-primary-100 my-12 md:my-16 px-4'>
+      <div className='w-full max-w-3xl text-primary-100 mt-12 mb-4 md:mt-16 md:mb-10 px-4'>
         <div className='w-full flex flex-col justify-center items-center'>
           <div>
             <div ref={containerRef} className='flex flex-col centerContent gap-5'>
