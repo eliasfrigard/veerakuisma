@@ -26,7 +26,6 @@ export async function getStaticProps() {
 
   const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
   const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
-  console.log('🚀 || file: about.js:29 || getStaticProps || mobileHero:', mobileHero)
 
   return {
     props: {
@@ -55,7 +54,7 @@ const About = ({
   return (
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='container centerContent flex-col gap-6 md:gap-16 p-6 md:py-16'>
+        <div className='container centerContent flex-col gap-6 md:gap-16 px-6 py-8 md:px-0 md:py-16'>
           {
             mobileHero && (
               <Hero overlay={false} altText='Hero Image' heroPosition='top' mobileImg={mobileHero} className='md:hidden' />
