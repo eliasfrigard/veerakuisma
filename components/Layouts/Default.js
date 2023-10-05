@@ -15,6 +15,7 @@ export default function Layout({
   footer = true,
   transparent = false,
   headerFadeIn = false,
+  socialMedia,
 }) {
   const router = useRouter()
 
@@ -60,7 +61,7 @@ export default function Layout({
         <meta property='og:url' content={baseUrl + pageUrl} />
         <meta property='og:type' content='website' />
       </Head>
-      <Header transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} />
+      <Header socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} />
       <main
         style={{ transition: 'opacity 200ms ease-out' }}
         className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}

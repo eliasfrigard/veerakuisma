@@ -9,6 +9,8 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 
 import { createClient } from 'contentful'
 
+import { Button } from "@material-tailwind/react";
+
 export default function Band({
   name,
   hero,
@@ -22,6 +24,7 @@ export default function Band({
   concerts,
   images,
   videos,
+  socialMedia,
 }) {
   let heroUrl, mobileHeroUrl
 
@@ -29,7 +32,7 @@ export default function Band({
   if (mobileHero) mobileHeroUrl = 'https:' + mobileHero?.fields?.file?.url
 
   return (
-    <Layout pageTitle={name}>
+    <Layout socialMedia={socialMedia} pageTitle={name}>
       {hero && (
         <Hero
           altText='Hero Image'
@@ -80,6 +83,10 @@ export default function Band({
         </div>
 
         <Events concerts={concerts} bandName={name} email={email} noPadding />
+
+        <div className="fixed bottom-0 left-0 p-10">
+          <Button size='lg' variant="gradient" color='primary-950'>Back to Bands</Button>
+        </div>
       </div>
     </Layout>
   )
@@ -146,6 +153,13 @@ export async function getStaticProps({ params: { slug } }) {
     'fields.band.sys.id[in]': band.sys.id,
   })
 
+  const socialRes = await contentful.getEntries({
+    content_type: 'homePage',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
+  const socialPage = socialRes?.items[0]?.fields
+
   const videos = videoRes.items.map(item => item.fields)
   const images = imageRes.items.map(item => item.fields.file)
 
@@ -157,7 +171,14 @@ export async function getStaticProps({ params: { slug } }) {
         previous: previousConcertsRes?.items || concerts.previous,
       },
       images,
-      videos
+      videos,
+      socialMedia: {
+        email: socialPage?.email || null,
+        facebook: socialPage?.facebook || null,
+        instagram: socialPage?.instagram || null,
+        spotify: socialPage?.spotify || null,
+        youTube: socialPage?.youTube || null,
+      }
     },
   }
 }

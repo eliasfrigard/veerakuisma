@@ -4,7 +4,7 @@ import Layout from '../components/Layouts/Default'
 import Video from '../components/Video'
 import ImageLayout from '../components/ImageLayout'
 
-import { createClient } from 'contentful';
+import { createClient } from 'contentful'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -21,17 +21,37 @@ export async function getStaticProps() {
   const videos = videoRes.items.map(item => item.fields)
   const images = imageRes.items.map(item => item.fields.file)
 
+  const pageRes = await contentful.getEntries({
+    content_type: 'galleryPage',
+  })
+
+  const socialRes = await contentful.getEntries({
+    content_type: 'homePage',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
+  const page = pageRes.items[0].fields
+  const socialPage = socialRes?.items[0]?.fields
+
   return {
     props: {
+      pageTitle: page.title,
       videos,
-      images
+      images,
+      socialMedia: {
+        email: socialPage?.email || null,
+        facebook: socialPage?.facebook || null,
+        instagram: socialPage?.instagram || null,
+        spotify: socialPage?.spotify || null,
+        youTube: socialPage?.youTube || null,
+      }
     },
   }
 }
 
-const Gallery = ({ videos, images }) => {
+const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
   return (
-    <Layout pageTitle='Gallery'>
+    <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='py-6 md:py-16 flex flex-col gap-6 md:gap-16'>
           <div className='w-full h-screen grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>

@@ -29,20 +29,33 @@ export async function getStaticProps() {
     content_type: 'concertsPage',
   })
 
+  const socialRes = await contentful.getEntries({
+    content_type: 'homePage',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
   const page = pageRes.items[0].fields
+  const socialPage = socialRes?.items[0]?.fields
+
+  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
+  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
 
   return {
     props: {
-      ...(page.hero && { hero: page?.hero }),
-      ...(page.mobileHero && { mobileHero: page?.mobileHero }),
-      // heroPosition: page?.heroPosition || 'center',
-      // heroImageActive: page?.heroImageActive || true,
+      hero,
+      mobileHero,
       pageTitle: page?.title,
-      // pageDescription: page?.description,
       concerts: {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,
         previous: previousConcertsRes?.items || concerts.previous,
       },
+      socialMedia: {
+        email: socialPage?.email || null,
+        facebook: socialPage?.facebook || null,
+        instagram: socialPage?.instagram || null,
+        spotify: socialPage?.spotify || null,
+        youTube: socialPage?.youTube || null,
+      }
     },
   }
 }
@@ -50,24 +63,23 @@ export async function getStaticProps() {
 export default function Concerts({
   hero,
   mobileHero,
-  heroPosition,
   concerts,
-  pageTitle,
   pageDescription,
+  socialMedia
 }) {
   return (
     <Layout
       pageTitle='Concerts'
       pageDescription={pageDescription}
-      imageUrl={`https: + ${hero.fields.file.url}`}
       pageUrl='/concerts'
+      socialMedia={socialMedia}
     >
       {hero && (
         <Hero
           altText='Hero Image'
           heroPosition='center'
-          desktopImg='/veera-3367.jpg'
-          mobileImg='/veera-3367.jpg'
+          desktopImg={hero}
+          mobileImg={mobileHero}
         >
           <div className='pt-[85px]'>
             <AnimateIn animationType='slide' delay={1000}>

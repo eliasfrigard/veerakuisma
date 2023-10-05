@@ -4,10 +4,12 @@ import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
-export default function Home() {
+import { createClient } from 'contentful'
+
+export default function Home({ pageTitle, slogan, hero, mobileHero, socialMedia }) {
   return (
-    <Layout transparent footer={false} headerFadeIn pageTitle='Home'>
-      <Hero altText='Hero Image' heroPosition='top' desktopImg='/veera-3367.jpg' mobileImg='/veera-3367.jpg'>
+    <Layout socialMedia={socialMedia} transparent footer={false} headerFadeIn pageTitle={pageTitle}>
+      <Hero altText='Hero Image' heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
         <div className='text-primary-100 flex flex-col font-khorla justify-center items-center tracking-wide'>
           <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-6'>
             <AnimateIn animationType='slide' delay={1000}>
@@ -27,7 +29,7 @@ export default function Home() {
             <AnimateIn animationType='slide' slideDirection='bottom' delay={1000}>
               <Link href='/about'>
                 <div className='text-sm md:text-xl flex justify-end pr-4 -mt-1 md:-mt-2'>
-                  Violinist, Composer & Folk Musician
+                  {slogan}
                 </div>
               </Link>
             </AnimateIn>
@@ -36,4 +38,37 @@ export default function Home() {
       </Hero>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const contentful = createClient({
+    space: process.env.SPACE_ID,
+    accessToken: process.env.ACCESS_TOKEN,
+  })
+
+  const pageRes = await contentful.getEntries({
+    content_type: 'homePage',
+    // select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
+  const page = pageRes?.items[0]?.fields
+
+  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
+  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
+
+  return {
+    props: {
+      hero,
+      mobileHero,
+      pageTitle: page?.title,
+      slogan: page?.slogan,
+      socialMedia: {
+        email: page?.email || null,
+        facebook: page?.facebook || null,
+        instagram: page?.instagram || null,
+        spotify: page?.spotify || null,
+        youTube: page?.youTube || null,
+      }
+    },
+  }
 }

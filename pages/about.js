@@ -15,13 +15,30 @@ export async function getStaticProps() {
     content_type: 'aboutPage',
   })
 
+  const socialRes = await contentful.getEntries({
+    content_type: 'homePage',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
   const page = pageRes.items[0].fields
+  const socialPage = socialRes?.items[0]?.fields
+
+  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
+  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
 
   return {
     props: {
-      hero: page.hero,
-      mobileHero: page?.mobileHero || null,
+      hero,
+      mobileHero,
+      pageTitle: page.title,
       biography: page.biography,
+      socialMedia: {
+        email: socialPage?.email || null,
+        facebook: socialPage?.facebook || null,
+        instagram: socialPage?.instagram || null,
+        spotify: socialPage?.spotify || null,
+        youTube: socialPage?.youTube || null,
+      }
     },
   }
 }
@@ -29,16 +46,18 @@ export async function getStaticProps() {
 const About = ({
   hero,
   mobileHero = undefined,
+  pageTitle,
   biography,
+  socialMedia
 }) => {
   return (
-    <Layout pageTitle='About'>
+    <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='container centerContent flex-col gap-6 md:gap-16 p-6 md:py-16'>
           <AnimateIn className='relative w-full aspect-[9/16] md:aspect-video'>
             <Image
-              alt={hero.fields?.title}
-              src={'https:' + hero.fields?.file?.url}
+              alt={hero}
+              src={hero}
               fill
               className={`object-cover object-center rounded shadow`}
             />

@@ -14,16 +14,30 @@ export async function getStaticProps() {
     content_type: 'band',
   })
 
+  const socialRes = await contentful.getEntries({
+    content_type: 'homePage',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+  })
+
+  const socialPage = socialRes?.items[0]?.fields
+
   return {
     props: {
-      bands: bandRes.items
+      bands: bandRes.items,
+      socialMedia: {
+        email: socialPage?.email || null,
+        facebook: socialPage?.facebook || null,
+        instagram: socialPage?.instagram || null,
+        spotify: socialPage?.spotify || null,
+        youTube: socialPage?.youTube || null,
+      }
     },
   }
 }
 
-const Bands = ({ bands }) => {
+const Bands = ({ bands, socialMedia }) => {
   return (
-    <Layout pageTitle='Bands'>
+    <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
         <div className='my-6 md:my-16 w-full flex flex-col gap-12 md:gap-16'>
           {

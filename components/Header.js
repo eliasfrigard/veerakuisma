@@ -9,7 +9,7 @@ import { AiOutlineMail } from 'react-icons/ai'
 import AnimateIn from '../components/AnimateIn.js'
 import Hamburger from './Hamburger.js'
 
-export default function Header({ transparent = false, uppercaseLinks = true, fadeIn = false }) {
+export default function Header({ socialMedia, transparent = false, uppercaseLinks = true, fadeIn = false }) {
   const router = useRouter()
 
   const [currentYear, setCurrentYear] = React.useState('')
@@ -31,15 +31,6 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
   }, [])
 
   const pageName = 'Veera Kuisma'
-  const emailAddress = 'mais.kuis@gmail.com'
-
-  const socialMedia = {
-    email: `mailto:${emailAddress}?subject=${pageName} Website`,
-    facebook: 'https://www.facebook.com/Polentamusic',
-    instagram: 'https://www.instagram.com/polentamusic/',
-    spotify: 'https://open.spotify.com/artist/6LCSzEXMsFKhWkOAp1wP4E?si=SunHecGiSISfPt1Zmv2W3A',
-    youtube: 'https://www.youtube.com/@polentamusic650',
-  }
 
   const links = [
     {
@@ -73,9 +64,8 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
       <AnimateIn
         disabled={!fadeIn}
         delay={1000}
-        className={`w-full flex justify-start fixed top-0 items-center z-50 ${
-          !transparent && 'backdrop-blur bg-primary-950'
-        } bg-opacity-90`}
+        className={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-primary-950'
+          } bg-opacity-90`}
       >
         <div
           className={`
@@ -111,28 +101,28 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
             ))}
           </div>
           <div id='right' className='flex gap-6 justify-end items-center'>
-            {socialMedia.email && (
-              <a href={socialMedia.email}>
+            {socialMedia?.email && (
+              <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
                 <AiOutlineMail className='soMeIcon text-[1.5rem] antialiased' />
               </a>
             )}
-            {socialMedia.facebook && (
-              <a href={socialMedia.facebook} target='_blank' rel='noopener noreferrer'>
+            {socialMedia?.facebook && (
+              <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
                 <BsFacebook className='soMeIcon text-xl' />
               </a>
             )}
-            {socialMedia.instagram && (
-              <a href={socialMedia.instagram} target='_blank' rel='noopener noreferrer'>
+            {socialMedia?.instagram && (
+              <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
                 <BsInstagram className='soMeIcon text-xl' />
               </a>
             )}
-            {socialMedia.spotify && (
-              <a href={socialMedia.spotify} target='_blank' rel='noopener noreferrer'>
+            {socialMedia?.spotify && (
+              <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
                 <BsSpotify className='soMeIcon text-xl' />
               </a>
             )}
-            {socialMedia.youtube && (
-              <a href={socialMedia.youtube} target='_blank' rel='noopener noreferrer'>
+            {socialMedia?.youtube && (
+              <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
                 <BsYoutube className='soMeIcon text-[1.5rem] translate-y-[1px]' />
               </a>
             )}
@@ -172,9 +162,8 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
       </div>
 
       <div
-        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${
-          !mobileNavOpen && '-translate-y-[100vh]'
-        }`}
+        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
+          }`}
       >
         <div className='container flex flex-col justify-center items-center gap-8 text-primary-100 font-khorla'>
           {links.map((link) => (
@@ -189,28 +178,28 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
         </div>
 
         <div className='flex justify-center items-center gap-8 text-primary-100'>
-          {socialMedia.email && (
-            <a href={socialMedia.email}>
+          {socialMedia?.email && (
+            <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
               <AiOutlineMail className='soMeIcon text-[1.6rem] antialiased' />
             </a>
           )}
-          {socialMedia.facebook && (
-            <a href={socialMedia.facebook} target='_blank' rel='noopener noreferrer'>
+          {socialMedia?.facebook && (
+            <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
               <BsFacebook className='soMeIcon text-2xl' />
             </a>
           )}
-          {socialMedia.instagram && (
-            <a href={socialMedia.instagram} target='_blank' rel='noopener noreferrer'>
+          {socialMedia?.instagram && (
+            <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
               <BsInstagram className='soMeIcon text-2xl' />
             </a>
           )}
-          {socialMedia.spotify && (
-            <a href={socialMedia.spotify} target='_blank' rel='noopener noreferrer'>
+          {socialMedia?.spotify && (
+            <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
               <BsSpotify className='soMeIcon text-2xl' />
             </a>
           )}
-          {socialMedia.youtube && (
-            <a href={socialMedia.youtube} target='_blank' rel='noopener noreferrer'>
+          {socialMedia?.youtube && (
+            <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
               <BsYoutube className='soMeIcon text-[1.8rem] translate-y-[1px]' />
             </a>
           )}
@@ -218,7 +207,7 @@ export default function Header({ transparent = false, uppercaseLinks = true, fad
         <div className='tracking-wide text-sm opacity-70 text-center text-primary-100 font-khorla'>
           <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
           <a href='mailto:' className='text-xs underline'>
-            {emailAddress}
+            {socialMedia?.email}
           </a>
         </div>
       </div>
