@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import Layout from '../components/Layouts/Default'
 import Video from '../components/Video'
 import ImageLayout from '../components/ImageLayout'

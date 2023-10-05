@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
