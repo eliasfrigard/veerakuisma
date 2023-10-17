@@ -6,7 +6,7 @@ import Title from '../Title';
 
 const Events = ({ concerts, bandName, email, className, noPadding }) => {
   const mapBandProps = (bands) => {
-    return bands.map((b) => {
+    return bands?.map((b) => {
       const name = b?.fields?.name;
       const imageUrl = 'https:' + b?.fields?.hero?.fields?.file?.url + '?w=35';
 
