@@ -52,7 +52,7 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='py-6 md:py-16 flex flex-col gap-6 md:gap-16'>
-          <div className='w-full h-screen grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
+          <div className='w-full grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
             {
               images.map((image, index) => (
                 <ImageLayout key={image} index={index} image={'https:' + image.url} />
