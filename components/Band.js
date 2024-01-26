@@ -7,17 +7,7 @@ import IconHandler from './IconHandler'
 
 import TextLayout from './TextLayout'
 
-const Band = ({
-  name,
-  image,
-  description,
-  spotify,
-  email,
-  youTube,
-  website,
-  instagram,
-  facebook
-}) => {
+const Band = ({ name, image, description, spotify, email, youTube, website, instagram, facebook }) => {
   const containerRef = React.useRef(null)
 
   return (
@@ -29,7 +19,7 @@ const Band = ({
 
       <div className={`absolute bg-primary-950 ${image && 'opacity-90'} w-full h-full`}></div>
 
-      <div className='w-full max-w-3xl text-primary-100 mt-12 mb-4 md:mt-16 md:mb-10 px-4'>
+      <div className='w-full max-w-3xl text-primary-100 my-12 px-4'>
         <div className='w-full flex flex-col justify-center items-center'>
           <div>
             <div ref={containerRef} className='flex flex-col centerContent gap-5'>
@@ -38,7 +28,15 @@ const Band = ({
               >
                 {name}
               </h1>
-              <IconHandler className='text-accent-500' email={email} spotify={spotify} youTube={youTube} website={website} instagram={instagram} facebook={facebook} />
+              {/* <IconHandler
+                className='text-accent-500'
+                email={email}
+                spotify={spotify}
+                youTube={youTube}
+                website={website}
+                instagram={instagram}
+                facebook={facebook}
+              /> */}
             </div>
           </div>
 
@@ -47,7 +45,10 @@ const Band = ({
 
         <div className='flex justify-center items-center gap-16 w-full'>
           <div className='prose prose-2xl max-w-2xl text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10'>
-            <TextLayout text={description} className='text-primary-100 prose-headings:text-primary-100 prose-blockquote:text-primary-100 prose-a:text-accent-500 prose-blockquote:border-primary-100' />
+            <TextLayout
+              text={description}
+              className='text-primary-100 prose-headings:my-0 prose-headings:font-medium prose-p:my-0 prose-headings:text-primary-100 prose-blockquote:text-primary-100 prose-a:text-accent-500 prose-blockquote:border-primary-100'
+            />
           </div>
         </div>
       </div>

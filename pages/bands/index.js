@@ -30,7 +30,7 @@ export async function getStaticProps() {
         instagram: socialPage?.instagram || null,
         spotify: socialPage?.spotify || null,
         youTube: socialPage?.youTube || null,
-      }
+      },
     },
   }
 }
@@ -39,23 +39,21 @@ const Bands = ({ bands, socialMedia }) => {
   return (
     <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
-        <div className='my-6 md:my-16 w-full flex flex-col gap-12 md:gap-16'>
-          {
-            bands.map((band) => (
-              <Band
-                key={band.sys.id}
-                image={'https:' + band.fields.hero?.fields?.file?.url}
-                name={band.fields.name}
-                description={band.fields.description}
-                spotify={band.fields.spotify}
-                email={band.fields.email}
-                youTube={band.fields.youTube}
-                website={band.fields.website}
-                instagram={band.fields.instagram}
-                facebook={band.fields.facebook}
-              />
-            ))
-          }
+        <div className='my-6 md:my-16 w-full flex flex-col gap-6 md:gap-16'>
+          {bands.map((band) => (
+            <Band
+              key={band.sys.id}
+              image={'https:' + band.fields.hero?.fields?.file?.url}
+              name={band.fields.name}
+              description={band.fields.description}
+              spotify={band.fields.spotify}
+              email={band.fields.email}
+              youTube={band.fields.youTube}
+              website={band.fields.website}
+              instagram={band.fields.instagram}
+              facebook={band.fields.facebook}
+            />
+          ))}
         </div>
       </div>
     </Layout>
