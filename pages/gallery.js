@@ -51,15 +51,7 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
   return (
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='py-6 md:py-16 flex flex-col gap-6 md:gap-16'>
-          <div className='w-full grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
-            {
-              images.map((image, index) => (
-                <ImageLayout key={image} index={index} image={'https:' + image.url} />
-              ))
-            }
-          </div>
-
+        <div className='py-6 lg:py-16 flex flex-col gap-6 lg:gap-16'>
           <div className='container flex justify-center items-center flex-wrap'>
             <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
               {videos.map((video, index) => (
@@ -71,6 +63,14 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
                 />
               ))}
             </div>
+          </div>
+
+          <div className='w-full grid grid-cols-2 md:grid-cols-3 gap-1 container px-2'>
+            {
+              images.map((image, index) => (
+                <ImageLayout key={image} index={index} image={'https:' + image.url} />
+              ))
+            }
           </div>
         </div>
       </div>
