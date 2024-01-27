@@ -60,15 +60,8 @@ export default function Band({
         </div>
 
         {
-          images.length > 0 || videos.length > 0 && (
+          (images.length > 0 || videos.length > 0) && (
             <div className='flex flex-col gap-6 md:gap-16 px-2'>
-              <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
-                {
-                  images.map((image, index) => (
-                    <ImageLayout key={image} index={index} image={'https:' + image.url} />
-                  ))
-                }
-              </div>
 
               <div className='container flex justify-center items-center flex-wrap'>
                 <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
@@ -81,6 +74,13 @@ export default function Band({
                     />
                   ))}
                 </div>
+              </div>
+              <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
+                {
+                  images.map((image, index) => (
+                    <ImageLayout key={image} index={index} image={'https:' + image.url} />
+                  ))
+                }
               </div>
             </div>
           )

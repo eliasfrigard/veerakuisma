@@ -64,7 +64,7 @@ const TextLayout = ({ text, type = 'dynamic', className }) => {
   if (textLength < maxLengthForTwoColumns || type === 'single') {
     return (
       <div
-        className={`prose py-0 my-0 max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.1rem] tracking-wide font-sans text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 ${className}`}
+        className={`prose py-0 my-0 max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.1rem] tracking-wide font-sans text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 prose-li:list-none prose-li:mt-0 prose-li:mb-0 ${className}`}
       >
         {documentToReactComponents(textDocument, options)}
       </div>
@@ -73,7 +73,7 @@ const TextLayout = ({ text, type = 'dynamic', className }) => {
 
   return (
     <div
-      className={`prose max-w-7xl lg:columns-2 gap-10 prose-img:rounded prose-img:shadow-md leading-loose text-center md:text-justify prose-headings:underline prose-a:text-accent-500 ${className}`}
+      className={`prose max-w-7xl lg:columns-2 gap-10 prose-img:rounded prose-img:shadow-md leading-loose text-center md:text-justify prose-headings:underline prose-a:text-accent-500 prose-li:list-none prose-li:mt-0 prose-li:mb-0 ${className}`}
     >
       {documentToReactComponents(textDocument, options)}
     </div>
