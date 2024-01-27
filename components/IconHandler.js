@@ -52,7 +52,7 @@ const IconHandler = ({
   }
 
   return (
-    <div className={`flex text-2xl justify-center items-center gap-5 z-10 ${className}`}>
+    <div className={`flex text-2xl justify-center items-center gap-3 lg:gap-4 z-10 text-accent-500 ${className}`}>
       {
         address && (
           <LinkIcon href={addressLink} tooltip='Google Maps'>

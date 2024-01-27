@@ -86,7 +86,7 @@ export default function Band({
           )
         }
 
-        {/* <Events concerts={concerts} bandName={name} email={email} noPadding /> */}
+        <Events concerts={concerts} bandName={name} email={email} noPadding />
 
         {/* <div className="fixed bottom-0 left-0 p-10">
           <Button size='lg' variant="gradient" color='primary-950'>Back to Bands</Button>

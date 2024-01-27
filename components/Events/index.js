@@ -36,7 +36,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
   })
 
   const noUpcomingConcerts = (
-    <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded shadow-lg'>
+    <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded-xl shadow-lg'>
       {
         bandName ? (
           <div className='text-center font-khorla text-primary-100 tracking-wider leading-relaxed py-1'>
@@ -50,8 +50,8 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
             }
           </div>
         ) : (
-          <div className='text-center font-khorla text-primary-100 tracking-wider py-1'>
-            <p className='text-xl pb-1'>
+          <div className='centerContent flex-col text-center font-khorla text-primary-100 tracking-wider py-1 gap-4'>
+            <p className='text-xl'>
               No upcoming concerts at this moment
             </p>
             {
@@ -87,20 +87,20 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
   })
 
   return (
-    <div className={`flex flex-col ${concerts?.previous?.length && 'gap-10 md:gap-24'} ${!noPadding && 'py-10 md:py-24'} ${className}`}>
-      <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
+    <div className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-16'} ${!noPadding && 'py-6 md:py-16'} ${className}`}>
+      <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
         <Title title='Upcoming' />
         {upcomingConcerts?.length > 0 ? (
-          <div className='centerContent flex-col container relative w-full bg-primary-950 rounded shadow-lg px-6'>
+          <div className='centerContent flex-col container relative w-full rounded shadow-lg px-6 gap-4 lg:gap-6'>
             {upcomingConcerts}
           </div>
         ) : noUpcomingConcerts}
       </div>
 
       {previousConcerts?.length > 0 && (
-        <div className='flex flex-col gap-4 md:gap-12 px-4 md:px-0'>
+        <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
           <Title title='Previous' />
-          <div className='centerContent flex-col container relative w-full px-6 bg-primary-950 rounded shadow-lg'>
+          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
             {previousConcerts}
           </div>
         </div>
