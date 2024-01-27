@@ -10,7 +10,7 @@ export default function Home({ pageTitle, slogan, hero, mobileHero, socialMedia 
     <Layout socialMedia={socialMedia} transparent footer={false} headerFadeIn pageTitle={pageTitle}>
       <Hero altText='Hero Image' heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
         <div className='text-primary-100 flex flex-col font-khorla justify-center items-center tracking-wide'>
-          <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-10'>
+          <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-8'>
             <AnimateIn animationType='slide' delay={1000}>
               <h1 className='text-[2.6rem] md:text-[4.3rem] font-medium leading-none drop-shadow-2xl'>
                 Veera
@@ -27,7 +27,7 @@ export default function Home({ pageTitle, slogan, hero, mobileHero, socialMedia 
           <div className='w-full '>
             <AnimateIn animationType='slide' slideDirection='bottom' delay={1000}>
               <Link href='/about'>
-                <div className='text-sm md:text-xl flex justify-end pr-4 -mt-1'>{slogan}</div>
+                <div className='text-sm md:text-xl flex justify-end pr-4 -mt-3'>{slogan}</div>
               </Link>
             </AnimateIn>
           </div>
