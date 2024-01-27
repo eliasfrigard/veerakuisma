@@ -1,6 +1,7 @@
 import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
+import ContactForm from '../components/ContactForm'
 
 import { createClient } from 'contentful'
 
@@ -68,7 +69,11 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia }) => {
             <p className='text-2xl'>{socialMedia.phone}</p>
           </AnimateIn>
         </div>
+
       </Hero>
+      <div className='py-16 px-6 w-full bg-primary-950'>
+        <ContactForm></ContactForm>
+      </div>
     </Layout>
   )
 }

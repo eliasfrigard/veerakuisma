@@ -109,5 +109,14 @@ a {
   .mobileNavLink:hover {
     color: theme('colors.accent.500');
   }
+  
+  .formLabel {
+    display: block;
+    letter-spacing: 0.025em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-left: 3px;
+    color: theme('colors.primary.100');
+  }
 }
 

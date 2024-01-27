@@ -5,7 +5,7 @@ import AnimateIn from '../components/AnimateIn'
 const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = true }) => {
   return (
     <AnimateIn className={className}>
-      <div id='hero' className='relative h-screen w-screen -mt-[85px] flex justify-center items-center shadow-lg'>
+      <div id='hero' className='relative h-screen w-screen -mt-[85px] flex justify-center items-center'>
         <Image
           alt={altText}
           src={desktopImg || mobileImg}
@@ -27,7 +27,7 @@ const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = t
         {overlay && (
           <AnimateIn
             delay={1000}
-            className='absolute w-full h-screen bg-primary-950 bg-opacity-70 backdrop-blur'
+            className='absolute w-full h-screen bg-primary-950 bg-opacity-60 backdrop-blur'
           ></AnimateIn>
         )}
 
