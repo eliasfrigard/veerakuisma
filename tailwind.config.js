@@ -13,6 +13,9 @@ module.exports = withMT({
   },
   theme: {
     extend: {
+      opacity: {
+        '85': '.87',
+      },
       fontFamily: {
         khorla: ['Khorla', 'sans-serif'],
         forrest: ['Forrest', 'sans-serif'],

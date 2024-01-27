@@ -39,7 +39,7 @@ const Bands = ({ bands, socialMedia }) => {
   return (
     <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
-        <div className='my-6 md:my-16 w-full flex flex-col gap-6 md:gap-16'>
+        <div className='my-6 lg:my-16 w-full flex flex-col gap-6 lg:gap-16'>
           {bands.map((band) => (
             <Band
               key={band.sys.id}
