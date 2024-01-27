@@ -48,7 +48,11 @@ const Event = ({
 
 
         <p className='font-bold text-center'>{title}</p>
-        <p className='hidden lg:block font-bold'>{cityCountry}</p>
+
+        <div className='flex gap-2 centerContent items-center'>
+          <IoMdPin className='text-accent-500' />
+          <p className='hidden lg:block font-bold'>{cityCountry}</p>
+        </div>
 
         <IconHandler website={website} facebook={facebook} tickets={tickets} address={address} bands={bands} />
       </div>

@@ -3,6 +3,7 @@
 import React from 'react';
 import Event from './Event';
 import Title from '../Title';
+import AnimateIn from '../AnimateIn';
 
 const Events = ({ concerts, bandName, email, className, noPadding }) => {
   const mapBandProps = (bands) => {
@@ -36,10 +37,10 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
   })
 
   const noUpcomingConcerts = (
-    <div className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded-xl shadow-lg'>
+    <AnimateIn className='centerContent flex-col container relative w-full p-6 bg-primary-950 rounded shadow-lg'>
       {
         bandName ? (
-          <div className='text-center font-khorla text-primary-100 tracking-wider leading-relaxed py-1'>
+          <div className='centerContent flex-col text-center font-khorla text-primary-100 tracking-wider py-1 gap-4 lg:gap-2'>
             <p className='text-xl pb-1'>
               {bandName} has no upcoming concerts at this moment
             </p>
@@ -50,7 +51,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
             }
           </div>
         ) : (
-          <div className='centerContent flex-col text-center font-khorla text-primary-100 tracking-wider py-1 gap-4'>
+          <div className='centerContent flex-col text-center font-khorla text-primary-100 tracking-wider py-1 gap-4 lg:gap-2'>
             <p className='text-xl'>
               No upcoming concerts at this moment
             </p>
@@ -62,34 +63,39 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
           </div>
         )
       }
-    </div>
+    </AnimateIn>
   );
 
   const previousConcerts = concerts?.previous?.map((c, index) => {
     const bands = mapBandProps(c?.fields?.band)
 
     return (
-      <Event
+      <AnimateIn
         key={c.sys.id}
-        title={c.fields.title}
-        date={c.fields.dateTime}
-        displayTime={c.fields.displayTime}
-        cityCountry={c.fields.cityCountry}
-        address={c.fields.address}
-        bands={bands}
-        website={c.fields.website}
-        facebook={c.fields.facebook}
-        tickets={c.fields.tickets}
-        first={index === 0}
-        last={index + 1 === concerts.previous.length}
-      />
+        className='w-full'
+        animationType='slide'
+      >
+        <Event
+          title={c.fields.title}
+          date={c.fields.dateTime}
+          displayTime={c.fields.displayTime}
+          cityCountry={c.fields.cityCountry}
+          address={c.fields.address}
+          bands={bands}
+          website={c.fields.website}
+          facebook={c.fields.facebook}
+          tickets={c.fields.tickets}
+          first={index === 0}
+          last={index + 1 === concerts.previous.length}
+        />
+      </AnimateIn>
     )
   })
 
   return (
     <div className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-16'} ${!noPadding && 'py-6 md:py-16'} ${className}`}>
       <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
-        <Title title='Upcoming' />
+        <Title title='Upcoming Concerts' />
         {upcomingConcerts?.length > 0 ? (
           <div className='centerContent flex-col container relative w-full rounded shadow-lg px-6 gap-4 lg:gap-6'>
             {upcomingConcerts}
@@ -99,7 +105,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
 
       {previousConcerts?.length > 0 && (
         <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
-          <Title title='Previous' />
+          <Title title='Previous Concerts' />
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
             {previousConcerts}
           </div>

@@ -10,19 +10,20 @@ const AnimateIn = ({
   slideDirection = 'left',
   disabled = false,
   delay = 0,
+  ...rest
 }) => {
   const [ref, inView] = useInView({ threshold, triggerOnce })
 
   const getSlideDirection = () => {
     switch (slideDirection) {
       case 'left':
-        return '-translate-x-24'
+        return 'lg:-translate-x-24'
       case 'right':
-        return 'translate-x-24'
+        return 'lg:translate-x-24'
       case 'top':
-        return '-translate-y-24'
+        return 'lg:-translate-y-24'
       case 'bottom':
-        return 'translate-y-24'
+        return 'lg:translate-y-24'
       default:
         break
     }
@@ -31,7 +32,7 @@ const AnimateIn = ({
   const getAnimationClasses = () => {
     switch (animationType) {
       case 'slide':
-        return `${className} duration-1000 ${inView ? 'opacity-100 translate-y-0' : `opacity-0 ${getSlideDirection()}`
+        return `${className} duration-1000 ${inView ? 'opacity-100 translate-y-0' : `opacity-0 lg:opacity-90 ${getSlideDirection()}`
           }`
       case 'zoom':
         return `${className} duration-1000 ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-85'
@@ -50,7 +51,7 @@ const AnimateIn = ({
   }
 
   return (
-    <div className={getAnimationClasses()} ref={ref}>
+    <div {...rest} className={getAnimationClasses()} ref={ref}>
       {children}
     </div>
   )
