@@ -42,7 +42,7 @@ export default function Band({
         >
           <div className='pt-[85px]'>
             <AnimateIn animationType='slide' delay={1000}>
-              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-60 uppercase font-khorla'>
+              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-80 uppercase font-khorla text-center'>
                 {name}
               </h1>
             </AnimateIn>
@@ -50,43 +50,47 @@ export default function Band({
         </Hero>
       )}
 
-      <div className='w-full centerContent mt-10'>
+      {/* <div className='w-full centerContent mt-10'>
         <Breadcrumbs />
-      </div>
+      </div> */}
 
-      <div className='container flex flex-col pt-10 md:pt-8 pb-16 gap-10 md:pb-24 md:gap-24'>
-        <AnimateIn className='container centerContent z-10 px-4 md:px-10'>
+      <div className='container flex flex-col py-16 gap-16'>
+        <div className='w-full centerContent px-6'>
           <TextLayout text={biography || description} />
-        </AnimateIn>
+        </div>
 
-        <div className='flex flex-col gap-6 md:gap-16 px-2'>
-          <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
-            {
-              images.map((image, index) => (
-                <ImageLayout key={image} index={index} image={'https:' + image.url} />
-              ))
-            }
-          </div>
+        {
+          images.length > 0 || videos.length > 0 && (
+            <div className='flex flex-col gap-6 md:gap-16 px-2'>
+              <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
+                {
+                  images.map((image, index) => (
+                    <ImageLayout key={image} index={index} image={'https:' + image.url} />
+                  ))
+                }
+              </div>
 
-          <div className='container flex justify-center items-center flex-wrap'>
-            <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
-              {videos.map((video, index) => (
-                <Video
-                  prominent={index === 0}
-                  key={video.youTubeLink}
-                  title={video.name}
-                  link={video.youTubeLink}
-                />
-              ))}
+              <div className='container flex justify-center items-center flex-wrap'>
+                <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
+                  {videos.map((video, index) => (
+                    <Video
+                      prominent={index === 0}
+                      key={video.youTubeLink}
+                      title={video.name}
+                      link={video.youTubeLink}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          )
+        }
 
-        <Events concerts={concerts} bandName={name} email={email} noPadding />
+        {/* <Events concerts={concerts} bandName={name} email={email} noPadding /> */}
 
-        <div className="fixed bottom-0 left-0 p-10">
+        {/* <div className="fixed bottom-0 left-0 p-10">
           <Button size='lg' variant="gradient" color='primary-950'>Back to Bands</Button>
-        </div>
+        </div> */}
       </div>
     </Layout>
   )

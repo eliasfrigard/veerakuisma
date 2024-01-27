@@ -55,7 +55,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
 
       <Link
         href={`/bands/${name.toLowerCase()}`}
-        className={`w-full min-h-16 bg-primary-900 opacity-60 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:opacity-80 duration-100 tracking-wider text-center p-4 z-10`}
+        className={`w-full min-h-16 bg-primary-900 opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:opacity-100 duration-100 tracking-wider text-center p-4 z-10`}
       >
         {`Read more about ${name}`}
       </Link>
