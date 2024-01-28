@@ -20,7 +20,8 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
   }
 
   const activeLinkStyling = (path) => {
-    if (router.pathname == path) {
+    if (router.pathname === path ||
+      (path.includes(router.pathname.split('/')[1]) && router.pathname !== '/')) {
       return 'text-accent-500'
     }
   }
