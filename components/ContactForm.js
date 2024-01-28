@@ -110,7 +110,7 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={nameRef}
-                  className={`appearance-none block w-full rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!nameIsValid && 'border-accent-500'
+                  className={`appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!nameIsValid && 'border-accent-500'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -129,7 +129,7 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={emailRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!emailIsValid && 'border-accent-500'
+                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!emailIsValid && 'border-accent-500'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -146,7 +146,7 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={phoneRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!phoneIsValid && 'border-accent-500'
+                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!phoneIsValid && 'border-accent-500'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -165,7 +165,7 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={addressRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!addressIsValid && 'border-accent-500'
+                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!addressIsValid && 'border-accent-500'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -185,7 +185,7 @@ export default function ContactForm() {
                 <textarea
                   ref={messageRef}
                   rows='10'
-                  className={`resize-none md:resize-y appearance-none block w-full border border-secondary-500 border-opacity-10 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!messageIsValid && 'border-accent-500'
+                  className={`resize-none md:resize-y appearance-none block w-full border border-secondary-500 border-opacity-10 rounded-lg p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!messageIsValid && 'border-accent-500'
                     }`}
                   id='grid-first-name'
                   type='text'

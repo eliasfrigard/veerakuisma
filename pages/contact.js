@@ -2,6 +2,8 @@ import Layout from '../components/Layouts/Default'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 import ContactForm from '../components/ContactForm'
+import DownloadItem from '../components/DownloadItem'
+import Title from '../components/Title'
 
 import { createClient } from 'contentful'
 
@@ -20,6 +22,10 @@ export async function getStaticProps() {
     select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube, fields.phone',
   })
 
+  const fileDownloadRes = await contentful.getEntries({
+    content_type: 'fileDownload',
+  })
+
   const page = pageRes.items[0].fields
   const socialPage = socialRes?.items[0]?.fields
 
@@ -31,6 +37,7 @@ export async function getStaticProps() {
       hero,
       mobileHero,
       pageTitle: page.title,
+      files: fileDownloadRes.items,
       socialMedia: {
         email: socialPage?.email || null,
         phone: socialPage?.phone || null,
@@ -44,14 +51,13 @@ export async function getStaticProps() {
   }
 }
 
-const Contact = ({ hero, mobileHero, pageTitle, socialMedia }) => {
+const Contact = ({ hero, mobileHero, pageTitle, socialMedia, files }) => {
   return (
     <Layout
       pageTitle={pageTitle}
       pageDescription={pageTitle}
       imageUrl={hero}
       pageUrl='/concerts'
-      footer={false}
       socialMedia={socialMedia}
     >
       <Hero
@@ -73,9 +79,28 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia }) => {
         </div>
 
       </Hero>
-      <div className='py-16 px-6 w-full bg-primary-950'>
+      <div className='py-6 lg:py-16 px-6 w-full bg-primary-950'>
         <ContactForm></ContactForm>
       </div>
+
+      {files.length > 0 && (
+        <div className='flex flex-col py-6 lg:py-16 gap-2 md:gap-12 px-6 md:px-0'>
+          <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' />
+          <div
+            className={`container px-6 grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
+              }`}
+          >
+            {files.map((file) => (
+              <DownloadItem
+                key={file.sys.id}
+                title={file.fields.description}
+                filename={file.fields.file.fields.file.fileName}
+                file={`https:${file.fields.file.fields.file.url}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </Layout>
   )
 }
