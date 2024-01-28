@@ -84,7 +84,7 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia, files }) => {
       </div>
 
       {files.length > 0 && (
-        <div className='flex flex-col py-6 lg:py-16 gap-2 md:gap-12 px-6 md:px-0'>
+        <div className='flex flex-col py-6 lg:py-16 gap-2 md:gap-12 md:px-0'>
           <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' />
           <div
             className={`container px-6 grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
