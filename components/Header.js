@@ -73,8 +73,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           hidden
           lg:gap-16
           lg:flex
-          xl:grid
-          xl:grid-cols-3
+          justify-between
           items-center
           h-[85px]
           w-full
@@ -85,12 +84,12 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           font-khorla
         `}
         >
-          <div id='left'>
+          <div id='left' className='text-center'>
             <Link className='cursor-pointer text-xl font-bold tracking-widest uppercase' href='/'>
               {pageName}
             </Link>
           </div>
-          <div id='center' className='flex gap-4 font-medium justify-center tracking-[2px]'>
+          <div id='center' className='flex gap-1 xl:gap-4 font-medium justify-center tracking-[2px]'>
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -101,7 +100,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
               </Link>
             ))}
           </div>
-          <div id='right' className='flex gap-6 justify-end items-center'>
+          <div id='right' className='flex gap-4 xl:gap-6 justify-end items-center'>
             {socialMedia?.phone && (
               <a href={`tel:${socialMedia.phone}`}>
                 <BsTelephone className='soMeIcon text-xl antialiased' />
@@ -171,7 +170,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
         className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-7 text-primary-100 font-khorla'>
+        <div className='container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla'>
           {links.map((link) => (
             <Link
               key={link.href}
@@ -183,7 +182,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           ))}
         </div>
 
-        <div className='flex justify-center items-center gap-8 text-primary-100'>
+        <div className='flex justify-center items-center gap-6 text-primary-100'>
           {socialMedia?.phone && (
             <a href={`tel:${socialMedia.phone}`}>
               <BsTelephone className='soMeIcon text-xl antialiased' />

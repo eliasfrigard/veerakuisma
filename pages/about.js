@@ -71,7 +71,7 @@ const About = ({
             />
           </AnimateIn>
 
-          <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 md:px-10'>
+          <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-6 md:px-10'>
             <TextLayout text={biography} />
           </AnimateIn>
         </div>
