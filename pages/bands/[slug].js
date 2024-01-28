@@ -55,7 +55,7 @@ export default function Band({
       </div> */}
 
       <div className='container flex flex-col py-6 lg:py-16 gap-6 lg:gap-16'>
-        <div className='w-full pt-1 lg:pt-0 centerContent px-3 md:px-10'>
+        <div className='w-full pt-2 lg:pt-0 centerContent px-3 md:px-10'>
           <TextLayout text={biography || description} />
         </div>
 
