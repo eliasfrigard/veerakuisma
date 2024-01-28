@@ -63,7 +63,7 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia }) => {
         <div className='relative pt-[85px] w-screen h-screen z-10'>
           <AnimateIn
             delay={1000}
-            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-2 text-center'
+            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-2 px-3 text-center'
           >
             <p className='text-6xl leading-tight'>Veera Kuisma</p>
             <div className='w-3/4 lg:w-1/2 my-4 h-[1px] bg-primary-100 bg-opacity-20 rounded-full'></div>
