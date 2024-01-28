@@ -38,7 +38,7 @@ export default function Band({
           altText='Hero Image'
           heroPosition='center'
           desktopImg={heroUrl}
-          mobileImg={mobileHeroUrl}
+          mobileImg={mobileHeroUrl || heroUrl}
         >
           <div className='pt-[85px]'>
             <AnimateIn animationType='slide' delay={1000}>
