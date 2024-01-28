@@ -6,7 +6,7 @@ import AnimateIn from '../components/AnimateIn'
 
 const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = true }) => {
   const parallax = useParallax({
-    speed: -4,
+    speed: -40,
   })
 
   return (
