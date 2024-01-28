@@ -61,10 +61,9 @@ export default function Band({
 
         {
           (images.length > 0 || videos.length > 0) && (
-            <div className='flex flex-col gap-6 md:gap-16 px-2'>
-
+            <div className='py-2 flex flex-col gap-2 lg:gap-6'>
               <div className='container flex justify-center items-center flex-wrap'>
-                <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-6 px-2`}>
+                <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2 px-2`}>
                   {videos.map((video, index) => (
                     <Video
                       prominent={index === 0}
