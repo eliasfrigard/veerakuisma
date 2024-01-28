@@ -19,20 +19,27 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
     const bands = mapBandProps(c?.fields?.band)
 
     return (
-      <Event
+      <AnimateIn
         key={c.sys.id}
-        title={c.fields.title}
-        date={c.fields.dateTime}
-        displayTime={c.fields.displayTime}
-        cityCountry={c.fields.cityCountry}
-        address={c.fields.address}
-        bands={bands}
-        website={c.fields.website}
-        facebook={c.fields.facebook}
-        tickets={c.fields.tickets}
-        first={index === 0}
-        last={index + 1 === concerts.upcoming.length}
-      />
+        className='w-full'
+        animationType='slide'
+        slideDirection='bottom'
+      >
+        <Event
+          key={c.sys.id}
+          title={c.fields.title}
+          date={c.fields.dateTime}
+          displayTime={c.fields.displayTime}
+          cityCountry={c.fields.cityCountry}
+          address={c.fields.address}
+          bands={bands}
+          website={c.fields.website}
+          facebook={c.fields.facebook}
+          tickets={c.fields.tickets}
+          first={index === 0}
+          last={index + 1 === concerts.upcoming.length}
+        />
+      </AnimateIn>
     )
   })
 
