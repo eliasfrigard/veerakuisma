@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 
-import { BsFacebook, BsInstagram, BsYoutube, BsSpotify } from 'react-icons/bs'
+import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 
 import AnimateIn from '../components/AnimateIn.js'
@@ -102,6 +102,11 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
             ))}
           </div>
           <div id='right' className='flex gap-6 justify-end items-center'>
+            {socialMedia?.phone && (
+              <a href={`tel:${socialMedia.phone}`}>
+                <BsTelephone className='soMeIcon text-xl antialiased' />
+              </a>
+            )}
             {socialMedia?.email && (
               <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
                 <AiOutlineMail className='soMeIcon text-[1.5rem] antialiased' />
@@ -179,6 +184,11 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
         </div>
 
         <div className='flex justify-center items-center gap-8 text-primary-100'>
+          {socialMedia?.phone && (
+            <a href={`tel:${socialMedia.phone}`}>
+              <BsTelephone className='soMeIcon text-xl antialiased' />
+            </a>
+          )}
           {socialMedia?.email && (
             <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
               <AiOutlineMail className='soMeIcon text-[1.6rem] antialiased' />

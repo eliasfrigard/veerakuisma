@@ -45,7 +45,6 @@ export async function getStaticProps() {
 
   const pageRes = await contentful.getEntries({
     content_type: 'homePage',
-    // select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
   })
 
   const page = pageRes?.items[0]?.fields
@@ -65,6 +64,7 @@ export async function getStaticProps() {
         instagram: page?.instagram || null,
         spotify: page?.spotify || null,
         youTube: page?.youTube || null,
+        phone: page?.phone || null,
       },
     },
   }

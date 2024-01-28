@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
   const socialRes = await contentful.getEntries({
     content_type: 'homePage',
-    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube',
+    select: 'fields.email, fields.facebook, fields.instagram, fields.spotify, fields.youTube, fields.phone',
   })
 
   const page = pageRes.items[0].fields
@@ -38,6 +38,7 @@ export async function getStaticProps() {
         instagram: socialPage?.instagram || null,
         spotify: socialPage?.spotify || null,
         youTube: socialPage?.youTube || null,
+        phone: socialPage?.phone || null,
       }
     },
   }
@@ -62,11 +63,12 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia }) => {
         <div className='relative pt-[85px] w-screen h-screen z-10'>
           <AnimateIn
             delay={1000}
-            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-3 text-center'
+            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-2 text-center'
           >
             <p className='text-6xl leading-tight'>Veera Kuisma</p>
-            <p className='text-2xl'>{socialMedia.email}</p>
-            <p className='text-2xl'>{socialMedia.phone}</p>
+            <div className='w-3/4 lg:w-1/2 my-4 h-[1px] bg-primary-100 bg-opacity-20 rounded-full'></div>
+            <p className='text-xl tracking-wider'>{socialMedia.email}</p>
+            <p className='text-lg tracking-wider'>{socialMedia.phone}</p>
           </AnimateIn>
         </div>
 
