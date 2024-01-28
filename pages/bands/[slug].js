@@ -54,7 +54,7 @@ export default function Band({
         <Breadcrumbs />
       </div> */}
 
-      <div className='container flex flex-col py-16 gap-16'>
+      <div className='container flex flex-col py-6 lg:py-16 gap-6 lg:gap-16'>
         <div className='w-full centerContent px-6 md:px-10'>
           <TextLayout text={biography || description} />
         </div>

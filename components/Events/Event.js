@@ -73,7 +73,7 @@ const Event = ({
 
       {/* MOBILE VIEW */}
 
-      <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
+      <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
         <p className='text-xl leading-none uppercase drop-shadow-sm'>
           <Moment format='D MMMM YYYY' className='font-bold'>
             {date}
