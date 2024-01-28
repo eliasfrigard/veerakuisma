@@ -74,6 +74,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
         key={c.sys.id}
         className='w-full'
         animationType='slide'
+        slideDirection='bottom'
       >
         <Event
           title={c.fields.title}

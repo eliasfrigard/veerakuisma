@@ -86,7 +86,7 @@ const Event = ({
           <p className='font-bold text-center'>{title}</p>
           <div className='flex gap-2 centerContent items-center'>
             <BsPinMapFill className='text-accent-500' />
-            <p className='block font-medium'>{cityCountry}</p>
+            <p className='block font-medium text-sm'>{cityCountry}</p>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ const Event = ({
               {website && (
                 <Button href={website}>
                   <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <IoMdPin className='text-lg' />
+                    <BsGlobeEuropeAfrica className='text-lg' />
                     <p>Event Link</p>
                   </div>
                 </Button>
@@ -120,7 +120,7 @@ const Event = ({
               {addressLink && (
                 <Button href={addressLink}>
                   <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <BsGlobeEuropeAfrica className='text-lg' />
+                    <BsPinMapFill className='text-lg' />
                     <p>Google Maps</p>
                   </div>
                 </Button>
