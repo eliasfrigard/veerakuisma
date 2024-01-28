@@ -9,6 +9,10 @@ const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = t
     speed: -40,
   })
 
+  const mobileParallax = useParallax({
+    speed: -50,
+  })
+
   return (
     <AnimateIn className={className}>
       <div id='hero' className='relative h-screen w-screen -mt-[85px] flex justify-center items-center shadow-lg overflow-hidden'>
@@ -23,6 +27,7 @@ const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = t
         {mobileImg &&
           (
             <Image
+              ref={mobileParallax.ref}
               alt={altText}
               src={mobileImg || desktopImg}
               fill
