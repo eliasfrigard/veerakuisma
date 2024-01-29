@@ -41,7 +41,7 @@ export default function Layout({
 
   const title = `${pageTitle} | ${pageName}`
   const baseUrl = 'https://www.veerakuisma.com'
-  const faviconUrl = '/path/to/favicon.ico'
+  const faviconUrl = '/favicon.ico'
 
   return (
     <>
