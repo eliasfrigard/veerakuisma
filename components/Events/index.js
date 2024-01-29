@@ -102,7 +102,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
 
   return (
     <div className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-16'} ${!noPadding && 'py-6 md:py-16'} ${className}`}>
-      <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
+      <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'>
         <Title title='Upcoming Concerts' />
         {upcomingConcerts?.length > 0 ? (
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
@@ -112,7 +112,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
       </div>
 
       {previousConcerts?.length > 0 && (
-        <div className='flex flex-col gap-2 md:gap-12 px-6 md:px-0'>
+        <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'>
           <Title title='Previous Concerts' />
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
             {previousConcerts}

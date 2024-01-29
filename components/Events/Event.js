@@ -136,8 +136,9 @@ const Event = ({
               )}
 
               {
-                (facebook || addressLink || website || tickets) && (
-                  <div className={`h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full`} />
+                (facebook || addressLink || website || tickets) &&
+                bands?.length > 0 && (
+                  <div className="h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full" />
                 )
               }
 
