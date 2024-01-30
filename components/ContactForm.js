@@ -111,7 +111,7 @@ export default function ContactForm() {
                 <input
                   required
                   ref={nameRef}
-                  className={`font-khorla tracking-wider appearance-none block w-full  p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none`}
+                  className={`font-khorla tracking-wider appearance-none block w-full  p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none placeholder:text-primary-950 placeholder:opacity-60`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your name?'
@@ -130,7 +130,7 @@ export default function ContactForm() {
                 <input
                   required
                   ref={emailRef}
-                  className={`font-khorla outline-none tracking-wider appearance-none block w-full p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500`}
+                  className={`font-khorla outline-none tracking-wider appearance-none block w-full p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 placeholder:text-primary-950 placeholder:opacity-60`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your email?'
@@ -146,7 +146,7 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={phoneRef}
-                  className={`font-khorla tracking-wider appearance-none block w-full p-4 mb-3 leading-tight focus:outline-none rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500`}
+                  className={`font-khorla tracking-wider appearance-none block w-full p-4 mb-3 leading-tight focus:outline-none rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 placeholder:text-primary-950 placeholder:opacity-60`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your number?'
@@ -165,7 +165,7 @@ export default function ContactForm() {
                 <input
                   required
                   ref={addressRef}
-                  className={`font-khorla focus:text-accent-500 tracking-wider appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100'
+                  className={`font-khorla focus:text-accent-500 tracking-wider appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 placeholder:text-primary-950 placeholder:opacity-60'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -186,7 +186,7 @@ export default function ContactForm() {
                   required
                   ref={messageRef}
                   rows='8'
-                  className={`font-khorla tracking-wider resize-none md:resize-y appearance-none block w-full p-4 mb-3 leading-relaxed rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none`}
+                  className={`font-khorla tracking-wider resize-none md:resize-y appearance-none block w-full p-4 mb-3 leading-relaxed rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none placeholder:text-primary-950 placeholder:opacity-60`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is on your mind?'
