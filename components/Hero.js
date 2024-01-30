@@ -15,7 +15,7 @@ const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = t
 
   return (
     <AnimateIn className={className}>
-      <div id='hero' className='relative h-screen w-screen -mt-[85px] flex justify-center items-center shadow-lg overflow-hidden'>
+      <div id='hero' className='relative h-screen w-full -mt-[85px] flex justify-center items-center shadow-lg overflow-hidden'>
         <Image
           ref={parallax.ref}
           alt={altText}

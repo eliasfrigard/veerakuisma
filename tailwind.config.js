@@ -9,6 +9,8 @@ module.exports = withMT({
   variants: {
     extend: {
       display: ['group-hover'],
+      // textColor: ['selection'],
+      // backgroundColor: ['selection'],
     },
   },
   theme: {
@@ -59,5 +61,8 @@ module.exports = withMT({
       center: true,
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    // require('tailwindcss-selection-variant'),
+  ],
 })

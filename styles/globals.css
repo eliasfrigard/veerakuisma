@@ -15,6 +15,12 @@ a {
   box-sizing: border-box;
 }
 
+::selection {
+  color: theme('colors.primary.100');
+  background: theme('colors.accent.500');
+  border-radius: theme('borderRadius.full');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -109,6 +109,7 @@ export default function ContactForm() {
                   Full Name *
                 </label>
                 <input
+                  required
                   ref={nameRef}
                   className={`appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!nameIsValid && 'border-accent-500'
                     }`}
@@ -128,6 +129,7 @@ export default function ContactForm() {
                   Email Address *
                 </label>
                 <input
+                  required
                   ref={emailRef}
                   className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!emailIsValid && 'border-accent-500'
                     }`}
@@ -164,6 +166,7 @@ export default function ContactForm() {
                   Address
                 </label>
                 <input
+                  required
                   ref={addressRef}
                   className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!addressIsValid && 'border-accent-500'
                     }`}
@@ -183,6 +186,7 @@ export default function ContactForm() {
                   Message *
                 </label>
                 <textarea
+                  required
                   ref={messageRef}
                   rows='10'
                   className={`resize-none md:resize-y appearance-none block w-full border border-secondary-500 border-opacity-10 rounded-lg p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!messageIsValid && 'border-accent-500'
