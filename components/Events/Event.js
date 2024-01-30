@@ -32,7 +32,7 @@ const Event = ({
 
   return (
     <>
-      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
+      {/* <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
         {
           displayTime ? (
 
@@ -68,7 +68,7 @@ const Event = ({
         </div>
 
         <IconHandler website={website} facebook={facebook} tickets={tickets} address={address} bands={bands} />
-      </div>
+      </div> */}
 
       {/* MOBILE VIEW */}
 
