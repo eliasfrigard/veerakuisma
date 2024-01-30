@@ -136,7 +136,7 @@ const Event = ({
               </div>
 
               <div className='centerContent gap-1'>
-                <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                <p className={`${differentYears ? 'text-xl' : 'text-2xl'}  uppercase font-bold leading-none drop-shadow-sm`}>
                   <Moment format='YYYY'>{date}</Moment>
                 </p>
 
