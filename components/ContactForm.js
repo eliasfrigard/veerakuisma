@@ -105,7 +105,7 @@ export default function ContactForm() {
           <form className='w-full'>
             <div className='flex flex-wrap -mx-3 md:mb-2'>
               <div className='w-full px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base' htmlFor='grid-first-name'>
+                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
                   Full Name *
                 </label>
                 <input
@@ -125,7 +125,7 @@ export default function ContactForm() {
             </div>
             <div className='flex flex-wrap -mx-3 md:mb-2'>
               <div className='w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base' htmlFor='grid-first-name'>
+                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
                   Email Address *
                 </label>
                 <input
@@ -143,7 +143,7 @@ export default function ContactForm() {
                 )}
               </div>
               <div className='w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base' htmlFor='grid-first-name'>
+                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
                   Phone Number
                 </label>
                 <input
@@ -162,7 +162,7 @@ export default function ContactForm() {
                 )}
               </div>
               <div className='hidden w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base' htmlFor='grid-first-name'>
+                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
                   Address
                 </label>
                 <input
@@ -182,7 +182,7 @@ export default function ContactForm() {
             </div>
             <div className='flex flex-wrap -mx-3 mb-2'>
               <div className='w-full px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base' htmlFor='grid-first-name'>
+                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
                   Message *
                 </label>
                 <textarea
