@@ -206,7 +206,7 @@ export default function ContactForm() {
           </form>
           <button
             onClick={handleSubmit}
-            className='roundedShadow w-full h-14 md:mt-2 bg-accent-500 text-primary-100 hover:bg-accent-500 font-bold tracking-wider uppercase duration-150 active:scale-[0.98] select-none'
+            className='roundedShadow w-full h-14 md:mt-2 bg-accent-500 text-primary-100 hover:bg-accent-500 font-bold tracking-wider uppercase duration-150 active:scale-[0.98] select-none font-khorla'
           >
             Send message
           </button>
