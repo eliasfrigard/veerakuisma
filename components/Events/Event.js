@@ -20,15 +20,15 @@ const Event = ({
   last = false,
   first = false,
 }) => {
-  const [addressLink, setAddressLink] = React.useState(null)
+  // const [addressLink, setAddressLink] = React.useState(null)
 
-  React.useEffect(() => {
-    if (!address) {
-      setAddressLink(null)
-    } else {
-      setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
-    }
-  }, [address])
+  // React.useEffect(() => {
+  //   if (!address) {
+  //     setAddressLink(null)
+  //   } else {
+  //     setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
+  //   }
+  // }, [address])
 
   return (
     <>
