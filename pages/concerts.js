@@ -1,5 +1,5 @@
 import Layout from '../components/Layouts/Default'
-import Events from '../components/Events'
+// import Events from '../components/Events'
 import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
@@ -92,7 +92,7 @@ export default function Concerts({
         </Hero>
       )}
 
-      <Events concerts={concerts} email='mais.kuis@gmail.com' />
+      {/* <Events concerts={concerts} email='mais.kuis@gmail.com' /> */}
     </Layout>
   )
 }
