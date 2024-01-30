@@ -144,12 +144,13 @@ const Event = ({
 
               {
                 bands?.length && bands?.map((b) => (
-                  <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
-                    <div className='flex w-full justify-center items-center px-3 gap-3'>
-                      {/* <Avatar imageUrl={b.imageUrl} bandName={b.name} /> */}
-                      <p>{b.name}</p>
-                    </div>
-                  </Button>
+                  <div key={b.name}>b.name</div>
+                  // <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
+                  //   <div className='flex w-full justify-center items-center px-3 gap-3'>
+                  //     <Avatar imageUrl={b.imageUrl} bandName={b.name} />
+                  //     <p>{b.name}</p>
+                  //   </div>
+                  // </Button>
                 ))
               }
             </div>
