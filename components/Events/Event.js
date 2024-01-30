@@ -96,7 +96,7 @@ const Event = ({
           )
         } */}
 
-        {
+        {/* {
           (addressLink || website || facebook || tickets || bands) && (
             <div className='w-full gap-3 flex flex-col centerContent'>
               {tickets && (
@@ -144,18 +144,17 @@ const Event = ({
 
               {
                 bands?.length && bands?.map((b) => (
-                  <div key={b.name}>b.name</div>
-                  // <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
-                  //   <div className='flex w-full justify-center items-center px-3 gap-3'>
-                  //     <Avatar imageUrl={b.imageUrl} bandName={b.name} />
-                  //     <p>{b.name}</p>
-                  //   </div>
-                  // </Button>
+                  <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
+                    <div className='flex w-full justify-center items-center px-3 gap-3'>
+                      <Avatar imageUrl={b.imageUrl} bandName={b.name} />
+                      <p>{b.name}</p>
+                    </div>
+                  </Button>
                 ))
               }
             </div>
           )
-        }
+        } */}
       </div>
     </>
   )
