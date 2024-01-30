@@ -33,14 +33,14 @@ const Event = ({
     }
   }, [address])
 
-  React.useEffect(() => {
-    if (date && endDate) {
-      const startYear = new Date(date).getFullYear()
-      const endYear = new Date(endDate).getFullYear()
+  // React.useEffect(() => {
+  //   if (date && endDate) {
+  //     const startYear = new Date(date).getFullYear()
+  //     const endYear = new Date(endDate).getFullYear()
 
-      if (startYear && endYear) setDifferentYears(startYear !== endYear)
-    }
-  }, [date, endDate])
+  //     if (startYear && endYear) setDifferentYears(startYear !== endYear)
+  //   }
+  // }, [date, endDate])
 
   return (
     <>
