@@ -5,11 +5,13 @@ import Button from '../Button'
 import Avatar from '../Avatar'
 
 import { IoMdPin } from 'react-icons/io'
-import { BsFacebook, BsGlobeEuropeAfrica, BsInstagram, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
+import { BsFacebook, BsGlobeEuropeAfrica, BsArrowRightShort, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
+import { FaLongArrowAltRight } from "react-icons/fa"
 
 const Event = ({
   title,
   date,
+  endDate,
   displayTime,
   cityCountry,
   address,
@@ -20,6 +22,7 @@ const Event = ({
   last = false,
   first = false,
 }) => {
+  console.log('🚀 || endDate:', endDate)
   const [addressLink, setAddressLink] = React.useState(null)
 
   React.useEffect(() => {
@@ -34,8 +37,26 @@ const Event = ({
     <>
       <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
         {
-          displayTime ? (
+          endDate && (
+            <div className='centerContent flex-col gap-2 tracking-wider'>
+              <div className='centerContent text-base leading-none uppercase drop-shadow-sm'>
+                <Moment format='D MMM' className='font-bold'>
+                  {date}
+                </Moment>
+                <BsArrowRightShort className='text-primary-50 text-2xl' />
+                <Moment format='D MMM' className='font-bold'>
+                  {endDate}
+                </Moment>
+              </div>
+              <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                <Moment format='YYYY'>{date}</Moment>
+              </p>
+            </div>
+          )
+        }
 
+        {
+          !endDate && displayTime ? (
             <div className='centerContent flex-col gap-2 tracking-wider'>
               <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
                 <Moment format='HH:mm'>{date}</Moment>
@@ -46,7 +67,7 @@ const Event = ({
                 </Moment>
               </p>
             </div>
-          ) : (
+          ) : !endDate && (
             <div className='centerContent flex-col gap-2 tracking-wider'>
               <p className='text-base leading-none uppercase drop-shadow-sm'>
                 <Moment format='D MMMM' className='font-bold'>
@@ -59,7 +80,6 @@ const Event = ({
             </div>
           )
         }
-
 
         <p className='font-bold text-center'>{title}</p>
 
