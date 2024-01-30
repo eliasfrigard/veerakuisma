@@ -29,7 +29,6 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
           key={c.sys.id}
           title={c.fields.title}
           date={c.fields.dateTime}
-          endDate={c.fields.endDate}
           displayTime={c.fields.displayTime}
           cityCountry={c.fields.cityCountry}
           address={c.fields.address}
@@ -87,7 +86,6 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
         <Event
           title={c.fields.title}
           date={c.fields.dateTime}
-          endDate={c.fields.endDate}
           displayTime={c.fields.displayTime}
           cityCountry={c.fields.cityCountry}
           address={c.fields.address}
