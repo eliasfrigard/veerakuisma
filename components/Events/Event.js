@@ -22,8 +22,8 @@ const Event = ({
   last = false,
   first = false,
 }) => {
-  console.log('🚀 || endDate:', endDate)
   const [addressLink, setAddressLink] = React.useState(null)
+  const [differentYears, setDifferentYears] = React.useState(null)
 
   React.useEffect(() => {
     if (!address) {
@@ -33,24 +33,47 @@ const Event = ({
     }
   }, [address])
 
+  React.useEffect(() => {
+    const startYear = new Date(date).getFullYear()
+    const endYear = new Date(endDate).getFullYear()
+
+    if (startYear && endYear) {
+      setDifferentYears(startYear !== endYear)
+    }
+  }, [date, endDate])
+
   return (
     <>
       <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
         {
           endDate && (
             <div className='centerContent flex-col gap-2 tracking-wider'>
-              <div className='centerContent text-base leading-none uppercase drop-shadow-sm'>
+              <div className='centerContent text-base gap-1 leading-none uppercase drop-shadow-sm'>
                 <Moment format='D MMM' className='font-bold'>
                   {date}
                 </Moment>
-                <BsArrowRightShort className='text-primary-50 text-2xl' />
+                <BsArrowRightShort className='text-primary-50 text-xl' />
                 <Moment format='D MMM' className='font-bold'>
                   {endDate}
                 </Moment>
               </div>
-              <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                <Moment format='YYYY'>{date}</Moment>
-              </p>
+
+              <div className='centerContent gap-1'>
+                <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                  <Moment format='YYYY'>{date}</Moment>
+                </p>
+
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
+              </div>
             </div>
           )
         }
@@ -94,15 +117,54 @@ const Event = ({
       {/* MOBILE VIEW */}
 
       <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
-        <p className='text-xl leading-none uppercase drop-shadow-sm'>
-          <Moment format='D MMMM YYYY' className='font-bold'>
-            {date}
-          </Moment>
-        </p>
+
+        {
+          endDate ? (
+            <div className='centerContent flex-col gap-2 tracking-wider leading-relaxed'>
+              <div className='centerContent gap-1'>
+                <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                  <Moment format='D MMM' className='font-bold'>
+                    {date}
+                  </Moment>
+                </p>
+                <BsArrowRightShort className='text-primary-50 text-xl' />
+                <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                  <Moment format='D MMM' className='font-bold'>
+                    {endDate}
+                  </Moment>
+                </p>
+              </div>
+
+              <div className='centerContent gap-1'>
+                <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                  <Moment format='YYYY'>{date}</Moment>
+                </p>
+
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
+              </div>
+            </div>
+          ) : (
+            <p className='text-xl leading-none uppercase drop-shadow-sm tracking-wider'>
+              <Moment format='D MMMM YYYY' className='font-bold'>
+                {date}
+              </Moment>
+            </p>
+          )
+        }
+
 
         <div className='h-[1px] w-3/4 bg-primary-100 bg-opacity-10 rounded-full' />
 
-        <div className='flex flex-col centerContent gap-2 leading-relaxed'>
+        <div className='flex flex-col centerContent gap-2 leading-relaxed tracking-wide'>
           <p className='font-bold text-center'>{title}</p>
           <div className='flex gap-2 centerContent items-center'>
             <BsPinMapFill className='text-accent-500' />
