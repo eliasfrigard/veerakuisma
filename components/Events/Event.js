@@ -60,7 +60,6 @@ const Event = ({
           )
         }
 
-
         <p className='font-bold text-center'>{title}</p>
 
         <div className='flex gap-2 centerContent items-center'>
@@ -96,7 +95,7 @@ const Event = ({
           )
         } */}
 
-        {/* {
+        {
           (addressLink || website || facebook || tickets || bands) && (
             <div className='w-full gap-3 flex flex-col centerContent'>
               {tickets && (
@@ -154,7 +153,7 @@ const Event = ({
               }
             </div>
           )
-        } */}
+        }
       </div>
     </>
   )
