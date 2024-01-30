@@ -111,15 +111,14 @@ export default function ContactForm() {
                 <input
                   required
                   ref={nameRef}
-                  className={`appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!nameIsValid && 'border-accent-500'
-                    }`}
+                  className={`font-khorla tracking-wider appearance-none block w-full  p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your name?'
                   onChange={(event) => validateName(event.target.value)}
                 />
                 {!nameIsValid && (
-                  <p className='text-accent-500 ml-1 mb-1 text-xs font-medium'>Name is not valid.</p>
+                  <p className='font-khorla tracking-wide text-accent-500 ml-1 mb-1 text-xs font-medium'>Name is not valid.</p>
                 )}
               </div>
             </div>
@@ -131,15 +130,14 @@ export default function ContactForm() {
                 <input
                   required
                   ref={emailRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!emailIsValid && 'border-accent-500'
-                    }`}
+                  className={`font-khorla outline-none tracking-wider appearance-none block w-full p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your email?'
                   onBlur={(event) => validateEmail(event.target.value)}
                 />
                 {!emailIsValid && (
-                  <p className='text-accent-500 ml-1 text-xs font-medium'>Please fill out your email address.</p>
+                  <p className='font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium'>Please fill out your email address.</p>
                 )}
               </div>
               <div className='w-full md:w-1/2 px-3 mb-2 md:mb-0'>
@@ -148,15 +146,14 @@ export default function ContactForm() {
                 </label>
                 <input
                   ref={phoneRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!phoneIsValid && 'border-accent-500'
-                    }`}
+                  className={`font-khorla tracking-wider appearance-none block w-full p-4 mb-3 leading-tight focus:outline-none rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is your number?'
                   onChange={(event) => validatePhone(event.target.value)}
                 />
                 {!phoneIsValid && (
-                  <p className='text-accent-500 ml-1 text-xs font-medium'>
+                  <p className='font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium'>
                     Phone number cannot be more than 25 characters.
                   </p>
                 )}
@@ -168,7 +165,7 @@ export default function ContactForm() {
                 <input
                   required
                   ref={addressRef}
-                  className={`appearance-none block w-full border border-secondary-500 border-opacity-10 rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!addressIsValid && 'border-accent-500'
+                  className={`font-khorla focus:text-accent-500 tracking-wider appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100'
                     }`}
                   id='grid-first-name'
                   type='text'
@@ -176,7 +173,7 @@ export default function ContactForm() {
                   onChange={(event) => validateAddress(event.target.value)}
                 />
                 {!addressIsValid && (
-                  <p className='text-accent-500 ml-1 text-xs font-medium'>Address cannot be outside Europe.</p>
+                  <p className='font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium'>Address cannot be outside Europe.</p>
                 )}
               </div>
             </div>
@@ -188,16 +185,15 @@ export default function ContactForm() {
                 <textarea
                   required
                   ref={messageRef}
-                  rows='10'
-                  className={`resize-none md:resize-y appearance-none block w-full border border-secondary-500 border-opacity-10 rounded-lg p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 ${!messageIsValid && 'border-accent-500'
-                    }`}
+                  rows='8'
+                  className={`font-khorla tracking-wider resize-none md:resize-y appearance-none block w-full p-4 mb-3 leading-relaxed rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none`}
                   id='grid-first-name'
                   type='text'
                   placeholder='What is on your mind?'
                   onChange={(event) => validateMessage(event.target.value)}
                 />
                 {!messageIsValid && (
-                  <p className='text-accent-500 ml-1 text-xs font-medium'>
+                  <p className='font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium'>
                     Message cannot be empty or exceed 4000 characters.
                   </p>
                 )}
@@ -210,19 +206,19 @@ export default function ContactForm() {
           >
             Send message
           </button>
-          <div className='flex justify-center items-center'>
+          <div className='font-khorla tracking-wide flex justify-center items-center'>
             {!formIsValid && (
-              <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wide font-medium'>
+              <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
                 Please fill out all the required fields!
               </p>
             )}
             {formSuccess !== null &&
               (!formSuccess ? (
-                <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wide font-medium'>
+                <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
                   The message could not be sent, please try again later!
                 </p>
               ) : (
-                <p className='text-green-800 pt-4 ml-1 text-[14px] tracking-wide font-medium'>
+                <p className='text-green-800 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
                   Your message has been successfully sent!
                 </p>
               ))}
