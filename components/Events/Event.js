@@ -37,9 +37,13 @@ const Event = ({
       const startYear = new Date(date).getFullYear()
       const endYear = new Date(endDate).getFullYear()
 
-      if (startYear && endYear) setDifferentYears(startYear !== endYear)
+      if (startYear !== endYear) {
+        setDifferentYears(true);
+      } else {
+        setDifferentYears(false);
+      }
     }
-  }, [date, endDate])
+  }, [date, endDate]);
 
   return (
     <>
