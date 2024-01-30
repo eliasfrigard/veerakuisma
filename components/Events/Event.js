@@ -96,7 +96,7 @@ const Event = ({
         } */}
 
         {
-          (addressLink || website || facebook || tickets || bands) && (
+          (website || facebook || tickets || bands) && (
             <div className='w-full gap-3 flex flex-col centerContent'>
               {tickets && (
                 <Button href={tickets}>
@@ -116,14 +116,14 @@ const Event = ({
                 </Button>
               )}
 
-              {addressLink && (
+              {/* {addressLink && (
                 <Button href={addressLink}>
                   <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
                     <BsPinMapFill className='text-lg' />
                     <p>Google Maps</p>
                   </div>
                 </Button>
-              )}
+              )} */}
 
               {facebook && (
                 <Button href={facebook}>
@@ -135,7 +135,7 @@ const Event = ({
               )}
 
               {
-                (facebook || addressLink || website || tickets) &&
+                (facebook || website || tickets) &&
                 bands?.length > 0 && (
                   <div className="h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full" />
                 )
