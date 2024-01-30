@@ -34,10 +34,10 @@ const Event = ({
   }, [address])
 
   React.useEffect(() => {
-    const startYear = new Date(date).getFullYear()
-    const endYear = new Date(endDate).getFullYear()
-
     if (startYear && endYear) {
+      const startYear = new Date(date).getFullYear()
+      const endYear = new Date(endDate).getFullYear()
+
       setDifferentYears(startYear !== endYear)
     }
   }, [date, endDate])
