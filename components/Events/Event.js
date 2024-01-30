@@ -5,11 +5,12 @@ import Button from '../Button'
 import Avatar from '../Avatar'
 
 import { IoMdPin } from 'react-icons/io'
-import { BsFacebook, BsGlobeEuropeAfrica, BsInstagram, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
+import { BsFacebook, BsGlobeEuropeAfrica, BsArrowRightShort, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
 
 const Event = ({
   title,
   date,
+  endDate,
   displayTime,
   cityCountry,
   address,
@@ -20,22 +21,64 @@ const Event = ({
   last = false,
   first = false,
 }) => {
-  // const [addressLink, setAddressLink] = React.useState(null)
+  const [addressLink, setAddressLink] = React.useState(null)
+  const [differentYears, setDifferentYears] = React.useState(null)
 
-  // React.useEffect(() => {
-  //   if (!address) {
-  //     setAddressLink(null)
-  //   } else {
-  //     setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
-  //   }
-  // }, [address])
+  React.useEffect(() => {
+    if (!address) {
+      setAddressLink(null)
+    } else {
+      setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
+    }
+  }, [address])
+
+  React.useEffect(() => {
+    if (date && endDate) {
+      const startYear = new Date(date).getFullYear()
+      const endYear = new Date(endDate).getFullYear()
+
+      if (startYear && endYear) setDifferentYears(startYear !== endYear)
+    }
+  }, [date, endDate])
 
   return (
     <>
-      {/* <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
+      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
         {
-          displayTime ? (
+          endDate && (
+            <div className='centerContent flex-col gap-2 tracking-wider'>
+              <div className='centerContent text-base gap-1 leading-none uppercase drop-shadow-sm'>
+                <Moment format='D MMM' className='font-bold'>
+                  {date}
+                </Moment>
+                <BsArrowRightShort className='text-primary-50 text-xl' />
+                <Moment format='D MMM' className='font-bold'>
+                  {endDate}
+                </Moment>
+              </div>
 
+              <div className='centerContent gap-1'>
+                <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                  <Moment format='YYYY'>{date}</Moment>
+                </p>
+
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
+              </div>
+            </div>
+          )
+        }
+
+        {
+          !endDate && displayTime ? (
             <div className='centerContent flex-col gap-2 tracking-wider'>
               <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
                 <Moment format='HH:mm'>{date}</Moment>
@@ -46,7 +89,7 @@ const Event = ({
                 </Moment>
               </p>
             </div>
-          ) : (
+          ) : !endDate && (
             <div className='centerContent flex-col gap-2 tracking-wider'>
               <p className='text-base leading-none uppercase drop-shadow-sm'>
                 <Moment format='D MMMM' className='font-bold'>
@@ -68,20 +111,58 @@ const Event = ({
         </div>
 
         <IconHandler website={website} facebook={facebook} tickets={tickets} address={address} bands={bands} />
-      </div> */}
+      </div>
 
       {/* MOBILE VIEW */}
 
-      {/* <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
-        <p className='text-xl leading-none uppercase drop-shadow-sm'>
-          <Moment format='D MMMM YYYY' className='font-bold'>
-            {date}
-          </Moment>
-        </p>
+      <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
+
+        {
+          endDate ? (
+            <div className='centerContent flex-col gap-2 tracking-wider leading-relaxed'>
+              <div className='centerContent gap-1'>
+                <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                  <Moment format='D MMM' className='font-bold'>
+                    {date}
+                  </Moment>
+                </p>
+                <BsArrowRightShort className='text-primary-50 text-xl' />
+                <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                  <Moment format='D MMM' className='font-bold'>
+                    {endDate}
+                  </Moment>
+                </p>
+              </div>
+
+              <div className='centerContent gap-1'>
+                <p className={`${differentYears ? 'text-xl' : 'text-2xl'}  uppercase font-bold leading-none drop-shadow-sm`}>
+                  <Moment format='YYYY'>{date}</Moment>
+                </p>
+
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
+              </div>
+            </div>
+          ) : (
+            <p className='text-xl leading-none uppercase drop-shadow-sm tracking-wider'>
+              <Moment format='D MMMM YYYY' className='font-bold'>
+                {date}
+              </Moment>
+            </p>
+          )
+        }
 
         <div className='h-[1px] w-3/4 bg-primary-100 bg-opacity-10 rounded-full' />
 
-        <div className='flex flex-col centerContent gap-2 leading-relaxed'>
+        <div className='flex flex-col centerContent gap-2 leading-relaxed tracking-wide'>
           <p className='font-bold text-center'>{title}</p>
           <div className='flex gap-2 centerContent items-center'>
             <BsPinMapFill className='text-accent-500' />
@@ -89,11 +170,11 @@ const Event = ({
           </div>
         </div>
 
-        {
+        {/* {
           (address || website || facebook || tickets || bands) && (
             <IconHandler website={website} facebook={facebook} tickets={tickets} address={address} bands={bands} />
           )
-        }
+        } */}
 
         {
           (addressLink || website || facebook || tickets || bands) && (
@@ -154,7 +235,7 @@ const Event = ({
             </div>
           )
         }
-      </div> */}
+      </div>
     </>
   )
 }
