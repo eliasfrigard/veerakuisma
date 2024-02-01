@@ -87,7 +87,7 @@ const IconHandler = ({
             <BsFacebook className='soMeIcon' />
           </LinkIcon>
         )
-      }
+      } */}
       {
         instagram && (
           <LinkIcon href={instagram} tooltip='Instagram'>
@@ -108,7 +108,7 @@ const IconHandler = ({
             <BsYoutube className='soMeIcon' />
           </LinkIcon>
         )
-      } */}
+      }
       {/* {
         bands && (
           bands.map((b) => <Avatar key={b.name} imageUrl={b.imageUrl} bandName={b.name} />)
