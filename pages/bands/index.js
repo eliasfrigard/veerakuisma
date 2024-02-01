@@ -41,7 +41,7 @@ const Bands = ({ bands, socialMedia }) => {
     <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
         <div className='my-6 lg:my-16 w-full flex flex-col gap-6 lg:gap-16'>
-          {bands.map((band) => (
+          {/* {bands.map((band) => (
             <Band
               key={band.sys.id}
               image={'https:' + band.fields.hero?.fields?.file?.url}
@@ -54,7 +54,7 @@ const Bands = ({ bands, socialMedia }) => {
               instagram={band.fields.instagram}
               facebook={band.fields.facebook}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </Layout>
