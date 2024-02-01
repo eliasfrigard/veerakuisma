@@ -6,7 +6,7 @@ import AnimateIn from './AnimateIn'
 import IconHandler from './IconHandler'
 
 import TextLayout from './TextLayout'
-import { useParallax } from "react-scroll-parallax"
+import { useParallax } from 'react-scroll-parallax'
 
 const Band = ({ name, image, description, spotify, email, youTube, website, instagram, facebook }) => {
   const parallax = useParallax({
@@ -18,10 +18,9 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
   return (
     <AnimateIn
       slideDirection='right'
-      className='relative centerContent flex-col rounded overflow-hidden shadow-lg mx-4'
+      className='relative centerContent flex-col rounded-lg overflow-hidden shadow-lg mx-4'
     >
-      <Image ref={parallax.ref}
-        alt={name} src={image} fill className={`object-cover object-center`} />
+      <Image ref={parallax.ref} alt={name} src={image} fill className={`object-cover object-center`} />
 
       <div className={`absolute bg-primary-950 ${image && 'opacity-85'} w-full h-full`}></div>
 

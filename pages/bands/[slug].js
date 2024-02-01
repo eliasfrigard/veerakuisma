@@ -57,33 +57,41 @@ export default function Band({
           <TextLayout text={biography || description} />
         </div>
 
-        {
-          (images.length > 0 || videos.length > 0) && (
-            <div className='py-2 flex flex-col gap-2 lg:gap-6'>
-              <div className='container flex justify-center items-center flex-wrap'>
-                <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2 px-2`}>
-                  {videos.map((video, index) => (
-                    <Video
-                      prominent={index === 0}
-                      key={video.youTubeLink}
-                      title={video.name}
-                      link={video.youTubeLink}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'} gap-1 container px-2`}>
-                {
-                  images.map((image, index) => (
-                    <ImageLayout key={image} index={index} image={'https:' + image.url} />
-                  ))
-                }
+        {(images.length > 0 || videos.length > 0) && (
+          <div className='pt-2 flex flex-col gap-2 lg:gap-6'>
+            <div className='container flex justify-center items-center flex-wrap'>
+              <div
+                className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2 px-2`}
+              >
+                {videos.map((video, index) => (
+                  <Video
+                    prominent={index === 0}
+                    key={video.youTubeLink}
+                    title={video.name}
+                    link={video.youTubeLink}
+                  />
+                ))}
               </div>
             </div>
-          )
-        }
+            <div
+              className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${
+                images.length > 2 && 'md:grid-cols-3'
+              } gap-1 container px-2`}
+            >
+              {images.map((image, index) => (
+                <ImageLayout key={image} index={index} image={'https:' + image.url} />
+              ))}
+            </div>
+          </div>
+        )}
 
-        <Events concerts={concerts} bandName={name} email={email} noPadding />
+        <Events
+          concerts={concerts}
+          bandName={name}
+          email={email}
+          noPadding
+          morePrevConcertsText={`More previous concerts with ${name}`}
+        />
       </div>
     </Layout>
   )
@@ -102,7 +110,7 @@ export async function getStaticPaths() {
   const paths = bandRes.items.map((band) => ({
     params: {
       slug: band.fields.name.toLowerCase(),
-    }
+    },
   }))
 
   return {
@@ -157,8 +165,8 @@ export async function getStaticProps({ params: { slug } }) {
 
   const socialPage = socialRes?.items[0]?.fields
 
-  const videos = videoRes.items.map(item => item.fields)
-  const images = imageRes.items.map(item => item.fields.file)
+  const videos = videoRes.items.map((item) => item.fields)
+  const images = imageRes.items.map((item) => item.fields.file)
 
   return {
     props: {
@@ -176,7 +184,7 @@ export async function getStaticProps({ params: { slug } }) {
         spotify: socialPage?.spotify || null,
         youTube: socialPage?.youTube || null,
         phone: socialPage?.phone || null,
-      }
+      },
     },
   }
 }
