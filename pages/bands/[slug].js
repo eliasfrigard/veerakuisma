@@ -9,8 +9,6 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 
 import { createClient } from 'contentful'
 
-import { Button } from "@material-tailwind/react";
-
 export default function Band({
   name,
   hero,
@@ -86,10 +84,6 @@ export default function Band({
         }
 
         <Events concerts={concerts} bandName={name} email={email} noPadding />
-
-        {/* <div className="fixed bottom-0 left-0 p-10">
-          <Button size='lg' variant="gradient" color='primary-950'>Back to Bands</Button>
-        </div> */}
       </div>
     </Layout>
   )
