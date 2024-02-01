@@ -67,7 +67,7 @@ const IconHandler = ({
           </LinkIcon>
         )
       } */}
-      {
+      {/* {
         website && (
           <LinkIcon href={website} tooltip='Website'>
             <BsGlobeEuropeAfrica className='soMeIcon' />
@@ -108,7 +108,7 @@ const IconHandler = ({
             <BsYoutube className='soMeIcon' />
           </LinkIcon>
         )
-      }
+      } */}
       {/* {
         bands && (
           bands.map((b) => <Avatar key={b.name} imageUrl={b.imageUrl} bandName={b.name} />)
