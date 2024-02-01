@@ -17,24 +17,24 @@ const IconHandler = ({
   className,
   websiteName,
 }) => {
-  const [mailLink, setMailLink] = React.useState(null)
-  const [addressLink, setAddressLink] = React.useState(null)
+  // const [mailLink, setMailLink] = React.useState(null)
+  // const [addressLink, setAddressLink] = React.useState(null)
 
-  React.useEffect(() => {
-    if (!address) {
-      setAddressLink(null)
-    } else {
-      setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
-    }
-  }, [address])
+  // React.useEffect(() => {
+  //   if (!address) {
+  //     setAddressLink(null)
+  //   } else {
+  //     setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
+  //   }
+  // }, [address])
 
-  React.useEffect(() => {
-    if (!email) {
-      setMailLink(null)
-    } else {
-      setMailLink(`mailto:${email}??subject=${websiteName} Website`)
-    }
-  }, [email, websiteName])
+  // React.useEffect(() => {
+  //   if (!email) {
+  //     setMailLink(null)
+  //   } else {
+  //     setMailLink(`mailto:${email}??subject=${websiteName} Website`)
+  //   }
+  // }, [email, websiteName])
 
   const LinkIcon = ({ children, href, tooltip }) => {
     return (
@@ -53,20 +53,20 @@ const IconHandler = ({
 
   return (
     <div className={`flex text-2xl justify-center items-center gap-3 lg:gap-4 z-10 text-accent-500 ${className}`}>
-      {
+      {/* {
         addressLink && (
           <LinkIcon href={addressLink} tooltip='Google Maps'>
             <BsPinMapFill className='soMeIcon' />
           </LinkIcon>
         )
-      }
-      {
+      } */}
+      {/* {
         mailLink && (
           <LinkIcon href={mailLink} tooltip='Email'>
             <BsMailbox className='soMeIcon' />
           </LinkIcon>
         )
-      }
+      } */}
       {
         website && (
           <LinkIcon href={website} tooltip='Website'>
