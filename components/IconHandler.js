@@ -88,7 +88,7 @@ const IconHandler = ({
           </LinkIcon>
         )
       } */}
-      {
+      {/* {
         instagram && (
           <LinkIcon href={instagram} tooltip='Instagram'>
             <BsInstagram className='soMeIcon' />
@@ -101,7 +101,7 @@ const IconHandler = ({
             <BsSpotify className='soMeIcon' />
           </LinkIcon>
         )
-      }
+      } */}
       {
         youTube && (
           <LinkIcon href={youTube} tooltip='YouTube'>
