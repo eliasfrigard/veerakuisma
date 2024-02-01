@@ -21,29 +21,29 @@ const Event = ({
   last = false,
   first = false,
 }) => {
-  // const [addressLink, setAddressLink] = React.useState(null)
-  // const [differentYears, setDifferentYears] = React.useState(null)
+  const [addressLink, setAddressLink] = React.useState(null)
+  const [differentYears, setDifferentYears] = React.useState(null)
 
-  // React.useEffect(() => {
-  //   if (!address) {
-  //     setAddressLink(null)
-  //   } else {
-  //     setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
-  //   }
-  // }, [address])
+  React.useEffect(() => {
+    if (!address) {
+      setAddressLink(null)
+    } else {
+      setAddressLink(`https://www.google.com/maps?q=${address.lat},${address.lon}`)
+    }
+  }, [address])
 
-  // React.useEffect(() => {
-  //   if (date && endDate) {
-  //     const startYear = new Date(date).getFullYear()
-  //     const endYear = new Date(endDate).getFullYear()
+  React.useEffect(() => {
+    if (date && endDate) {
+      const startYear = new Date(date).getFullYear()
+      const endYear = new Date(endDate).getFullYear()
 
-  //     if (startYear !== endYear) {
-  //       setDifferentYears(true);
-  //     } else {
-  //       setDifferentYears(false);
-  //     }
-  //   }
-  // }, [date, endDate]);
+      if (startYear !== endYear) {
+        setDifferentYears(true);
+      } else {
+        setDifferentYears(false);
+      }
+    }
+  }, [date, endDate]);
 
   return (
     <>
@@ -65,6 +65,17 @@ const Event = ({
                 <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
                   <Moment format='YYYY'>{date}</Moment>
                 </p>
+
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
               </div>
             </div>
           )
@@ -128,16 +139,20 @@ const Event = ({
               </div>
 
               <div className='centerContent gap-1'>
-                <p className={`uppercase font-bold leading-none drop-shadow-sm`}>
+                <p className={`${differentYears ? 'text-xl' : 'text-2xl'}  uppercase font-bold leading-none drop-shadow-sm`}>
                   <Moment format='YYYY'>{date}</Moment>
                 </p>
 
-                <>
-                  <BsArrowRightShort className='text-primary-50 text-xl' />
-                  <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                    <Moment format='YYYY'>{endDate}</Moment>
-                  </p>
-                </>
+                {
+                  differentYears && (
+                    <>
+                      <BsArrowRightShort className='text-primary-50 text-xl' />
+                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                        <Moment format='YYYY'>{endDate}</Moment>
+                      </p>
+                    </>
+                  )
+                }
               </div>
             </div>
           ) : (
@@ -166,7 +181,7 @@ const Event = ({
         } */}
 
         {
-          (website || facebook || tickets || bands) && (
+          (addressLink || website || facebook || tickets || bands) && (
             <div className='w-full gap-3 flex flex-col centerContent'>
               {tickets && (
                 <Button href={tickets}>
@@ -186,6 +201,15 @@ const Event = ({
                 </Button>
               )}
 
+              {addressLink && (
+                <Button href={addressLink}>
+                  <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
+                    <BsPinMapFill className='text-lg' />
+                    <p>Google Maps</p>
+                  </div>
+                </Button>
+              )}
+
               {facebook && (
                 <Button href={facebook}>
                   <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
@@ -196,7 +220,7 @@ const Event = ({
               )}
 
               {
-                (facebook || website || tickets) &&
+                (facebook || addressLink || website || tickets) &&
                 bands?.length > 0 && (
                   <div className="h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full" />
                 )
