@@ -1,7 +1,6 @@
 import React from 'react'
 import Avatar from './Avatar'
 
-import { Tooltip } from "@material-tailwind/react"
 import { BsFacebook, BsGlobeEuropeAfrica, BsInstagram, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
 
 const IconHandler = ({
@@ -38,11 +37,14 @@ const IconHandler = ({
 
   const LinkIcon = ({ children, href, tooltip }) => {
     return (
-      <Tooltip content={tooltip} className='bg-primary-950 border border-primary-100 font-khorla tracking-wider px-3 py-2'>
-        <div>
-          {children}
-        </div>
-      </Tooltip>
+      <a
+        href={href}
+        target='_blank'
+        rel='noopener noreferrer'
+        className='duration-200 hover:text-accent-500'
+      >
+        {children}
+      </a>
     )
   }
 
