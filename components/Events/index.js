@@ -124,13 +124,21 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
         >
           <Title title='Previous Concerts' />
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
-            {previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
-              return (
-                <div key={index} className={`w-full`}>
-                  {concert}
-                </div>
-              )
-            })}
+            {morePrevConcertsText
+              ? previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
+                  return (
+                    <div key={index} className={`w-full`}>
+                      {concert}
+                    </div>
+                  )
+                })
+              : previousConcerts.map((concert, index) => {
+                  return (
+                    <div key={index} className={`w-full`}>
+                      {concert}
+                    </div>
+                  )
+                })}
 
             {morePrevConcertsText && prevConcertCount < previousConcerts.length && (
               <div className='relative w-full centerContent mix-blend-overlay'>
