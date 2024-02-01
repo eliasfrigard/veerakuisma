@@ -38,16 +38,17 @@ const IconHandler = ({
 
   const LinkIcon = ({ children, href, tooltip }) => {
     return (
-      <Tooltip content={tooltip} className='bg-primary-950 border border-primary-100 font-khorla tracking-wider px-3 py-2'>
-        <a
-          href={href}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='duration-200 hover:text-accent-500'
-        >
-          {children}
-        </a>
-      </Tooltip>
+      <div>{children}</div>
+      // <Tooltip content={tooltip} className='bg-primary-950 border border-primary-100 font-khorla tracking-wider px-3 py-2'>
+      //   <a
+      //     href={href}
+      //     target='_blank'
+      //     rel='noopener noreferrer'
+      //     className='duration-200 hover:text-accent-500'
+      //   >
+      //     {children}
+      //   </a>
+      // </Tooltip>
     )
   }
 
@@ -102,13 +103,13 @@ const IconHandler = ({
           </LinkIcon>
         )
       }
-      {/* {
+      {
         youTube && (
           <LinkIcon href={youTube} tooltip='YouTube'>
             <BsYoutube className='soMeIcon' />
           </LinkIcon>
         )
-      } */}
+      }
       {
         bands && (
           bands.map((b) => <Avatar key={b.name} imageUrl={b.imageUrl} bandName={b.name} />)
