@@ -25,8 +25,8 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
 
       <div className={`absolute bg-primary-950 ${image && 'opacity-85'} w-full h-full`}></div>
 
-      {/* <div className='w-full max-w-3xl text-primary-100 my-10 lg:my-12 px-4'>
-        <div className='w-full flex flex-col justify-center items-center'>
+      <div className='w-full max-w-3xl text-primary-100 my-10 lg:my-12 px-4'>
+        {/* <div className='w-full flex flex-col justify-center items-center'>
           <div>
             <div ref={containerRef} className='flex flex-col centerContent gap-5'>
               <h1
@@ -47,7 +47,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
           </div>
 
           <div className='border-b border-primary-100 w-3/4 opacity-10 my-6 lg:my-8'></div>
-        </div>
+        </div> */}
 
         <div className='flex justify-center items-center gap-16 w-full'>
           <div className='prose prose-2xl max-w-2xl text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10'>
@@ -57,7 +57,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
             />
           </div>
         </div>
-      </div> */}
+      </div>
 
       <Link
         href={`/bands/${name.toLowerCase()}`}
