@@ -1,5 +1,6 @@
 import React from 'react'
 import Avatar from './Avatar'
+import Tooltip from './Tooltip'
 
 import { BsFacebook, BsGlobeEuropeAfrica, BsInstagram, BsYoutube, BsSpotify, BsMailbox, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
 
@@ -37,14 +38,16 @@ const IconHandler = ({
 
   const LinkIcon = ({ children, href, tooltip }) => {
     return (
-      <a
-        href={href}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='duration-200 hover:text-accent-500'
-      >
-        {children}
-      </a>
+      <Tooltip tooltip={tooltip}>
+        <a
+          href={href}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='duration-200 hover:text-accent-500'
+        >
+          {children}
+        </a>
+      </Tooltip>
     )
   }
 
