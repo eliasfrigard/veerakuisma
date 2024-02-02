@@ -22,7 +22,7 @@ export default function BlockLevelBreadcrumbs() {
   }, [router.asPath])
 
   return (
-    <Breadcrumbs fullWidth className="uppercase centerContent">
+    <Breadcrumbs fullWidth className="uppercase">
       {paths.map((path, index) => (
         <Link key={index} href={`/${path.path}`} className={`${index === paths.length - 1 ? 'opacity-80 text-accent-500' : 'opacity-40 text-primary-950'} font-khorla tracking-wide`}>
           {path.name}
