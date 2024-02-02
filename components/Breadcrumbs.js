@@ -1,7 +1,6 @@
 import React from "react"
 import Link from 'next/link'
 
-import { Breadcrumbs } from "@material-tailwind/react"
 import { useRouter } from 'next/router'
 
 export default function BlockLevelBreadcrumbs() {
@@ -22,12 +21,15 @@ export default function BlockLevelBreadcrumbs() {
   }, [router.asPath])
 
   return (
-    <Breadcrumbs fullWidth className="uppercase">
+    <div fullWidth className="uppercase text-sm cursor-pointer tracking-wide">
       {paths.map((path, index) => (
-        <Link key={index} href={`/${path.path}`} className={`${index === paths.length - 1 ? 'opacity-80 text-accent-500' : 'opacity-40 text-primary-950'} font-khorla tracking-wide`}>
-          {path.name}
-        </Link>
+        <React.Fragment key={index}>
+          <Link href={`/${path.path}`} className={`${index === paths.length - 1 ? 'opacity-80 text-accent-500' : 'opacity-40 text-primary-950'} font-khorla tracking-wide`}>
+            {path.name}
+          </Link>
+          {index < paths.length - 1 && <span className="font-khorla opacity-40 mx-1">/</span>}
+        </React.Fragment>
       ))}
-    </Breadcrumbs>
-  );
+    </div>
+  )
 }
