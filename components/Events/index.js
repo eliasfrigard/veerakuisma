@@ -101,9 +101,8 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
 
   return (
     <div
-      className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-14'} ${
-        !noPadding && 'py-6 md:py-16 container'
-      } ${className}`}
+      className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-14'} ${!noPadding && 'py-6 md:py-16 container'
+        } ${className}`}
     >
       <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'>
         <Title title='Upcoming Concerts' />
@@ -126,28 +125,28 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
             {morePrevConcertsText
               ? previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
-                  return (
-                    <div key={index} className={`w-full`}>
-                      {concert}
-                    </div>
-                  )
-                })
+                return (
+                  <div key={index} className={`w-full`}>
+                    {concert}
+                  </div>
+                )
+              })
               : previousConcerts.map((concert, index) => {
-                  return (
-                    <div key={index} className={`w-full`}>
-                      {concert}
-                    </div>
-                  )
-                })}
+                return (
+                  <div key={index} className={`w-full`}>
+                    {concert}
+                  </div>
+                )
+              })}
 
             {morePrevConcertsText && prevConcertCount < previousConcerts.length && (
               <div className='relative w-full centerContent mix-blend-overlay'>
                 <div className='absolute w-full h-[370px] top-[-370px] bg-gradient-to-t from-white via-transparent-10 to-transparent duration-200' />
                 <div className='absolute w-full h-[370px] top-[-370px] bg-gradient-to-t from-white via-transparent-10 to-transparent duration-200' />
-                <div className='w-2/3'>
+                <div className='w-full lg:w-2/3'>
                   <button
                     onClick={increasePrevConcertCount}
-                    className={`w-full mt-2 h-16 bg-primary-900 bg-opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:bg-opacity-100 duration-150 tracking-wider text-center p-4 z-10 rounded`}
+                    className={`w-full mt-2 bg-primary-900 bg-opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:bg-opacity-100 duration-150 tracking-wider text-center p-4 z-10 rounded`}
                   >
                     {morePrevConcertsText}
                   </button>
