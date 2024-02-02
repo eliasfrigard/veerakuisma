@@ -48,11 +48,12 @@ export default function Band({
         </Hero>
       )}
 
-      {/* <div className='w-full centerContent mt-10'>
+      <div className='w-full centerContent mt-6 lg:mt-8'>
         <Breadcrumbs />
-      </div> */}
+      </div>
 
-      <div className='container flex flex-col py-6 lg:py-16 gap-6 lg:gap-16'>
+      <div className='container flex flex-col pb-6 lg:pb-16 lg:pt-5 gap-6 lg:gap-16'>
+
         <div className='w-full pt-2 lg:pt-0 centerContent px-3 md:px-10'>
           <TextLayout text={biography || description} />
         </div>
@@ -74,9 +75,8 @@ export default function Band({
               </div>
             </div>
             <div
-              className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${
-                images.length > 2 && 'md:grid-cols-3'
-              } gap-1 container px-2`}
+              className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'
+                } gap-1 container px-2`}
             >
               {images.map((image, index) => (
                 <ImageLayout key={image} index={index} image={'https:' + image.url} />
