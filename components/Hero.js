@@ -43,7 +43,7 @@ const Hero = ({ children, className, desktopImg, mobileImg, altText, overlay = t
           ></AnimateIn>
         )}
 
-        <div className='z-10 mt-85 centerContent'>{children}</div>
+        <div className='z-10 mt-85 centerContent px-4'>{children}</div>
       </div>
     </AnimateIn>
   )
