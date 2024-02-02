@@ -2,7 +2,7 @@ export default function Button({ children, href, className }) {
   return (
     <div className='centerContent w-full'>
       {!href ? (
-        <button className={`centerContent w-full h-12 rounded-lg bg-accent-500 shadow-md text-primary-500 cursor-default select-none tracking-widest uppercase font-medium text-sm opacity-30 ${className}`}>
+        <button className={`centerContent w-full min-h-12 rounded-lg bg-accent-500 shadow-md text-primary-500 cursor-default select-none tracking-widest uppercase font-medium text-sm opacity-30 ${className}`}>
           {children}
         </button>
       ) : (

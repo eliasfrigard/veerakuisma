@@ -12,7 +12,7 @@ export default function BlockLevelBreadcrumbs() {
     const pathArray = router.asPath.split('/').filter((path) => path !== '')
 
     const pathObjects = pathArray.map((path, index) => {
-      const name = path;
+      const name = path.replaceAll('%20', ' ');
       const fullPath = pathArray.slice(0, index + 1).join('/');
       return { name, path: fullPath };
     })
