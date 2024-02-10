@@ -1,13 +1,16 @@
 import Layout from '../../components/Layouts/Default'
 import Hero from '../../components/Hero'
-import AnimateIn from '../../components/AnimateIn'
 import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 import Video from '../../components/Video'
 import ImageLayout from '../../components/ImageLayout'
 import Breadcrumbs from '../../components/Breadcrumbs'
+import IconModal from '../../components/IconModal'
 
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 import { createClient } from 'contentful'
+import { getPlaiceholder } from 'plaiceholder'
+import { getImageBuffer } from "../../util/getImageBuffer"
 
 export default function Band({
   name,
@@ -91,6 +94,8 @@ export default function Band({
           noPadding
           morePrevConcertsText={`More previous concerts with ${name}`}
         />
+
+        <IconModal />
       </div>
     </Layout>
   )
@@ -167,9 +172,36 @@ export async function getStaticProps({ params: { slug } }) {
   const videos = videoRes.items.map((item) => item.fields)
   const images = imageRes.items.map((item) => item.fields.file)
 
+  let heroBlur, mobileHeroBlur
+
+  const heroUrl = band?.hero ? 'https:' + band?.hero?.fields?.file?.url : undefined
+  const mobileHeroUrl = band?.mobileHero ? 'https:' + band?.mobileHero?.fields?.file?.url : undefined
+
+  if (heroUrl) {
+    const heroBuffer = await getImageBuffer(heroUrl)
+    const heroPlaiceholder = await getPlaiceholder(heroBuffer)
+    heroBlur = heroPlaiceholder.base64
+  }
+
+  if (mobileHeroUrl) {
+    const mobileHeroBuffer = await getImageBuffer(mobileHeroUrl)
+    const mobileHeroPlaiceholder = await getPlaiceholder(mobileHeroBuffer)
+    mobileHeroBlur = mobileHeroPlaiceholder.base64
+  }
+
   return {
     props: {
       ...band?.fields,
+      hero: {
+        altText: band?.hero ? band?.hero?.fields?.title : 'Desktop Hero Image',
+        blur: heroBlur || null,
+        image: heroUrl || null
+      },
+      mobileHero: {
+        altText: band?.mobileHero ? band?.mobileHero?.fields?.title : 'Mobile Hero Image',
+        blur: mobileHeroBlur || null,
+        image: mobileHeroUrl || null
+      },
       concerts: {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,
         previous: previousConcertsRes?.items || concerts.previous,

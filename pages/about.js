@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
-import AnimateIn from '../components/AnimateIn'
 import TextLayout from '../components/TextLayout'
 import Hero from '../components/Hero'
 
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+
 import { createClient } from 'contentful'
+import { getPlaiceholder } from 'plaiceholder'
+import { getImageBuffer } from "../util/getImageBuffer"
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -24,13 +27,27 @@ export async function getStaticProps() {
   const page = pageRes.items[0].fields
   const socialPage = socialRes?.items[0]?.fields
 
-  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
-  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
+  const heroUrl = 'https:' + page.hero.fields.file.url
+  const mobileHeroUrl = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : heroUrl
+
+  const heroBuffer = await getImageBuffer(heroUrl)
+  const mobileHeroBuffer = await getImageBuffer(mobileHeroUrl)
+
+  const { base64: heroBlur } = await getPlaiceholder(heroBuffer)
+  const { base64: mobileHeroBlur } = await getPlaiceholder(mobileHeroBuffer)
 
   return {
     props: {
-      hero,
-      mobileHero,
+      hero: {
+        altText: page?.hero?.fields?.title,
+        blur: heroBlur,
+        image: heroUrl
+      },
+      mobileHero: {
+        altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
+        blur: mobileHeroBlur,
+        image: mobileHeroUrl
+      },
       pageTitle: page.title,
       biography: page.biography,
       socialMedia: {
@@ -56,20 +73,7 @@ const About = ({
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='container centerContent flex-col gap-6 md:gap-16 px-6 py-8 md:px-0 md:py-16'>
-          {
-            mobileHero && (
-              <Hero overlay={false} altText='Hero Image' heroPosition='top' mobileImg={mobileHero} className='md:hidden' />
-            )
-          }
-
-          <AnimateIn className='relative w-full aspect-[9/16] md:aspect-video hidden md:block'>
-            <Image
-              alt={hero}
-              src={hero}
-              fill
-              className={`object-cover object-center rounded shadow`}
-            />
-          </AnimateIn>
+          <Hero heroPosition='top' spacedHero desktopImg={hero} mobileImg={mobileHero} />
 
           <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-3 md:px-10 pt-2 lg:pt-0'>
             <TextLayout text={biography} />

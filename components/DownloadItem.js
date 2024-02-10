@@ -1,5 +1,5 @@
 import { BsDownload } from 'react-icons/bs'
-import AnimateIn from './AnimateIn'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 export default function DownloadItem({ title, filename, file }) {
   return (

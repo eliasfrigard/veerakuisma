@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import Layout from '../components/Layouts/Default'
-import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 import { createClient } from 'contentful'
+import { getPlaiceholder } from 'plaiceholder'
+import { getImageBuffer } from "../util/getImageBuffer"
 
 export default function Home({ pageTitle, slogan, hero, mobileHero, socialMedia }) {
   return (
     <Layout socialMedia={socialMedia} transparent footer={false} headerFadeIn pageTitle={pageTitle}>
-      <Hero altText='Hero Image' heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
+      <Hero heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
         <div className='text-primary-100 flex flex-col font-khorla justify-center items-center tracking-wide'>
           <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-8'>
             <AnimateIn animationType='slide' delay={1000}>
@@ -49,13 +51,27 @@ export async function getStaticProps() {
 
   const page = pageRes?.items[0]?.fields
 
-  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
-  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
+  const heroUrl = 'https:' + page.hero.fields.file.url
+  const mobileHeroUrl = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : heroUrl
+
+  const heroBuffer = await getImageBuffer(heroUrl)
+  const mobileHeroBuffer = await getImageBuffer(mobileHeroUrl)
+
+  const { base64: heroBlur } = await getPlaiceholder(heroBuffer)
+  const { base64: mobileHeroBlur } = await getPlaiceholder(mobileHeroBuffer)
 
   return {
     props: {
-      hero,
-      mobileHero,
+      hero: {
+        altText: page?.hero?.fields?.title,
+        blur: heroBlur,
+        image: heroUrl
+      },
+      mobileHero: {
+        altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
+        blur: mobileHeroBlur,
+        image: mobileHeroUrl
+      },
       pageTitle: page?.title,
       slogan: page?.slogan,
       socialMedia: {

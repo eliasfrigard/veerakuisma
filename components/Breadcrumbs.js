@@ -21,10 +21,10 @@ export default function BlockLevelBreadcrumbs() {
   }, [router.asPath])
 
   return (
-    <div fullWidth className="uppercase text-sm cursor-pointer tracking-wide">
+    <div fullWidth className="uppercase text-sm cursor-pointer tracking-wider">
       {paths.map((path, index) => (
         <React.Fragment key={index}>
-          <Link href={`/${path.path}`} className={`${index === paths.length - 1 ? 'opacity-80 text-accent-500' : 'opacity-40 text-primary-950'} font-khorla tracking-wide`}>
+          <Link href={`/${path.path}`} className={`${index === paths.length - 1 ? 'opacity-80 text-accent-500' : 'opacity-40 text-primary-950'} font-khorla`}>
             {path.name}
           </Link>
           {index < paths.length - 1 && <span className="font-khorla opacity-40 mx-1">/</span>}

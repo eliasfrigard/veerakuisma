@@ -1,6 +1,6 @@
 import React from 'react'
 import getYoutubeID from 'get-youtube-id'
-import AnimateIn from './AnimateIn.js'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 const Video = ({ title, link, prominent = false, className }) => {
   return (

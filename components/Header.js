@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 
-import AnimateIn from '../components/AnimateIn.js'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 import Hamburger from './Hamburger.js'
 
 export default function Header({ socialMedia, transparent = false, uppercaseLinks = true, fadeIn = false }) {

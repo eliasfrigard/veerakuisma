@@ -3,7 +3,7 @@
 import React from 'react'
 import Event from './Event'
 import Title from '../Title'
-import AnimateIn from '../AnimateIn'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 const Events = ({ concerts, bandName, email, className, noPadding, morePrevConcertsText }) => {
   const [prevConcertCount, setPrevConcertCount] = React.useState(6)

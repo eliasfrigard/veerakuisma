@@ -1,4 +1,4 @@
-import AnimateIn from './AnimateIn'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 const Title = ({ title, subtitle, textColor = 'text-primary-950', borderColor = 'border-black' }) => {
   if (!title) return ''

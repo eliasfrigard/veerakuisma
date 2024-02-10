@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import AnimateIn from '../components/AnimateIn'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 const Hero = ({ image, index }) => {
   return (

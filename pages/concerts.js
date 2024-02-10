@@ -1,9 +1,11 @@
 import Layout from '../components/Layouts/Default'
 import Events from '../components/Events'
-import AnimateIn from '../components/AnimateIn'
 import Hero from '../components/Hero'
 
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 import { createClient } from 'contentful'
+import { getPlaiceholder } from 'plaiceholder'
+import { getImageBuffer } from "../util/getImageBuffer"
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -37,13 +39,27 @@ export async function getStaticProps() {
   const page = pageRes.items[0].fields
   const socialPage = socialRes?.items[0]?.fields
 
-  const hero = page?.hero ? 'https:' + page?.hero?.fields?.file?.url : null
-  const mobileHero = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : null
+  const heroUrl = 'https:' + page.hero.fields.file.url
+  const mobileHeroUrl = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : heroUrl
+
+  const heroBuffer = await getImageBuffer(heroUrl)
+  const mobileHeroBuffer = await getImageBuffer(mobileHeroUrl)
+
+  const { base64: heroBlur } = await getPlaiceholder(heroBuffer)
+  const { base64: mobileHeroBlur } = await getPlaiceholder(mobileHeroBuffer)
 
   return {
     props: {
-      hero,
-      mobileHero,
+      hero: {
+        altText: page?.hero?.fields?.title,
+        blur: heroBlur,
+        image: heroUrl
+      },
+      mobileHero: {
+        altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
+        blur: mobileHeroBlur,
+        image: mobileHeroUrl
+      },
       pageTitle: page?.title,
       concerts: {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,
@@ -75,22 +91,20 @@ export default function Concerts({
       pageUrl='/concerts'
       socialMedia={socialMedia}
     >
-      {hero && (
-        <Hero
-          altText='Hero Image'
-          heroPosition='center'
-          desktopImg={hero}
-          mobileImg={mobileHero}
-        >
-          <div className='pt-[85px]'>
-            <AnimateIn animationType='slide' delay={1000}>
-              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-60 uppercase font-khorla'>
-                concerts
-              </h1>
-            </AnimateIn>
-          </div>
-        </Hero>
-      )}
+      <Hero
+        altText='Hero Image'
+        heroPosition='center'
+        desktopImg={hero}
+        mobileImg={mobileHero}
+      >
+        <div className='pt-[85px]'>
+          <AnimateIn animationType='slide' delay={1000}>
+            <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-60 uppercase font-khorla'>
+              concerts
+            </h1>
+          </AnimateIn>
+        </div>
+      </Hero>
 
       <Events concerts={concerts} email='mais.kuis@gmail.com' />
     </Layout>

@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import AnimateIn from './AnimateIn'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 import IconHandler from './IconHandler'
 
 import TextLayout from './TextLayout'
