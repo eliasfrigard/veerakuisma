@@ -4,8 +4,7 @@ import ContactForm from '../components/ContactForm'
 import DownloadItem from '../components/DownloadItem'
 import Title from '../components/Title'
 
-import { Hero } from 'eliasfrigard-reusable-components/dist/app'
-import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+import { Hero, AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
@@ -84,17 +83,15 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia, files }) => {
         desktopImg={hero}
         mobileImg={mobileHero}
       >
-        <div className='relative pt-[85px] w-screen h-screen z-10'>
-          <AnimateIn
-            delay={1000}
-            className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-2 px-3 text-center'
-          >
-            <p className='text-6xl leading-tight'>Veera Kuisma</p>
-            <div className='w-3/4 lg:w-1/2 my-4 h-[1px] bg-primary-100 bg-opacity-20 rounded-full'></div>
-            <p className='text-xl tracking-wider'>{socialMedia.email}</p>
-            <p className='text-lg tracking-wider'>{socialMedia.phone}</p>
-          </AnimateIn>
-        </div>
+        <AnimateIn
+          delay={1000}
+          className='w-full h-full centerContent flex-col text-primary-50 font-khorla tracking-wider gap-2 px-3 text-center'
+        >
+          <p className='text-6xl leading-tight'>Veera Kuisma</p>
+          <div className='w-3/4 lg:w-1/2 my-4 h-[1px] bg-primary-100 bg-opacity-20 rounded-full'></div>
+          <p className='text-xl tracking-wider'>{socialMedia.email}</p>
+          <p className='text-lg tracking-wider'>{socialMedia.phone}</p>
+        </AnimateIn>
       </Hero>
 
       <div className='py-6 lg:py-16 px-6 w-full bg-primary-950'>

@@ -13,7 +13,7 @@
     "@contentful/rich-text-types": "^16.3.0",
     "axios": "^1.5.1",
     "contentful": "^10.6.1",
-    "eliasfrigard-reusable-components": "^0.1.72",
+    "eliasfrigard-reusable-components": "^0.1.73",
     "get-youtube-id": "^1.0.1",
     "moment": "^2.29.4",
     "next": "^13.5.6",
