@@ -941,14 +941,15 @@ electron-to-chromium@^1.4.284:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.320.tgz"
   integrity sha512-h70iRscrNluMZPVICXYl5SSB+rBKo22XfuIS1ER0OQxQZpKTnFpuS6coj7wY9M/3trv7OR88rRMOlKmRvDty7Q==
 
-eliasfrigard-reusable-components@^0.1.21:
-  version "0.1.21"
-  resolved "https://registry.npmjs.org/eliasfrigard-reusable-components/-/eliasfrigard-reusable-components-0.1.21.tgz"
-  integrity sha512-Kvpo7IIDKkRhci/zCTyOH81YXqlXNZtciA0hh8nK4SF0x5x+vi/43iHUOK3Fs+qWsNrXEZWlGhMCUcX8PoUbzg==
+eliasfrigard-reusable-components@^0.1.72:
+  version "0.1.72"
+  resolved "https://registry.npmjs.org/eliasfrigard-reusable-components/-/eliasfrigard-reusable-components-0.1.72.tgz"
+  integrity sha512-okDVwqIfUAxgyEEwJVaJAl04hXQiH7P30dYVY5RvDQs4B2QAEi1BImNe/FEHcrm35BnWZKIDwegu1rjgre3llA==
   dependencies:
     next "14.1.0"
     react "^18"
     react-dom "^18"
+    react-icons "^5.0.1"
     react-intersection-observer "^9.7.0"
     react-scroll-parallax "^3.4.5"
 
@@ -2429,6 +2430,11 @@ react-icons@^4.8.0:
   version "4.8.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.8.0.tgz"
   integrity sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==
+
+react-icons@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.0.1.tgz"
+  integrity sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==
 
 react-intersection-observer@^9.4.3, react-intersection-observer@^9.7.0:
   version "9.7.0"

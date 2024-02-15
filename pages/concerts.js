@@ -1,8 +1,10 @@
+import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import Events from '../components/Events'
-import Hero from '../components/Hero'
 
+import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+
 import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
 import { getImageBuffer } from "../util/getImageBuffer"
@@ -53,12 +55,12 @@ export async function getStaticProps() {
       hero: {
         altText: page?.hero?.fields?.title,
         blur: heroBlur,
-        image: heroUrl
+        url: heroUrl
       },
       mobileHero: {
         altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
         blur: mobileHeroBlur,
-        image: mobileHeroUrl
+        url: mobileHeroUrl
       },
       pageTitle: page?.title,
       concerts: {
@@ -92,7 +94,7 @@ export default function Concerts({
       socialMedia={socialMedia}
     >
       <Hero
-        altText='Hero Image'
+        Image={Image}
         heroPosition='center'
         desktopImg={hero}
         mobileImg={mobileHero}

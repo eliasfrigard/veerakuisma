@@ -1,15 +1,37 @@
 import React from 'react'
 import Link from 'next/link'
+import Hamburger from './Hamburger.js'
 
 import { useRouter } from 'next/router'
+import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 
-import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
-import Hamburger from './Hamburger.js'
-
-export default function Header({ socialMedia, transparent = false, uppercaseLinks = true, fadeIn = false }) {
+export default function NavigationHeader({ 
+  routes = [],
+  pageName,
+  socialMedia, 
+  transparent = false, 
+  uppercaseLinks = true, 
+  fadeIn = false,
+  font
+} : {
+  routes: { href: string, label: string }[]
+  pageName: string
+  socialMedia: {
+    phone: string
+    email: string
+    facebook: string
+    instagram: string
+    spotify: string
+    youTube: string
+  }
+  transparent?: boolean
+  uppercaseLinks?: boolean
+  fadeIn?: boolean
+  font: string
+}) {
   const router = useRouter()
 
   const [currentYear, setCurrentYear] = React.useState('')
@@ -19,7 +41,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
     setMobileNavOpen(!mobileNavOpen)
   }
 
-  const activeLinkStyling = (path) => {
+  const activeLinkStyling = (path: string) => {
     if (router.pathname === path ||
       (path.includes(router.pathname.split('/')[1]) && router.pathname !== '/')) {
       return 'text-accent-500'
@@ -30,35 +52,6 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
     const year = new Date().getFullYear()
     setCurrentYear(year.toString())
   }, [])
-
-  const pageName = 'Veera Kuisma'
-
-  const links = [
-    {
-      href: '/',
-      label: 'home',
-    },
-    {
-      href: '/about',
-      label: 'about',
-    },
-    {
-      href: '/bands',
-      label: 'bands',
-    },
-    {
-      href: '/concerts',
-      label: 'concerts',
-    },
-    {
-      href: '/gallery',
-      label: 'gallery',
-    },
-    {
-      href: '/contact',
-      label: 'contact',
-    },
-  ]
 
   return (
     <>
@@ -81,7 +74,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           tracking-wide
           container
           px-8
-          font-khorla
+          ${font}
         `}
         >
           <div id='left' className='text-center'>
@@ -90,13 +83,13 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
             </Link>
           </div>
           <div id='center' className='flex gap-1 xl:gap-4 font-medium justify-center tracking-[2px]'>
-            {links.map((link) => (
+            {routes.map((route) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className={`${activeLinkStyling(link.href)} desktopNavLink ${uppercaseLinks && 'uppercase'}`}
+                key={route.href}
+                href={route.href}
+                className={`${activeLinkStyling(route.href)} desktopNavLink ${uppercaseLinks && 'uppercase'}`}
               >
-                {link.label}
+                {route.label}
               </Link>
             ))}
           </div>
@@ -126,7 +119,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
                 <BsSpotify className='soMeIcon text-xl' />
               </a>
             )}
-            {socialMedia?.youtube && (
+            {socialMedia?.youTube && (
               <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
                 <BsYoutube className='soMeIcon text-[1.5rem] translate-y-[1px]' />
               </a>
@@ -149,8 +142,7 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           tracking-wide
           container
           px-8
-          font-khorla
-
+          ${font}
         `}
         >
           <div>
@@ -171,13 +163,13 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
           }`}
       >
         <div className='container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla'>
-          {links.map((link) => (
+          {routes.map((route) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className={`${activeLinkStyling(link.href)} mobileNavLink capitalize`}
+              key={route.href}
+              href={route.href}
+              className={`${activeLinkStyling(route.href)} mobileNavLink capitalize`}
             >
-              {link.label}
+              {route.label}
             </Link>
           ))}
         </div>
@@ -208,13 +200,13 @@ export default function Header({ socialMedia, transparent = false, uppercaseLink
               <BsSpotify className='soMeIcon text-2xl' />
             </a>
           )}
-          {socialMedia?.youtube && (
+          {socialMedia?.youTube && (
             <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
               <BsYoutube className='soMeIcon text-[1.8rem] translate-y-[1px]' />
             </a>
           )}
         </div>
-        <div className='tracking-wide text-sm opacity-70 text-center text-primary-100 font-khorla'>
+        <div className={`tracking-wide text-sm opacity-70 text-center text-primary-100 ${font}`}>
           <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
           <a href='mailto:' className='text-xs underline'>
             {socialMedia?.email}

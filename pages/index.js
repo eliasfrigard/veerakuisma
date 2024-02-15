@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
-import Hero from '../components/Hero'
 
+import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+
 import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
 import { getImageBuffer } from "../util/getImageBuffer"
@@ -10,7 +12,7 @@ import { getImageBuffer } from "../util/getImageBuffer"
 export default function Home({ pageTitle, slogan, hero, mobileHero, socialMedia }) {
   return (
     <Layout socialMedia={socialMedia} transparent footer={false} headerFadeIn pageTitle={pageTitle}>
-      <Hero heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
+      <Hero Image={Image} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
         <div className='text-primary-100 flex flex-col font-khorla justify-center items-center tracking-wide'>
           <div className='flex w-full justify-end pr-3 -mb-3 md:pr-6 md:-mb-8'>
             <AnimateIn animationType='slide' delay={1000}>
@@ -65,12 +67,12 @@ export async function getStaticProps() {
       hero: {
         altText: page?.hero?.fields?.title,
         blur: heroBlur,
-        image: heroUrl
+        url: heroUrl
       },
       mobileHero: {
         altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
         blur: mobileHeroBlur,
-        image: mobileHeroUrl
+        url: mobileHeroUrl
       },
       pageTitle: page?.title,
       slogan: page?.slogan,

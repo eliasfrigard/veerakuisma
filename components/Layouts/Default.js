@@ -3,7 +3,9 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 
-import Header from '../Header.js'
+// import Header from '../Header'
+import { Header } from 'eliasfrigard-reusable-components/dist/app'
+
 import Footer from '../Footer.js'
 
 export default function Layout({
@@ -43,6 +45,15 @@ export default function Layout({
   const baseUrl = 'https://www.veerakuisma.com'
   const faviconUrl = '/favicon.ico'
 
+  const routes = [
+    { href: '/', label: 'home' },
+    { href: '/about', label: 'about' },
+    { href: '/bands', label: 'bands' },
+    { href: '/concerts', label: 'concerts' },
+    { href: '/gallery', label: 'gallery' },
+    { href: '/contact', label: 'contact' },
+  ]
+
   return (
     <>
       <Head>
@@ -61,7 +72,7 @@ export default function Layout({
         <meta property='og:url' content={baseUrl + pageUrl} />
         <meta property='og:type' content='website' />
       </Head>
-      <Header socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} />
+      <Header router={router} routes={routes} pageName={pageName} socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} font='font-khorla' />
       <main
         style={{ transition: 'opacity 200ms ease-out' }}
         className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}

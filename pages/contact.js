@@ -1,10 +1,12 @@
+import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
-import Hero from '../components/Hero'
 import ContactForm from '../components/ContactForm'
 import DownloadItem from '../components/DownloadItem'
 import Title from '../components/Title'
 
+import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+
 import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
 import { getImageBuffer } from "../util/getImageBuffer"
@@ -45,12 +47,12 @@ export async function getStaticProps() {
       hero: {
         altText: page?.hero?.fields?.title,
         blur: heroBlur,
-        image: heroUrl
+        url: heroUrl
       },
       mobileHero: {
         altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
         blur: mobileHeroBlur,
-        image: mobileHeroUrl
+        url: mobileHeroUrl
       },
       pageTitle: page.title,
       files: fileDownloadRes.items,
@@ -77,7 +79,7 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia, files }) => {
       socialMedia={socialMedia}
     >
       <Hero
-        altText='Contact Veera'
+        Image={Image}
         heroPosition='center'
         desktopImg={hero}
         mobileImg={mobileHero}

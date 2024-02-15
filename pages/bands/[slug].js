@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import Layout from '../../components/Layouts/Default'
-import Hero from '../../components/Hero'
 import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 import Video from '../../components/Video'
@@ -7,7 +7,9 @@ import ImageLayout from '../../components/ImageLayout'
 import Breadcrumbs from '../../components/Breadcrumbs'
 import IconModal from '../../components/IconModal'
 
+import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
+
 import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
 import { getImageBuffer } from "../../util/getImageBuffer"
@@ -27,19 +29,14 @@ export default function Band({
   videos,
   socialMedia,
 }) {
-  let heroUrl, mobileHeroUrl
-
-  if (hero) heroUrl = 'https:' + hero?.fields?.file?.url
-  if (mobileHero) mobileHeroUrl = 'https:' + mobileHero?.fields?.file?.url
-
   return (
     <Layout socialMedia={socialMedia} pageTitle={name}>
-      {hero && (
+      {(hero.url || mobileHero.url) && (
         <Hero
-          altText='Hero Image'
+          Image={Image}
           heroPosition='center'
-          desktopImg={heroUrl}
-          mobileImg={mobileHeroUrl || heroUrl}
+          desktopImg={hero}
+          mobileImg={mobileHero}
         >
           <div className='pt-[85px]'>
             <AnimateIn animationType='slide' delay={1000}>
@@ -133,7 +130,7 @@ export async function getStaticProps({ params: { slug } }) {
     content_type: 'band',
   })
 
-  const band = bandRes.items.find((entry) => {
+  let band = bandRes.items.find((entry) => {
     return entry.fields.name.toLowerCase() === slug
   })
 
@@ -174,8 +171,8 @@ export async function getStaticProps({ params: { slug } }) {
 
   let heroBlur, mobileHeroBlur
 
-  const heroUrl = band?.hero ? 'https:' + band?.hero?.fields?.file?.url : undefined
-  const mobileHeroUrl = band?.mobileHero ? 'https:' + band?.mobileHero?.fields?.file?.url : undefined
+  const heroUrl = band?.fields?.hero ? 'https:' + band?.fields?.hero?.fields?.file?.url : undefined
+  const mobileHeroUrl = band?.fields?.mobileHero ? 'https:' + band?.fields?.mobileHero?.fields?.file?.url : undefined
 
   if (heroUrl) {
     const heroBuffer = await getImageBuffer(heroUrl)
@@ -193,14 +190,14 @@ export async function getStaticProps({ params: { slug } }) {
     props: {
       ...band?.fields,
       hero: {
-        altText: band?.hero ? band?.hero?.fields?.title : 'Desktop Hero Image',
+        altText: band?.fields?.hero?.fields?.title || '',
         blur: heroBlur || null,
-        image: heroUrl || null
+        url: heroUrl || null
       },
       mobileHero: {
-        altText: band?.mobileHero ? band?.mobileHero?.fields?.title : 'Mobile Hero Image',
+        altText: band?.fields?.mobileHero?.fields?.title || '',
         blur: mobileHeroBlur || null,
-        image: mobileHeroUrl || null
+        url: mobileHeroUrl || null
       },
       concerts: {
         upcoming: upcomingConcertsRes?.items || concerts.upcoming,

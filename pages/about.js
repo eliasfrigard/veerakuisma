@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import TextLayout from '../components/TextLayout'
-import Hero from '../components/Hero'
 
+import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { createClient } from 'contentful'
@@ -41,12 +41,12 @@ export async function getStaticProps() {
       hero: {
         altText: page?.hero?.fields?.title,
         blur: heroBlur,
-        image: heroUrl
+        url: heroUrl
       },
       mobileHero: {
         altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
         blur: mobileHeroBlur,
-        image: mobileHeroUrl
+        url: mobileHeroUrl
       },
       pageTitle: page.title,
       biography: page.biography,
@@ -73,7 +73,7 @@ const About = ({
     <Layout pageTitle={pageTitle} socialMedia={socialMedia}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='container centerContent flex-col gap-6 md:gap-16 px-6 py-8 md:px-0 md:py-16'>
-          <Hero heroPosition='top' spacedHero desktopImg={hero} mobileImg={mobileHero} />
+          <Hero Image={Image} spaced overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero} />
 
           <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-3 md:px-10 pt-2 lg:pt-0'>
             <TextLayout text={biography} />
