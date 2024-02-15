@@ -3,6 +3,7 @@
 import React from 'react'
 import Event from './Event'
 import Title from '../Title'
+
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 const Events = ({ concerts, bandName, email, className, noPadding, morePrevConcertsText }) => {
@@ -116,7 +117,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
       </div>
 
       {previousConcerts?.length > 0 && (
-        <AnimateIn
+        <div
           className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'
           animationType='slide'
           slideDirection='bottom'
@@ -140,13 +141,11 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
               })}
 
             {morePrevConcertsText && prevConcertCount < previousConcerts.length && (
-              <div className='relative w-full centerContent mix-blend-overlay'>
-                <div className='absolute w-full h-[370px] top-[-370px] bg-gradient-to-t from-white via-transparent-10 to-transparent duration-200' />
-                <div className='absolute w-full h-[370px] top-[-370px] bg-gradient-to-t from-white via-transparent-10 to-transparent duration-200' />
+              <div className='relative w-full centerContent'>
                 <div className='w-full lg:w-2/3'>
                   <button
                     onClick={increasePrevConcertCount}
-                    className={`w-full mt-2 bg-primary-900 bg-opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:bg-opacity-100 duration-150 tracking-wider text-center p-4 z-10 rounded`}
+                    className={`w-full mt-2 bg-primary-950 bg-opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:bg-opacity-100 duration-150 tracking-wider text-center p-4 z-10 rounded`}
                   >
                     {morePrevConcertsText}
                   </button>
@@ -154,7 +153,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
               </div>
             )}
           </div>
-        </AnimateIn>
+        </div>
       )}
     </div>
   )
