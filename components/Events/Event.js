@@ -5,7 +5,13 @@ import Button from '../Button'
 import Avatar from '../Avatar'
 
 import { IoMdPin } from 'react-icons/io'
-import { BsFacebook, BsGlobeEuropeAfrica, BsArrowRightShort, BsPinMapFill, BsTicketPerforated } from 'react-icons/bs'
+import {
+  BsFacebook,
+  BsGlobeEuropeAfrica,
+  BsArrowRightShort,
+  BsPinMapFill,
+  BsTicketPerforated,
+} from 'react-icons/bs'
 
 const Event = ({
   title,
@@ -38,62 +44,58 @@ const Event = ({
       const endYear = new Date(endDate).getFullYear()
 
       if (startYear !== endYear) {
-        setDifferentYears(true);
+        setDifferentYears(true)
       } else {
-        setDifferentYears(false);
+        setDifferentYears(false)
       }
     }
-  }, [date, endDate]);
+  }, [date, endDate])
 
   return (
     <>
-      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow-xl'>
-        {
-          endDate && (
-            <div className='centerContent flex-col gap-2 tracking-wider'>
-              <div className='centerContent text-base gap-1 leading-none uppercase drop-shadow-sm'>
-                <Moment format='D MMM' className='font-bold'>
-                  {date}
-                </Moment>
-                <BsArrowRightShort className='text-primary-50 text-xl' />
-                <Moment format='D MMM' className='font-bold'>
-                  {endDate}
-                </Moment>
-              </div>
-
-              <div className='centerContent gap-1'>
-                <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                  <Moment format='YYYY'>{date}</Moment>
-                </p>
-
-                {
-                  differentYears && (
-                    <>
-                      <BsArrowRightShort className='text-primary-50 text-xl' />
-                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                        <Moment format='YYYY'>{endDate}</Moment>
-                      </p>
-                    </>
-                  )
-                }
-              </div>
+      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded shadow'>
+        {endDate && (
+          <div className='centerContent flex-col gap-2 tracking-wider'>
+            <div className='centerContent text-base gap-1 leading-none uppercase drop-shadow-sm'>
+              <Moment format='D MMM' className='font-bold'>
+                {date}
+              </Moment>
+              <BsArrowRightShort className='text-primary-50 text-xl' />
+              <Moment format='D MMM' className='font-bold'>
+                {endDate}
+              </Moment>
             </div>
-          )
-        }
 
-        {
-          !endDate && displayTime ? (
-            <div className='centerContent flex-col gap-2 tracking-wider'>
+            <div className='centerContent gap-1'>
               <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                <Moment format='HH:mm'>{date}</Moment>
+                <Moment format='YYYY'>{date}</Moment>
               </p>
-              <p className='text-base leading-none uppercase drop-shadow-sm'>
-                <Moment format='D MMMM YYYY' className='font-bold'>
-                  {date}
-                </Moment>
-              </p>
+
+              {differentYears && (
+                <>
+                  <BsArrowRightShort className='text-primary-50 text-xl' />
+                  <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                    <Moment format='YYYY'>{endDate}</Moment>
+                  </p>
+                </>
+              )}
             </div>
-          ) : !endDate && (
+          </div>
+        )}
+
+        {!endDate && displayTime ? (
+          <div className='centerContent flex-col gap-2 tracking-wider'>
+            <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+              <Moment format='HH:mm'>{date}</Moment>
+            </p>
+            <p className='text-base leading-none uppercase drop-shadow-sm'>
+              <Moment format='D MMMM YYYY' className='font-bold'>
+                {date}
+              </Moment>
+            </p>
+          </div>
+        ) : (
+          !endDate && (
             <div className='centerContent flex-col gap-2 tracking-wider'>
               <p className='text-base leading-none uppercase drop-shadow-sm'>
                 <Moment format='D MMMM' className='font-bold'>
@@ -105,7 +107,7 @@ const Event = ({
               </p>
             </div>
           )
-        }
+        )}
 
         <p className='font-bold text-center'>{title}</p>
 
@@ -114,55 +116,60 @@ const Event = ({
           <p className='hidden lg:block font-bold'>{cityCountry}</p>
         </div>
 
-        <IconHandler website={website} facebook={facebook} tickets={tickets} address={address} bands={bands} />
+        <IconHandler
+          website={website}
+          facebook={facebook}
+          tickets={tickets}
+          address={address}
+          bands={bands}
+        />
       </div>
 
       {/* MOBILE VIEW */}
 
       <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
-
-        {
-          endDate ? (
-            <div className='centerContent flex-col gap-2 tracking-wider leading-relaxed'>
-              <div className='centerContent gap-1'>
-                <p className='text-xl leading-none uppercase drop-shadow-sm'>
-                  <Moment format='D MMM' className='font-bold'>
-                    {date}
-                  </Moment>
-                </p>
-                <BsArrowRightShort className='text-primary-50 text-xl' />
-                <p className='text-xl leading-none uppercase drop-shadow-sm'>
-                  <Moment format='D MMM' className='font-bold'>
-                    {endDate}
-                  </Moment>
-                </p>
-              </div>
-
-              <div className='centerContent gap-1'>
-                <p className={`${differentYears ? 'text-xl' : 'text-2xl'}  uppercase font-bold leading-none drop-shadow-sm`}>
-                  <Moment format='YYYY'>{date}</Moment>
-                </p>
-
-                {
-                  differentYears && (
-                    <>
-                      <BsArrowRightShort className='text-primary-50 text-xl' />
-                      <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
-                        <Moment format='YYYY'>{endDate}</Moment>
-                      </p>
-                    </>
-                  )
-                }
-              </div>
+        {endDate ? (
+          <div className='centerContent flex-col gap-2 tracking-wider leading-relaxed'>
+            <div className='centerContent gap-1'>
+              <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                <Moment format='D MMM' className='font-bold'>
+                  {date}
+                </Moment>
+              </p>
+              <BsArrowRightShort className='text-primary-50 text-xl' />
+              <p className='text-xl leading-none uppercase drop-shadow-sm'>
+                <Moment format='D MMM' className='font-bold'>
+                  {endDate}
+                </Moment>
+              </p>
             </div>
-          ) : (
-            <p className='text-xl leading-none uppercase drop-shadow-sm tracking-wider'>
-              <Moment format='D MMMM YYYY' className='font-bold'>
-                {date}
-              </Moment>
-            </p>
-          )
-        }
+
+            <div className='centerContent gap-1'>
+              <p
+                className={`${
+                  differentYears ? 'text-xl' : 'text-2xl'
+                }  uppercase font-bold leading-none drop-shadow-sm`}
+              >
+                <Moment format='YYYY'>{date}</Moment>
+              </p>
+
+              {differentYears && (
+                <>
+                  <BsArrowRightShort className='text-primary-50 text-xl' />
+                  <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                    <Moment format='YYYY'>{endDate}</Moment>
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        ) : (
+          <p className='text-xl leading-none uppercase drop-shadow-sm tracking-wider'>
+            <Moment format='D MMMM YYYY' className='font-bold'>
+              {date}
+            </Moment>
+          </p>
+        )}
 
         <div className='h-[1px] w-3/4 bg-primary-100 bg-opacity-10 rounded-full' />
 
@@ -180,65 +187,59 @@ const Event = ({
           )
         } */}
 
-        {
-          (addressLink || website || facebook || tickets || bands) && (
-            <div className='w-full gap-3 flex flex-col centerContent'>
-              {tickets && (
-                <Button href={tickets}>
-                  <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <BsTicketPerforated className='text-lg' />
-                    <p>Tickets</p>
+        {(addressLink || website || facebook || tickets || bands) && (
+          <div className='w-full gap-3 flex flex-col centerContent'>
+            {tickets && (
+              <Button href={tickets}>
+                <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
+                  <BsTicketPerforated className='text-lg' />
+                  <p>Tickets</p>
+                </div>
+              </Button>
+            )}
+
+            {website && (
+              <Button href={website}>
+                <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
+                  <BsGlobeEuropeAfrica className='text-lg' />
+                  <p>Event Link</p>
+                </div>
+              </Button>
+            )}
+
+            {addressLink && (
+              <Button href={addressLink}>
+                <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
+                  <BsPinMapFill className='text-lg' />
+                  <p>Google Maps</p>
+                </div>
+              </Button>
+            )}
+
+            {facebook && (
+              <Button href={facebook}>
+                <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
+                  <BsFacebook className='text-lg' />
+                  <p>Facebook</p>
+                </div>
+              </Button>
+            )}
+
+            {(facebook || addressLink || website || tickets) && bands?.length > 0 && (
+              <div className='h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full' />
+            )}
+
+            {bands?.length &&
+              bands?.map((b) => (
+                <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
+                  <div className='flex w-full justify-center items-center px-3 gap-3'>
+                    <Avatar imageUrl={b.imageUrl} bandName={b.name} />
+                    <p>{b.name}</p>
                   </div>
                 </Button>
-              )}
-
-              {website && (
-                <Button href={website}>
-                  <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <BsGlobeEuropeAfrica className='text-lg' />
-                    <p>Event Link</p>
-                  </div>
-                </Button>
-              )}
-
-              {addressLink && (
-                <Button href={addressLink}>
-                  <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <BsPinMapFill className='text-lg' />
-                    <p>Google Maps</p>
-                  </div>
-                </Button>
-              )}
-
-              {facebook && (
-                <Button href={facebook}>
-                  <div className='flex w-full justify-center items-center px-3 gap-3 text-primary-50'>
-                    <BsFacebook className='text-lg' />
-                    <p>Facebook</p>
-                  </div>
-                </Button>
-              )}
-
-              {
-                (facebook || addressLink || website || tickets) &&
-                bands?.length > 0 && (
-                  <div className="h-[1px] my-1 w-3/4 bg-primary-100 bg-opacity-10 rounded-full" />
-                )
-              }
-
-              {
-                bands?.length && bands?.map((b) => (
-                  <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
-                    <div className='flex w-full justify-center items-center px-3 gap-3'>
-                      <Avatar imageUrl={b.imageUrl} bandName={b.name} />
-                      <p>{b.name}</p>
-                    </div>
-                  </Button>
-                ))
-              }
-            </div>
-          )
-        }
+              ))}
+          </div>
+        )}
       </div>
     </>
   )
