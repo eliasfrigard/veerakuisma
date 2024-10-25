@@ -13,7 +13,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
   return (
     <AnimateIn
       slideDirection='right'
-      className='relative centerContent flex-col rounded-xl overflow-hidden shadow-lg mx-4 hover:scale-105 lg:opacity-90 lg:hover:opacity-100'
+      className='relative centerContent flex-col rounded-xl overflow-hidden shadow-lg mx-4 hover:scale-105'
     >
       <Link
         href={link}
@@ -21,7 +21,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
       >
         <Image alt={name} src={image} fill className={`object-cover object-center`} />
 
-        <div className={`absolute bg-primary-900 ${image && 'opacity-90'} w-full h-full`} />
+        <div className={`absolute bg-primary-900 ${image && 'bg-opacity-80 backdrop-blur hover:bg-opacity-70 hover:backdrop-blur-sm duration-200'} w-full h-full`} />
 
         <div className='w-full max-w-3xl text-primary-100 my-10 lg:my-16 px-4'>
           <div className='w-full flex flex-col justify-center items-center'>
