@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-export default function ContactForm() {
+export default function ContactForm({ className }) {
   const messageRef = React.useRef(null)
   const emailRef = React.useRef(null)
   const nameRef = React.useRef(null)
@@ -100,7 +100,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className={`centerContent flex-col contactForm w-full`}>
+      <div className={`centerContent flex-col contactForm ${className}`}>
         <div className='flex-col mt-2 md:mt-0 container max-w-4xl roundedShadow h-full'>
           <form className='w-full'>
             <div className='flex flex-wrap -mx-3 md:mb-2'>
