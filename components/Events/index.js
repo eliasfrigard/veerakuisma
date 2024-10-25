@@ -22,7 +22,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
     const bands = mapBandProps(c?.fields?.band)
 
     return (
-      <AnimateIn key={c.sys.id} className='w-full' animationType='slide' slideDirection='bottom'>
+      <AnimateIn key={c.sys.id} className='w-full' animationType='slide' slideDirection='left'>
         <Event
           key={c.sys.id}
           title={c.fields.title}
@@ -77,7 +77,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
     const bands = mapBandProps(c?.fields?.band)
 
     return (
-      <AnimateIn key={c.sys.id} className='w-full' animationType='slide' slideDirection='bottom'>
+      <AnimateIn key={c.sys.id} className='w-full' animationType='slide' slideDirection='left'>
         <Event
           title={c.fields.title}
           date={c.fields.dateTime}
@@ -108,7 +108,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
       <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12'>
         <Title title='Upcoming Concerts' />
         {upcomingConcerts?.length > 0 ? (
-          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
+          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
             {upcomingConcerts}
           </div>
         ) : (
@@ -123,7 +123,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
           slideDirection='bottom'
         >
           <Title title='Previous Concerts' />
-          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
+          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
             {morePrevConcertsText
               ? previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
                 return (
