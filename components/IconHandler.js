@@ -19,6 +19,7 @@ const IconHandler = ({
 }) => {
   const [mailLink, setMailLink] = React.useState(null)
   const [addressLink, setAddressLink] = React.useState(null)
+  const [isMounted, setIsMounted] = React.useState(false)
 
   React.useEffect(() => {
     if (!address) {
@@ -52,69 +53,75 @@ const IconHandler = ({
   }
 
   return (
-    <div className={`flex text-2xl justify-center items-center gap-3 lg:gap-4 z-10 text-accent-500 ${className}`}>
+    <>
       {
-        address && (
-          <LinkIcon href={addressLink} tooltip='Google Maps'>
-            <BsPinMapFill className='soMeIcon' />
-          </LinkIcon>
+        isMounted && (
+          <div className={`flex text-2xl justify-center items-center gap-3 lg:gap-4 z-10 text-accent-500 ${className}`}>
+            {
+              address && (
+                <LinkIcon href={addressLink} tooltip='Google Maps'>
+                  <BsPinMapFill className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              email && (
+                <LinkIcon href={mailLink} tooltip='Email'>
+                  <BsMailbox className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              website && (
+                <LinkIcon href={website} tooltip='Website'>
+                  <BsGlobeEuropeAfrica className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              tickets && (
+                <LinkIcon href={tickets} tooltip='Tickets'>
+                  <BsTicketPerforated className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              facebook && (
+                <LinkIcon href={facebook} tooltip='Facebook'>
+                  <BsFacebook className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              instagram && (
+                <LinkIcon href={instagram} tooltip='Instagram'>
+                  <BsInstagram className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              spotify && (
+                <LinkIcon href={spotify} tooltip='Spotify'>
+                  <BsSpotify className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              youTube && (
+                <LinkIcon href={youTube} tooltip='YouTube'>
+                  <BsYoutube className='soMeIcon' />
+                </LinkIcon>
+              )
+            }
+            {
+              bands && (
+                bands.map((b) => <Avatar key={b.name} imageUrl={b.imageUrl} bandName={b.name} />)
+              )
+            }
+          </div>
         )
       }
-      {
-        email && (
-          <LinkIcon href={mailLink} tooltip='Email'>
-            <BsMailbox className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        website && (
-          <LinkIcon href={website} tooltip='Website'>
-            <BsGlobeEuropeAfrica className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        tickets && (
-          <LinkIcon href={tickets} tooltip='Tickets'>
-            <BsTicketPerforated className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        facebook && (
-          <LinkIcon href={facebook} tooltip='Facebook'>
-            <BsFacebook className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        instagram && (
-          <LinkIcon href={instagram} tooltip='Instagram'>
-            <BsInstagram className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        spotify && (
-          <LinkIcon href={spotify} tooltip='Spotify'>
-            <BsSpotify className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        youTube && (
-          <LinkIcon href={youTube} tooltip='YouTube'>
-            <BsYoutube className='soMeIcon' />
-          </LinkIcon>
-        )
-      }
-      {
-        bands && (
-          bands.map((b) => <Avatar key={b.name} imageUrl={b.imageUrl} bandName={b.name} />)
-        )
-      }
-    </div>
+    </>
   )
 }
 
