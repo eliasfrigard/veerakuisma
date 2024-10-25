@@ -4,8 +4,6 @@ import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 import Video from '../../components/Video'
 import ImageLayout from '../../components/ImageLayout'
-import Breadcrumbs from '../../components/Breadcrumbs'
-import IconModal from '../../components/IconModal'
 
 import { Hero } from 'eliasfrigard-reusable-components/dist/app'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
@@ -53,7 +51,7 @@ export default function Band({
           <TextLayout text={biography || description} />
         </div>
 
-        {(images.length > 0 || videos.length > 0) && (
+        {/* {(images.length > 0 || videos.length > 0) && (
           <div className='flex flex-col gap-2 lg:gap-6'>
             <div className='container flex justify-center items-center flex-wrap'>
               <div
@@ -78,14 +76,13 @@ export default function Band({
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         <Events
           concerts={concerts}
           bandName={name}
           email={email}
           noPadding
-          morePrevConcertsText={`More previous concerts with ${name}`}
         />
       </div>
     </Layout>

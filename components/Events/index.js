@@ -6,7 +6,7 @@ import Title from '../Title'
 
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
-const Events = ({ concerts, bandName, email, className, noPadding, morePrevConcertsText }) => {
+const Events = ({ concerts, bandName, email, className, noPadding }) => {
   const [prevConcertCount, setPrevConcertCount] = React.useState(6)
 
   const mapBandProps = (bands) => {
@@ -103,14 +103,16 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
   return (
     <div
       className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-14'} ${!noPadding && 'md:py-16 container'
-        } ${className} px-4 gap-8 py-8 lg:gap-16 lg:py-16`}
+        } ${className} px-4 gap-8 py-8`}
     >
       <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12'>
-        <Title title='Upcoming Concerts' />
         {upcomingConcerts?.length > 0 ? (
-          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
-            {upcomingConcerts}
-          </div>
+          <>
+            <Title title='Upcoming Concerts' />
+            <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
+              {upcomingConcerts}
+            </div>
+          </>
         ) : (
           noUpcomingConcerts
         )}
@@ -124,34 +126,13 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
         >
           <Title title='Previous Concerts' />
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
-            {morePrevConcertsText
-              ? previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
-                return (
-                  <div key={index} className={`w-full`}>
-                    {concert}
-                  </div>
-                )
-              })
-              : previousConcerts.map((concert, index) => {
-                return (
-                  <div key={index} className={`w-full`}>
-                    {concert}
-                  </div>
-                )
-              })}
-
-            {morePrevConcertsText && prevConcertCount < previousConcerts.length && (
-              <div className='relative w-full centerContent'>
-                <div className='w-full lg:w-2/3'>
-                  <button
-                    onClick={increasePrevConcertCount}
-                    className={`w-full mt-2 bg-primary-950 bg-opacity-80 uppercase font-bold font-khorla text-primary-50 centerContent cursor-pointer hover:bg-opacity-100 duration-150 tracking-wider text-center p-4 z-10 rounded`}
-                  >
-                    {morePrevConcertsText}
-                  </button>
+            {previousConcerts.map((concert, index) => {
+              return (
+                <div key={index} className={`w-full`}>
+                  {concert}
                 </div>
-              </div>
-            )}
+              )
+            })}
           </div>
         </div>
       )}
