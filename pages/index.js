@@ -2,7 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 
-import { Hero } from 'eliasfrigard-reusable-components/dist/app'
+// import { Hero } from 'eliasfrigard-reusable-components/dist/app'
+import Hero from '../components/Hero'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { createClient } from 'contentful'

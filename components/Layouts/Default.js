@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 
-// import Header from '../Header'
-import { Header } from 'eliasfrigard-reusable-components/dist/app'
+import Header from '../Header'
+// import { Header } from '../../../reusable-components/dist/app'
 
 import Footer from '../Footer.js'
 
@@ -72,9 +72,9 @@ export default function Layout({
         <meta property='og:url' content={baseUrl + pageUrl} />
         <meta property='og:type' content='website' />
       </Head>
-      <Header router={router} routes={routes} pageName={pageName} socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} font='font-khorla' />
+      <Header currentRoute='/' router={router} routes={routes} pageName={pageName} socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} font='font-khorla' />
       <main
-        style={{ transition: 'opacity 200ms ease-out' }}
+        style={{ transition: 'opacity-90 200ms ease-out' }}
         className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
         {children}
