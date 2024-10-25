@@ -48,20 +48,16 @@ export default function Band({
         </Hero>
       )}
 
-      <div className='w-full centerContent mt-6 lg:mt-8'>
-        <Breadcrumbs />
-      </div>
-
-      <div className='container flex flex-col pt-1 pb-6 lg:pb-16 lg:pt-6 gap-6 lg:gap-16'>
-        <div className='w-full pt-2 lg:pt-0 centerContent px-3 md:px-10'>
+      <div className='container flex flex-col px-4 gap-8 py-8 lg:gap-16 lg:py-16'>
+        <div className='w-full centerContent'>
           <TextLayout text={biography || description} />
         </div>
 
         {(images.length > 0 || videos.length > 0) && (
-          <div className='pt-2 flex flex-col gap-2 lg:gap-6'>
+          <div className='flex flex-col gap-2 lg:gap-6'>
             <div className='container flex justify-center items-center flex-wrap'>
               <div
-                className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2 px-2`}
+                className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2`}
               >
                 {videos.map((video, index) => (
                   <Video
@@ -75,7 +71,7 @@ export default function Band({
             </div>
             <div
               className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'
-                } gap-1 container px-2`}
+                } gap-1 container`}
             >
               {images.map((image, index) => (
                 <ImageLayout key={image} index={index} image={'https:' + image.url} />
@@ -91,8 +87,6 @@ export default function Band({
           noPadding
           morePrevConcertsText={`More previous concerts with ${name}`}
         />
-
-        <IconModal />
       </div>
     </Layout>
   )

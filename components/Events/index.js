@@ -102,11 +102,10 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
 
   return (
     <div
-      className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-14'} ${
-        !noPadding && 'py-6 md:py-16 container'
-      } ${className}`}
+      className={`flex flex-col ${concerts?.previous?.length && 'gap-6 md:gap-14'} ${!noPadding && 'md:py-16 container'
+        } ${className} px-4 gap-8 py-8 lg:gap-16 lg:py-16`}
     >
-      <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'>
+      <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12'>
         <Title title='Upcoming Concerts' />
         {upcomingConcerts?.length > 0 ? (
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
@@ -119,7 +118,7 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
 
       {previousConcerts?.length > 0 && (
         <div
-          className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12 px-6 md:px-0'
+          className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12'
           animationType='slide'
           slideDirection='bottom'
         >
@@ -127,19 +126,19 @@ const Events = ({ concerts, bandName, email, className, noPadding, morePrevConce
           <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
             {morePrevConcertsText
               ? previousConcerts.slice(0, prevConcertCount).map((concert, index) => {
-                  return (
-                    <div key={index} className={`w-full`}>
-                      {concert}
-                    </div>
-                  )
-                })
+                return (
+                  <div key={index} className={`w-full`}>
+                    {concert}
+                  </div>
+                )
+              })
               : previousConcerts.map((concert, index) => {
-                  return (
-                    <div key={index} className={`w-full`}>
-                      {concert}
-                    </div>
-                  )
-                })}
+                return (
+                  <div key={index} className={`w-full`}>
+                    {concert}
+                  </div>
+                )
+              })}
 
             {morePrevConcertsText && prevConcertCount < previousConcerts.length && (
               <div className='relative w-full centerContent'>
