@@ -27,14 +27,15 @@ export default function Band({
   videos,
   socialMedia,
 }) {
+  const fallback = true
   const hasLongWord = name.split(' ').some((word) => word.length >= 12)
 
   return (
     <Layout socialMedia={socialMedia} pageTitle={name}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='container centerContent flex-col gap-6 md:gap-16 py-8 md:px-0 md:py-16'>
+        <div className={`container centerContent flex-col gap-6 md:gap-16 md:px-0 md:py-16 ${hero && fallback ? 'pb-8 pt-8' : 'pb-8 pt-2'}`}>
           <div className='px-6 w-full'>
-            <Hero Image={Image} spaced overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
+            <Hero Image={Image} spaced fallback={fallback} overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
               <div className='h-full w-full bg-red-400 bg-opacity-60'>
               </div>
             </Hero>
@@ -53,7 +54,7 @@ export default function Band({
             videos?.length > 0 && (
               <div className='container mx-auto flex justify-center items-center flex-wrap px-6 md:px-0'>
                 <div
-                  className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-4`}
+                  className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-5`}
                 >
                   {videos.map((video, index) => (
                     <Video
@@ -69,7 +70,7 @@ export default function Band({
           }
 
           {
-            spotify?.lenght > 0 && (
+            spotify?.length > 0 && (
               <div className={`gap-6 container mx-auto px-6 md:px-0 ${spotify?.length > 1 ? 'grid md:grid-cols-2' : ''}`}>
                 {
                   spotify?.length && spotify.map((album, index) => (
