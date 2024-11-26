@@ -21,7 +21,7 @@ const HeroImage = ({
       src={`${image.url}${isMobile ? '?w=800' : '?w=1920'}`}
       fill
       sizes="(min-width: 768px) 80vw, 100vw"
-      className={`object-cover rounded shadow ${imageClasses}`}
+      className={`object-cover rounded-md shadow-md filter ${imageClasses}`}
       placeholder={image?.blur ? 'blur' : 'empty'}
       blurDataURL={image?.blur}
     />
