@@ -11,7 +11,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
   const [link] = React.useState(`/bands/${name.toLowerCase()}`)
 
   return (
-    <div
+    <AnimateIn
       className='relative centerContent flex-col rounded-xl overflow-hidden shadow-lg mx-4 hover:scale-[1.01] duration-500'
     >
       <Link
@@ -31,7 +31,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
                 >
                   {name}
                 </h1>
-                <IconHandler
+                {/* <IconHandler
                   className='text-accent-500 gap-6 text-xl'
                   email={email}
                   spotify={spotify}
@@ -39,7 +39,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
                   website={website}
                   instagram={instagram}
                   facebook={facebook}
-                />
+                /> */}
               </div>
 
               <div className='border-b border-primary-100 w-3/4 opacity-10 my-6 lg:my-8'></div>
@@ -56,7 +56,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
           </div>
         </div>
       </Link>
-    </div>
+    </AnimateIn>
   )
 }
 
