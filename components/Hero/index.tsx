@@ -11,9 +11,10 @@ const Hero = ({
   mobileImg,
   overlay = true,
   spaced = false,
+  fallback = false,
   parallaxSpeed,
   imagePosition = 'center',
-  overlayClasses
+  overlayClasses,
 } : {
   Image: any
   children?: React.ReactNode
@@ -29,6 +30,7 @@ const Hero = ({
   }
   overlay?: boolean
   spaced: boolean
+  fallback?: boolean
   parallaxSpeed?: number
   imagePosition?: string
   overlayClasses?: string
@@ -47,8 +49,8 @@ const Hero = ({
   const spacedClasses = `relative w-full aspect-[9/16] md:aspect-video object-${imagePosition}`
 
   // Desktop and mobile classes.
-  const desktopClasses = `relative hidden md:block ${spaced ? spacedClasses : defaultClasses}`
-  const mobileClasses = `relative block md:hidden ${spaced ? spacedClasses : defaultClasses}`
+  const desktopClasses = `relative ${spaced ? spacedClasses : defaultClasses} ${fallback && !mobileImg?.url ? 'block' : 'hidden md:block'}`
+  const mobileClasses = `relative ${spaced ? spacedClasses : defaultClasses} ${fallback && !mobileImg?.url ? 'hidden' : 'block md:hidden'}`
 
   const renderImage = (isMobile: boolean) => {
     if (spaced) {

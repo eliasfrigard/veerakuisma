@@ -39,7 +39,7 @@ export default function Band({
           </div>
 
           <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-3 md:px-10 pt-2 lg:pt-0 flex flex-col gap-6 md:gap-10 justify-center items-center mt-2'>
-            <h1 className="text-[2.6rem] md:text-7xl font-bold leading-[1.2] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center">
+            <h1 className="text-[3rem] md:text-7xl font-bold leading-[1] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center">
               {name}
             </h1>
             <div className='w-2/3 h-[1px] bg-primary-950 opacity-20 rounded-full' />
