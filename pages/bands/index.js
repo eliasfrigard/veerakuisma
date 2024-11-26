@@ -11,9 +11,11 @@ export async function getStaticProps() {
     accessToken: process.env.ACCESS_TOKEN,
   })
 
-  const bandRes = await contentful.getEntries({
-    content_type: 'band',
+  const pageRes = await contentful.getEntries({
+    content_type: 'bandPage',
   })
+
+  const page = pageRes.items[0].fields
 
   const socialRes = await contentful.getEntries({
     content_type: 'homePage',
@@ -24,7 +26,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      bands: bandRes.items,
+      bands: page.bands,
       socialMedia: {
         email: socialPage?.email || null,
         facebook: socialPage?.facebook || null,
