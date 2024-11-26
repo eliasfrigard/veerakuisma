@@ -50,7 +50,7 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
         <div className='py-3 lg:py-16 flex flex-col gap-3 lg:gap-6'>
           <div className='container flex justify-center items-center flex-wrap'>
-            <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-3 px-2`}>
+            <div className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-4 px-2`}>
               {videos.map((video, index) => (
                 <Video
                   prominent={index === 0}

@@ -124,5 +124,18 @@ a {
     margin-left: 3px;
     color: theme('colors.primary.100');
   }
+
+  .soMeIcon {
+    transition-duration: 150ms;
+  }
+
+  .soMeIcon:hover {
+    color: theme('colors.accent.500');
+    cursor: pointer;
+    transform: scale(1.15)
+  }
+  .soMeIcon:active {
+    transform: scale(0.95)
+  }
 }
 

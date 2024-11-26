@@ -42,7 +42,7 @@ export default function Band({
           </div>
 
           <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-3 md:px-10 pt-2 lg:pt-0 flex flex-col gap-6 md:gap-10 justify-center items-center mt-2'>
-            <h1 className={`break-word font-bold leading-[1] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center ${hasLongWord ? 'text-[2rem]' : 'text-[3rem]'} md:text-7xl`}>
+            <h1 className={`break-word font-bold leading-[1] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center drop-shadow-glow ${hasLongWord ? 'text-[2rem]' : 'text-[3rem]'} md:text-7xl`}>
               {name}
             </h1>
             <div className='w-2/3 h-[1px] bg-primary-950 opacity-20 rounded-full' />
@@ -54,7 +54,7 @@ export default function Band({
             videos?.length > 0 && (
               <div className='container mx-auto flex justify-center items-center flex-wrap px-6 md:px-0'>
                 <div
-                  className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-5`}
+                  className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-4`}
                 >
                   {videos.map((video, index) => (
                     <Video
