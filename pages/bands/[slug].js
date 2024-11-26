@@ -5,7 +5,7 @@ import Events from '../../components/Events'
 import Video from '../../components/Video'
 import ImageLayout from '../../components/ImageLayout'
 
-import { Hero } from 'eliasfrigard-reusable-components/dist/app'
+import Hero from '../../components/Hero'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { createClient } from 'contentful'
@@ -29,9 +29,47 @@ export default function Band({
 }) {
   return (
     <Layout socialMedia={socialMedia} pageTitle={name}>
-      {(hero.url || mobileHero.url) && (
+      <div className='-mt-[85px] pt-[85px] min-h-screen'>
+        <div className='container centerContent flex-col gap-6 md:gap-16 px-6 py-8 md:px-0 md:py-16'>
+          <Hero Image={Image} spaced overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
+            <div className='h-full w-full bg-red-400 bg-opacity-60'>
+            </div>
+          </Hero>
+
+          <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-2 md:px-10 pt-2 lg:pt-0 flex flex-col gap-6 md:gap-10 justify-center items-center mt-2'>
+            <h1 className="text-[2.6rem] md:text-7xl font-bold leading-[1.2] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center">
+              {name}
+            </h1>
+            <div className='w-2/3 h-[1px] bg-primary-950 opacity-20 rounded-full' />
+            <TextLayout text={biography || description} />
+          </AnimateIn>
+
+          <div className='container mx-auto flex justify-center items-center flex-wrap px-3 md:px-0'>
+            <div
+              className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-4`}
+            >
+              {videos.map((video, index) => (
+                <Video
+                  prominent={index === 0}
+                  key={video.youTubeLink}
+                  title={video.name}
+                  link={video.youTubeLink}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>
+          <Video link="https://www.youtube.com/watch?v=7xW4906-n0U" prominent />
+        </div> */}
+
+      </div>
+
+      {/* {(hero.url || mobileHero.url) && (
         <Hero
           Image={Image}
+          spaced
           heroPosition='center'
           desktopImg={hero}
           mobileImg={mobileHero}
@@ -44,14 +82,10 @@ export default function Band({
             </AnimateIn>
           </div>
         </Hero>
-      )}
+      )} */}
 
-      <div className='container flex flex-col px-4 gap-8 py-8 lg:gap-16 lg:py-16'>
-        <div className='w-full centerContent'>
-          <TextLayout text={biography || description} />
-        </div>
-
-        {/* {(images.length > 0 || videos.length > 0) && (
+      {/* <div className='container flex flex-col px-4 gap-8 py-8 lg:gap-16 lg:py-16'> */}
+      {/* {(images.length > 0 || videos.length > 0) && (
           <div className='flex flex-col gap-2 lg:gap-6'>
             <div className='container flex justify-center items-center flex-wrap'>
               <div
@@ -77,15 +111,14 @@ export default function Band({
             </div>
           </div>
         )} */}
-
-        <Events
-          concerts={concerts}
-          bandName={name}
-          email={email}
-          noPadding
-        />
-      </div>
-    </Layout>
+      {/* 
+      <Events
+        concerts={concerts}
+        bandName={name}
+        email={email}
+        noPadding
+      /> */}
+    </Layout >
   )
 }
 
