@@ -24,9 +24,9 @@ const Player: React.FC<PlayerProps> = ({ name, score }) => {
           allowFullScreen
           allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
           loading='lazy'
-          />
+        />
       </div>
-      <div onClick={() => setOpen(!open)} className='h-12 aspect-square rounded-full bg-primary-950 bg-opacity-60 backdrop-blur fixed bottom-3 md:bottom-6 right-3 md:right-6 shadow-xl flex justify-center items-center hover:bg-accent-500 cursor-pointer duration-150 hover:scale-105'>
+      <div onClick={() => setOpen(!open)} className='z-50 h-12 aspect-square rounded-full bg-primary-950 bg-opacity-60 backdrop-blur fixed bottom-3 md:bottom-6 right-3 md:right-6 shadow-xl flex justify-center items-center hover:bg-accent-500 cursor-pointer duration-150 hover:scale-105'>
         <BsMusicNoteList className='text-white text-xl' />
       </div>
     </>
