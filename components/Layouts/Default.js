@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import Head from 'next/head'
-
-import Player from '../Player'
 import Header from '../Header'
 // import { Header } from '../../../reusable-components/dist/app'
 
@@ -82,8 +80,6 @@ export default function Layout({
       </main>
 
       {footer && <Footer author={author} pageName={pageName} />}
-
-      <Player />
     </>
   )
 }
