@@ -44,7 +44,7 @@ const Hero = ({
 
   // Spaced and default classes.
   const defaultClasses = `h-screen w-full -mt-[85px] flex justify-center items-center shadow-lg overflow-hidden object-${imagePosition}`
-  const spacedClasses = `relative w-full aspect-[9/16] md:aspect-video hidden md:block object-${imagePosition}`
+  const spacedClasses = `relative w-full aspect-[9/16] md:aspect-video object-${imagePosition}`
 
   // Desktop and mobile classes.
   const desktopClasses = `relative hidden md:block ${spaced ? spacedClasses : defaultClasses}`

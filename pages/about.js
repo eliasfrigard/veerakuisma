@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import TextLayout from '../components/TextLayout'
+import Video from '../components/Video'
 
-import { Hero } from 'eliasfrigard-reusable-components/dist/app'
+import Hero from '../components/Hero'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
 import { createClient } from 'contentful'
@@ -80,6 +81,11 @@ const About = ({
           </AnimateIn>
         </div>
       </div>
+
+      <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>
+        <Video link="https://www.youtube.com/watch?v=7xW4906-n0U" prominent />
+      </div>
+
     </Layout>
   )
 }
