@@ -6,7 +6,7 @@ import Title from '../Title'
 
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
-const Events = ({ concerts, bandName, email, className, noPadding }) => {
+const Events = ({ concerts, bandName, email, className, noPadding, titleColor }) => {
   const [prevConcertCount, setPrevConcertCount] = React.useState(6)
 
   const mapBandProps = (bands) => {
@@ -108,8 +108,8 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
       <div className='flex flex-col pt-2 lg:pt-0 gap-2 md:gap-12'>
         {upcomingConcerts?.length > 0 ? (
           <>
-            <Title title='Upcoming Concerts' />
-            <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
+            <Title title='Upcoming Concerts' textColor={titleColor} />
+            <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-6'>
               {upcomingConcerts}
             </div>
           </>
@@ -124,8 +124,8 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
           animationType='slide'
           slideDirection='bottom'
         >
-          <Title title='Previous Concerts' />
-          <div className='centerContent flex-col container relative w-full rounded gap-4 px-2 lg:gap-8'>
+          <Title title='Previous Concerts' textColor={titleColor} />
+          <div className='centerContent flex-col container relative w-full rounded gap-4 px-2 lg:gap-6'>
             {previousConcerts.map((concert, index) => {
               return (
                 <div key={index} className={`w-full`}>

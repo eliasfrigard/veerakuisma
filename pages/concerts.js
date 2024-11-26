@@ -93,7 +93,7 @@ export default function Concerts({
       pageUrl='/concerts'
       socialMedia={socialMedia}
     >
-      <Hero
+      {/* <Hero
         Image={Image}
         heroPosition='center'
         desktopImg={hero}
@@ -106,9 +106,24 @@ export default function Concerts({
             </h1>
           </AnimateIn>
         </div>
-      </Hero>
+      </Hero> */}
+      <div className="fixed inset-0">
+        {/* Overlay with color and blur */}
+        <div className="absolute inset-0 bg-primary-900 bg-opacity-30 backdrop-blur-lg z-10" />
 
-      <Events concerts={concerts} email='mais.kuis@gmail.com' />
+        {/* Background image */}
+        <Image
+          src={hero.url}
+          alt={hero.altText}
+          fill
+          sizes="(min-width: 768px) 80vw, 100vw"
+          className="object-cover z-0"
+          priority // Ensures the image loads quickly for hero sections
+        />
+      </div>
+
+
+      <Events concerts={concerts} email='mais.kuis@gmail.com' titleColor="text-white" />
     </Layout>
   )
 }

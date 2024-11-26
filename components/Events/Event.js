@@ -53,7 +53,7 @@ const Event = ({
 
   return (
     <>
-      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 hover:opacity-100 duration-200 justify-items-center items-center py-6 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 bg-opacity-90 hover:bg-opacity-100 rounded shadow'>
+      <div className='hidden lg:grid w-full text-primary-200 grid-cols-3 lg:grid-cols-4 duration-200 justify-items-center items-center py-6 border-l-8 border-accent-500 border-opacity-100 bg-primary-950 rounded-lg shadow-lg'>
         {endDate && (
           <div className='centerContent flex-col gap-2 tracking-wider'>
             <div className='centerContent text-base gap-1 leading-none uppercase drop-shadow-sm'>
