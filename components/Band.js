@@ -42,7 +42,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
                 /> */}
               </div>
 
-              <div className='border-b border-primary-100 w-3/4 opacity-10 my-6 lg:my-8'></div>
+              <div className='border-b border-primary-100 w-3/4 opacity-20 my-6 lg:my-8 rounded-full'></div>
             </div>
 
             <div className='flex justify-center items-center gap-16 w-full'>
