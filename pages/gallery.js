@@ -10,18 +10,10 @@ export async function getStaticProps() {
     accessToken: process.env.ACCESS_TOKEN,
   })
 
-  const videoRes = await contentful.getEntries({
-    content_type: 'video'
-  })
-
-  const imageRes = await contentful.getAssets()
-
-  const videos = videoRes.items.map(item => item.fields)
-  const images = imageRes.items.map(item => item.fields.file)
-
   const pageRes = await contentful.getEntries({
     content_type: 'galleryPage',
   })
+
 
   const socialRes = await contentful.getEntries({
     content_type: 'homePage',
@@ -30,6 +22,10 @@ export async function getStaticProps() {
 
   const page = pageRes.items[0].fields
   const socialPage = socialRes?.items[0]?.fields
+
+  const videos = page.videos.map(video => video.fields)
+  const images = page.images.map(image => image.fields.file)
+
 
   return {
     props: {
