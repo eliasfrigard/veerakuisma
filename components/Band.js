@@ -22,7 +22,7 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
 
         {/* <div className="absolute bg-primary-900 bg-opacity-80 backdrop-blur w-full h-full duration-500 peer-has-[:hover]:bg-opacity-70 peer-has-[:hover]:backdrop-blur-sm" /> */}
 
-        <div className='w-full h-full bg-primary-900 bg-opacity-80 backdrop-blur duration-500 flex justify-center items-center hover:bg-opacity-70 hover:backdrop-blur-sm'>
+        <div className='w-full h-full bg-primary-900 bg-opacity-70 backdrop-blur duration-500 flex justify-center items-center hover:bg-opacity-60 hover:backdrop-blur-sm'>
           <div className='peer w-full max-w-3xl text-primary-100 my-10 lg:my-16 px-4'>
             <div className='w-full flex flex-col justify-center items-center'>
               <div className='flex flex-col centerContent gap-5'>
