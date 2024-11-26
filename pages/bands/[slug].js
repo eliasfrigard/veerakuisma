@@ -46,36 +46,45 @@ export default function Band({
             <TextLayout text={biography || description} />
           </AnimateIn>
 
-          <div className='container mx-auto flex justify-center items-center flex-wrap px-3 md:px-0'>
-            <div
-              className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-4`}
-            >
-              {videos.map((video, index) => (
-                <Video
-                  prominent={index === 0}
-                  key={video.youTubeLink}
-                  title={video.name}
-                  link={video.youTubeLink}
-                />
-              ))}
-            </div>
-          </div>
 
-          <div className={`gap-6 container mx-auto px-3 md:px-0 ${spotify?.length > 1 ? 'grid md:grid-cols-2' : ''}`}>
-            {
-              spotify?.length && spotify.map((album, index) => (
-                <AnimateIn key={index} className='w-full'>
-                  <iframe
-                    className={`md:shadow-lg h-full min-h-[500px] w-full`}
-                    src={`https://open.spotify.com/embed/album/${album.split('/').pop()}`}
-                    allowFullScreen
-                    allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-                    loading='lazy'
-                  ></iframe>
-                </AnimateIn>
-              ))
-            }
-          </div>
+          {
+            videos && (
+              <div className='container mx-auto flex justify-center items-center flex-wrap px-6 md:px-0'>
+                <div
+                  className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-4`}
+                >
+                  {videos.map((video, index) => (
+                    <Video
+                      prominent={index === 0}
+                      key={video.youTubeLink}
+                      title={video.name}
+                      link={video.youTubeLink}
+                    />
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          {
+            spotify && (
+              <div className={`gap-6 container mx-auto px-6 md:px-0 ${spotify?.length > 1 ? 'grid md:grid-cols-2' : ''}`}>
+                {
+                  spotify?.length && spotify.map((album, index) => (
+                    <AnimateIn key={index} className='w-full'>
+                      <iframe
+                        className={`md:shadow-lg h-full min-h-[500px] w-full`}
+                        src={`https://open.spotify.com/embed/album/${album.split('/').pop()}`}
+                        allowFullScreen
+                        allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                        loading='lazy'
+                      ></iframe>
+                    </AnimateIn>
+                  ))
+                }
+              </div>
+            )
+          }
         </div>
 
         {/* <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>

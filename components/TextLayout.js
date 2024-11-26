@@ -64,7 +64,7 @@ const TextLayout = ({ text, type = 'dynamic', className }) => {
   if (textLength < maxLengthForTwoColumns || type === 'single') {
     return (
       <div
-        className={`prose py-0 my-0 max-w-4xl prose-img:roundedShadow prose-img:shadow-md leading-[2.1rem] tracking-wide font-sans text-center prose-headings:font-khorla prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-blockquote:font-semibold prose-a:text-accent-600 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 prose-li:list-none prose-li:mt-0 prose-li:mb-0 text-pretty ${className}`}
+        className={`prose py-0 my-0 max-w-4xl gap-4 prose-img:roundedShadow prose-img:shadow-md leading-[2.1rem] tracking-wide font-sans text-center prose-headings:font-khorla prose-blockquote:border-accent-500 prose-blockquote:border-l-[3px] prose-blockquote:border-opacity-70 prose-blockquote:rounded-sm prose-blockquote:font-semibold prose-a:text-accent-600 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 prose-li:list-none prose-li:mt-0 prose-li:mb-0 text-pretty ${className}`}
       >
         {documentToReactComponents(textDocument, options)}
       </div>
