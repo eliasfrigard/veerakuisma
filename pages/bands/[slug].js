@@ -30,13 +30,15 @@ export default function Band({
   return (
     <Layout socialMedia={socialMedia} pageTitle={name}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
-        <div className='container centerContent flex-col gap-6 md:gap-16 px-6 py-8 md:px-0 md:py-16'>
-          <Hero Image={Image} spaced overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
-            <div className='h-full w-full bg-red-400 bg-opacity-60'>
-            </div>
-          </Hero>
+        <div className='container centerContent flex-col gap-6 md:gap-16 py-8 md:px-0 md:py-16'>
+          <div className='px-6 w-full'>
+            <Hero Image={Image} spaced overlay={false} heroPosition='top' desktopImg={hero} mobileImg={mobileHero}>
+              <div className='h-full w-full bg-red-400 bg-opacity-60'>
+              </div>
+            </Hero>
+          </div>
 
-          <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-2 md:px-10 pt-2 lg:pt-0 flex flex-col gap-6 md:gap-10 justify-center items-center mt-2'>
+          <AnimateIn threshold={0} className='text-center md:text-justify leading-[2rem] tracking-wide font-sans font-medium z-10 px-3 md:px-10 pt-2 lg:pt-0 flex flex-col gap-6 md:gap-10 justify-center items-center mt-2'>
             <h1 className="text-[2.6rem] md:text-7xl font-bold leading-[1.2] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-primary-950 to-accent-600 opacity-80 uppercase font-khorla text-center">
               {name}
             </h1>
