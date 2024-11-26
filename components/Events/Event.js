@@ -127,18 +127,18 @@ const Event = ({
 
       {/* MOBILE VIEW */}
 
-      <div className='lg:hidden w-full text-primary-200 flex flex-col gap-6 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-7 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded px-6'>
+      <div className='lg:hidden w-full text-primary-200 flex flex-col gap-7 hover:opacity-100 cursor-pointer duration-200 justify-items-center items-center py-8 border-b-2 border-primary-500 border-opacity-20 bg-primary-950 rounded-lg px-8'>
         {endDate ? (
           <div className='centerContent flex-col gap-2 tracking-wider leading-relaxed'>
             <div className='centerContent gap-1'>
               <p className='text-xl leading-none uppercase drop-shadow-sm'>
-                <Moment format='D MMM' className='font-bold'>
+                <Moment format='D MMM' className='font-extrabold'>
                   {date}
                 </Moment>
               </p>
               <BsArrowRightShort className='text-primary-50 text-xl' />
               <p className='text-xl leading-none uppercase drop-shadow-sm'>
-                <Moment format='D MMM' className='font-bold'>
+                <Moment format='D MMM' className='font-extrabold'>
                   {endDate}
                 </Moment>
               </p>
@@ -147,7 +147,7 @@ const Event = ({
             <div className='centerContent gap-1'>
               <p
                 className={`${differentYears ? 'text-xl' : 'text-2xl'
-                  }  uppercase font-bold leading-none drop-shadow-sm`}
+                  }  uppercase font-extrabold leading-none drop-shadow-sm`}
               >
                 <Moment format='YYYY'>{date}</Moment>
               </p>
@@ -155,7 +155,7 @@ const Event = ({
               {differentYears && (
                 <>
                   <BsArrowRightShort className='text-primary-50 text-xl' />
-                  <p className='text-xl uppercase font-bold leading-none drop-shadow-sm'>
+                  <p className='text-xl uppercase font-extrabold leading-none drop-shadow-sm'>
                     <Moment format='YYYY'>{endDate}</Moment>
                   </p>
                 </>
@@ -164,7 +164,7 @@ const Event = ({
           </div>
         ) : (
           <p className='text-xl leading-none uppercase drop-shadow-sm tracking-wider'>
-            <Moment format='D MMMM YYYY' className='font-bold'>
+            <Moment format='D MMMM YYYY' className='font-extrabold'>
               {date}
             </Moment>
           </p>
@@ -172,7 +172,7 @@ const Event = ({
 
         <div className='h-[1px] w-3/4 bg-primary-100 bg-opacity-10 rounded-full' />
 
-        <div className='flex flex-col centerContent gap-2 leading-relaxed tracking-wide'>
+        <div className='flex flex-col centerContent gap-2 leading-relaxed tracking-wide -mt-1'>
           <p className='font-bold text-center'>{title}</p>
           <div className='flex gap-2 centerContent items-center'>
             <BsPinMapFill className='text-accent-500' />
@@ -230,7 +230,7 @@ const Event = ({
 
             {bands?.length &&
               bands?.map((b) => (
-                <Button key={b.name} href={`/bands/${b.name.toLowerCase()}`}>
+                <Button key={b.name} link href={`/bands/${b.name.toLowerCase()}`}>
                   <div className='flex w-full justify-center items-center px-3 gap-3'>
                     <Avatar imageUrl={b.imageUrl} bandName={b.name} />
                     <p>{b.name}</p>

@@ -125,7 +125,7 @@ const Events = ({ concerts, bandName, email, className, noPadding }) => {
           slideDirection='bottom'
         >
           <Title title='Previous Concerts' />
-          <div className='centerContent flex-col container relative w-full rounded gap-4 lg:gap-8'>
+          <div className='centerContent flex-col container relative w-full rounded gap-4 px-2 lg:gap-8'>
             {previousConcerts.map((concert, index) => {
               return (
                 <div key={index} className={`w-full`}>
