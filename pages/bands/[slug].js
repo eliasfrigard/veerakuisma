@@ -48,7 +48,7 @@ export default function Band({
 
 
           {
-            videos && (
+            videos?.length > 0 && (
               <div className='container mx-auto flex justify-center items-center flex-wrap px-6 md:px-0'>
                 <div
                   className={`container grid grid-flow-row ${videos?.length > 1 && 'lg:grid-cols-2'} gap-4`}
@@ -67,7 +67,7 @@ export default function Band({
           }
 
           {
-            spotify && (
+            spotify?.lenght > 0 && (
               <div className={`gap-6 container mx-auto px-6 md:px-0 ${spotify?.length > 1 ? 'grid md:grid-cols-2' : ''}`}>
                 {
                   spotify?.length && spotify.map((album, index) => (
