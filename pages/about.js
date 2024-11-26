@@ -80,12 +80,11 @@ const About = ({
             <TextLayout text={biography} />
           </AnimateIn>
         </div>
-      </div>
 
-      <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>
-        <Video link="https://www.youtube.com/watch?v=7xW4906-n0U" prominent />
+        <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>
+          <Video link="https://www.youtube.com/watch?v=7xW4906-n0U" prominent />
+        </div>
       </div>
-
     </Layout>
   )
 }

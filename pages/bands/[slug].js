@@ -4,6 +4,7 @@ import TextLayout from '../../components/TextLayout'
 import Events from '../../components/Events'
 import Video from '../../components/Video'
 import ImageLayout from '../../components/ImageLayout'
+import Album from '../../components/Album'
 
 import Hero from '../../components/Hero'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
@@ -27,6 +28,7 @@ export default function Band({
   videos,
   socialMedia,
 }) {
+  console.log('🚀 || spotify:', spotify)
   return (
     <Layout socialMedia={socialMedia} pageTitle={name}>
       <div className='-mt-[85px] pt-[85px] min-h-screen'>
@@ -59,6 +61,22 @@ export default function Band({
                 />
               ))}
             </div>
+          </div>
+
+          <div className={`gap-6 container mx-auto px-3 md:px-0 ${spotify?.length > 1 ? 'grid md:grid-cols-2' : ''}`}>
+            {
+              spotify.length && spotify.map((album, index) => (
+                <AnimateIn key={index} className='w-full'>
+                  <iframe
+                    className={`md:shadow-lg h-full min-h-[500px] w-full`}
+                    src={`https://open.spotify.com/embed/album/${album.split('/').pop()}`}
+                    allowFullScreen
+                    allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                    loading='lazy'
+                  ></iframe>
+                </AnimateIn>
+              ))
+            }
           </div>
         </div>
 
