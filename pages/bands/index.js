@@ -3,6 +3,7 @@ import Layout from '../../components/Layouts/Default'
 import Band from '../../components/Band'
 
 import { createClient } from 'contentful'
+import { AnimateIn } from 'eliasfrigard-reusable-components'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -40,7 +41,7 @@ const Bands = ({ bands, socialMedia }) => {
   return (
     <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
-        <div className='my-6 lg:my-16 w-full flex flex-col gap-6 lg:gap-10'>
+        <AnimateIn className='my-6 lg:my-16 w-full flex flex-col gap-6 lg:gap-10'>
           {bands.map((band) => (
             <Band
               key={band.sys.id}
@@ -55,7 +56,7 @@ const Bands = ({ bands, socialMedia }) => {
               facebook={band.fields.facebook}
             />
           ))}
-        </div>
+        </AnimateIn>
       </div>
     </Layout>
   )
