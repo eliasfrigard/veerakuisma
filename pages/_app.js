@@ -4,6 +4,7 @@ import { Montserrat } from 'next/font/google';
 import { ParallaxProvider } from 'react-scroll-parallax'; // Import ParallaxProvider
 import '../styles/globals.css';
 import Player from '../components/Player';
+import CustomPlayer from '../components/CustomPlayer'
 
 // Define Montserrat font
 const mont = Montserrat({

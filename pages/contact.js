@@ -89,7 +89,7 @@ const Contact = ({ hero, mobileHero, pageTitle, socialMedia, files }) => {
         >
           <p className='text-6xl leading-tight'>Veera Kuisma</p>
           <div className='w-3/4 lg:w-1/2 my-4 h-[1px] bg-primary-100 bg-opacity-20 rounded-full'></div>
-          <p className='text-xl tracking-wider'>{socialMedia.email}</p>
+          <a href={`mailto:${socialMedia.email}`} className='text-xl tracking-wider'>{socialMedia.email}</a>
           <p className='text-lg tracking-wider'>{socialMedia.phone}</p>
         </AnimateIn>
       </Hero>

@@ -3,13 +3,47 @@ import Layout from '../../components/Layouts/Default'
 import Band from '../../components/Band'
 
 import { createClient } from 'contentful'
-import { AnimateIn } from 'eliasfrigard-reusable-components'
+import Player from '../../components/CustomPlayer'
+import { parseBuffer } from 'music-metadata'
+
+const parseAudioMetadata = async (url) => {
+  const response = await fetch(url);
+  const arrayBuffer = await response.arrayBuffer();
+
+  const uint8Array = new Uint8Array(arrayBuffer);
+  const metadata = await parseBuffer(uint8Array, { mimeType: 'audio/mpeg', size: uint8Array.byteLength })
+
+  return {
+    duration: metadata.format.duration,
+  }
+}
 
 export async function getStaticProps() {
   const contentful = createClient({
     space: process.env.SPACE_ID,
     accessToken: process.env.ACCESS_TOKEN,
   })
+
+  const audioRes = await contentful.getEntries({
+    content_type: 'audioPlayer',
+  })
+
+  const tracks = await Promise.all(
+    audioRes.items[0].fields.tracks.map(async (track) => {
+      const url = track.fields.file.url
+      if (!url) return null
+
+      const metadata = await parseAudioMetadata('https:' + url)
+
+      return {
+        id: track.sys.id,
+        title: track.fields.title,
+        band: 'Test Band',
+        url: 'https:' + url,
+        duration: metadata.duration,
+      }
+    })
+  )
 
   const pageRes = await contentful.getEntries({
     content_type: 'bandPage',
@@ -26,6 +60,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      tracks,
       bands: page.bands,
       socialMedia: {
         email: socialPage?.email || null,
@@ -39,10 +74,11 @@ export async function getStaticProps() {
   }
 }
 
-const Bands = ({ bands, socialMedia }) => {
+const Bands = ({ bands, tracks, socialMedia }) => {
   return (
     <Layout socialMedia={socialMedia} pageTitle='Bands'>
       <div className='flex flex-col container justify-center items-center w-screen bg-primary-100 -mt-[85px] pt-[85px] min-h-screen'>
+        <Player tracks={tracks} />
         <div className='my-6 lg:my-16 w-full flex flex-col gap-6 p-2 py-1 lg:gap-10'>
           {bands.map((band) => (
             <Band
