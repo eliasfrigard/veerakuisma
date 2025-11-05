@@ -27,7 +27,10 @@ export async function getStaticProps() {
   const socialPage = socialRes?.items[0]?.fields
 
   const videos = page.videos.map(video => video.fields)
-  const images = page.images.map(image => image.fields.file)
+  const images = page.images.map(image => ({
+    ...image.fields.file,
+    url: `${image.fields.file.url}`,
+  }))
 
   return {
     props: {
@@ -119,7 +122,7 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
               <ImageLayout
                 key={image.url}
                 index={index}
-                image={'https:' + image.url}
+                image={'https:' + image.url + '?w=500&h=500&fit=fill&fm=webp&q=80'}
                 onClick={() => openModal(index)}
               />
             ))}
