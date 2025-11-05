@@ -43,6 +43,8 @@ export async function getStaticProps() {
         phone: socialPage?.phone || null,
       }
     },
+    // Revalidate once per day.
+    revalidate: 86400,
   }
 }
 
