@@ -1,14 +1,11 @@
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import AnimateIn from './AnimateIn'
-import IconHandler from './IconHandler'
-
 import TextLayout from './TextLayout'
 
-const Band = ({ name, image, description, spotify, email, youTube, website, instagram, facebook }) => {
-  const [link] = React.useState(`/bands/${name.toLowerCase()}`)
+const Band = ({ name, image, description }) => {
+  const link = `/bands/${name.toLowerCase()}`
 
   return (
     <AnimateIn
@@ -16,14 +13,20 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
     >
       <Link
         href={link}
-        className={`w-full h-full flex flex-col justify-center items-center cursor-pointer`}
+        aria-label={`View ${name} band page`}
+        className="w-full h-full flex flex-col justify-center items-center cursor-pointer group"
       >
-        <Image alt={name} src={image} fill className={`object-cover object-center`} />
+        <Image
+          alt={name}
+          src={image}
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
+        />
 
-        {/* <div className="absolute bg-primary-900 bg-opacity-80 backdrop-blur w-full h-full duration-500 peer-has-[:hover]:bg-opacity-70 peer-has-[:hover]:backdrop-blur-sm" /> */}
-
-        <div className='w-full h-full bg-primary-900 bg-opacity-70 backdrop-blur duration-500 flex justify-center items-center hover:bg-opacity-60 hover:backdrop-blur-sm'>
-          <div className='peer w-full max-w-3xl text-primary-100 my-10 lg:my-16 px-4'>
+        <div className='w-full h-full bg-primary-900 bg-opacity-70 backdrop-blur duration-500 flex justify-center items-center group-hover:bg-opacity-60 group-hover:backdrop-blur-sm'>
+          <div className='w-full max-w-3xl text-primary-100 my-10 lg:my-16 px-4'>
             <div className='w-full flex flex-col justify-center items-center'>
               <div className='flex flex-col centerContent gap-5'>
                 <h1
@@ -31,15 +34,6 @@ const Band = ({ name, image, description, spotify, email, youTube, website, inst
                 >
                   {name}
                 </h1>
-                {/* <IconHandler
-                  className='text-accent-500 gap-6 text-xl'
-                  email={email}
-                  spotify={spotify}
-                  youTube={youTube}
-                  website={website}
-                  instagram={instagram}
-                  facebook={facebook}
-                /> */}
               </div>
 
               <div className='border-b border-primary-100 w-3/4 opacity-20 my-6 lg:my-8 rounded-full'></div>

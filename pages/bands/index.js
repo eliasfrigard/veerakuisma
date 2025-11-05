@@ -1,9 +1,6 @@
-import React from 'react'
 import Layout from '../../components/Layouts/Default'
 import Band from '../../components/Band'
-
 import { createClient } from 'contentful'
-import { AnimateIn } from 'eliasfrigard-reusable-components'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -36,6 +33,7 @@ export async function getStaticProps() {
         phone: socialPage?.phone || null,
       },
     },
+    revalidate: 3600, // Revalidate every hour
   }
 }
 

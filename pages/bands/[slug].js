@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Layout from '../../components/Layouts/Default'
 import TextLayout from '../../components/TextLayout'
-import Events from '../../components/Events'
 import Video from '../../components/Video'
-import ImageLayout from '../../components/ImageLayout'
 
 import Hero from '../../components/Hero'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
@@ -18,12 +16,7 @@ export default function Band({
   mobileHero,
   description,
   biography,
-  email,
   spotify,
-  facebook,
-  instagram,
-  concerts,
-  images,
   videos,
   socialMedia,
 }) {
@@ -89,65 +82,7 @@ export default function Band({
             )
           }
         </div>
-
-        {/* <div className='container mx-auto pb-8 md:pb-16 px-6 md:px-0'>
-          <Video link="https://www.youtube.com/watch?v=7xW4906-n0U" prominent />
-        </div> */}
-
       </div>
-
-      {/* {(hero.url || mobileHero.url) && (
-        <Hero
-          Image={Image}
-          spaced
-          heroPosition='center'
-          desktopImg={hero}
-          mobileImg={mobileHero}
-        >
-          <div className='pt-[85px]'>
-            <AnimateIn animationType='slide' delay={1000}>
-              <h1 className='text-[2.6rem] md:text-8xl font-bold leading-none tracking-wider text-primary-100 opacity-80 uppercase font-khorla text-center'>
-                {name}
-              </h1>
-            </AnimateIn>
-          </div>
-        </Hero>
-      )} */}
-
-      {/* <div className='container flex flex-col px-4 gap-8 py-8 lg:gap-16 lg:py-16'> */}
-      {/* {(images.length > 0 || videos.length > 0) && (
-          <div className='flex flex-col gap-2 lg:gap-6'>
-            <div className='container flex justify-center items-center flex-wrap'>
-              <div
-                className={`container grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-2`}
-              >
-                {videos.map((video, index) => (
-                  <Video
-                    prominent={index === 0}
-                    key={video.youTubeLink}
-                    title={video.name}
-                    link={video.youTubeLink}
-                  />
-                ))}
-              </div>
-            </div>
-            <div
-              className={`w-full grid ${images.length === 2 && 'grid-cols-2'} ${images.length > 2 && 'md:grid-cols-3'
-                } gap-1 container`}
-            >
-              {images.map((image, index) => (
-                <ImageLayout key={image} index={index} image={'https:' + image.url} />
-              ))}
-            </div>
-          </div>
-        )} */}
-      {/* 
-      <Events
-        concerts={concerts}
-        bandName={name}
-        email={email}
-        noPadding
-      /> */}
     </Layout >
   )
 }
@@ -187,6 +122,12 @@ export async function getStaticProps({ params: { slug } }) {
   let band = bandRes.items.find((entry) => {
     return entry.fields.name.toLowerCase() === slug
   })
+
+  if (!band) {
+    return {
+      notFound: true
+    }
+  }
 
   var currentDate = new Date().toISOString()
 
@@ -254,8 +195,8 @@ export async function getStaticProps({ params: { slug } }) {
         url: mobileHeroUrl || null
       },
       concerts: {
-        upcoming: upcomingConcertsRes?.items || concerts.upcoming,
-        previous: previousConcertsRes?.items || concerts.previous,
+        upcoming: upcomingConcertsRes?.items || [],
+        previous: previousConcertsRes?.items || [],
       },
       images,
       videos,
@@ -268,5 +209,6 @@ export async function getStaticProps({ params: { slug } }) {
         phone: socialPage?.phone || null,
       },
     },
+    revalidate: 3600, // Revalidate every hour
   }
 }
