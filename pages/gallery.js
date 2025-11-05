@@ -144,7 +144,7 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
                 </svg>
               </button>
 
-              {/* Close Button */}
+              {/* Close Button Desktop */}
               <button
                 onClick={closeModal}
                 className='w-12 h-12 rounded-full bg-secondary-500/70 hover:bg-accent-500 hover:scale-105 backdrop-blur-sm text-white flex items-center justify-center transition text-2xl'
@@ -157,7 +157,9 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
             {/* Previous Button */}
             <button
               onClick={goToPrevious}
-              className='absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-secondary-500/70 hover:bg-accent-500 hover:scale-105 backdrop-blur-sm text-white flex items-center justify-center transition text-2xl z-10'
+              className='hidden md:flex absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full
+                        bg-secondary-500/70 hover:bg-accent-500 hover:scale-105 backdrop-blur-sm text-white
+                        items-center justify-center transition text-2xl z-10'
               aria-label='Previous image'
             >
               <FaArrowLeft />
@@ -172,18 +174,44 @@ const Gallery = ({ pageTitle, videos, images, socialMedia }) => {
               />
             </div>
 
-            {/* Next Button */}
+            {/* Next Button Desktop */}
             <button
               onClick={goToNext}
-              className='absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-secondary-500/70 hover:bg-accent-500 hover:scale-105 backdrop-blur-sm text-white flex items-center justify-center transition text-2xl z-10'
+              className='hidden md:flex absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full
+                        bg-secondary-500/70 hover:bg-accent-500 hover:scale-105 backdrop-blur-sm text-white
+                        items-center justify-center transition text-2xl z-10'
               aria-label='Next image'
             >
               <FaArrowRight />
             </button>
 
-            {/* Image Counter */}
-            <div className='absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-white text-sm bg-secondary-500/70 px-4 p-2 rounded-full'>
+            {/* Image Counter Desktop */}
+            <div className='hidden md:flex absolute -bottom-12 left-1/2 transform -translate-x-1/2
+                            text-white text-sm bg-secondary-500/70 px-4 py-2 rounded-full'>
               {selectedImage + 1} / {images.length}
+            </div>
+
+            {/* Bottom Controls (Mobile Only) */}
+            <div className='flex md:hidden absolute bottom-4 left-0 w-full justify-between items-center px-6'>
+              <button
+                onClick={goToPrevious}
+                className='w-10 h-10 bg-secondary-500/70 rounded-full flex items-center justify-center text-white hover:bg-accent-500 transition'
+                aria-label='Previous image'
+              >
+                <FaArrowLeft />
+              </button>
+
+              <div className='text-white bg-secondary-500/70 px-4 py-2 rounded-full text-sm'>
+                {selectedImage + 1} / {images.length}
+              </div>
+
+              <button
+                onClick={goToNext}
+                className='w-10 h-10 bg-secondary-500/70 rounded-full flex items-center justify-center text-white hover:bg-accent-500 transition'
+                aria-label='Next image'
+              >
+                <FaArrowRight />
+              </button>
             </div>
           </div>
         </div>
