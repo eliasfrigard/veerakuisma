@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import Layout from '../components/Layouts/Default'
 import Events from '../components/Events'
@@ -8,9 +6,7 @@ import { createClient } from 'contentful'
 import { getPlaiceholder } from 'plaiceholder'
 import { getImageBuffer } from "../util/getImageBuffer"
 
-export async function getServerSideProps({ res }) {
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=59');
-
+export async function getStaticProps() {
   const contentful = createClient({
     space: process.env.SPACE_ID,
     accessToken: process.env.ACCESS_TOKEN,
@@ -41,26 +37,21 @@ export async function getServerSideProps({ res }) {
   const heroUrl = 'https:' + page.hero.fields.file.url;
   const mobileHeroUrl = page?.mobileHero ? 'https:' + page?.mobileHero?.fields?.file?.url : heroUrl;
 
-  const [heroBuffer, mobileHeroBuffer] = await Promise.all([
-    getImageBuffer(heroUrl),
-    getImageBuffer(mobileHeroUrl),
-  ]);
-
-  const [{ base64: heroBlur }, { base64: mobileHeroBlur }] = await Promise.all([
-    getPlaiceholder(heroBuffer),
-    getPlaiceholder(mobileHeroBuffer),
+  const [heroPlaiceholder, mobilePlaiceholder] = await Promise.all([
+    getImageBuffer(heroUrl).then(getPlaiceholder),
+    getImageBuffer(mobileHeroUrl).then(getPlaiceholder),
   ]);
 
   return {
     props: {
       hero: {
         altText: page?.hero?.fields?.title,
-        blur: heroBlur,
+        blur: heroPlaiceholder,
         url: heroUrl,
       },
       mobileHero: {
         altText: page?.mobileHero ? page?.mobileHero?.fields?.title : page?.hero?.fields?.title,
-        blur: mobileHeroBlur,
+        blur: mobilePlaiceholder,
         url: mobileHeroUrl,
       },
       pageTitle: page?.title,
@@ -77,6 +68,7 @@ export async function getServerSideProps({ res }) {
         phone: socialPage?.phone ?? null,
       },
     },
+    revalidate: 300
   };
 }
 
@@ -94,17 +86,16 @@ export default function Concerts({
       socialMedia={socialMedia}
     >
       <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-primary-900 bg-opacity-30 backdrop-blur-lg z-10" />
         <Image
           src={hero.url}
           alt={hero.altText}
           fill
-          sizes="(min-width: 768px) 80vw, 100vw"
-          className="object-cover z-0"
+          className="object-cover"
           priority
+          sizes="100vw"
         />
+        <div className="absolute inset-0 bg-primary-900/30 backdrop-blur-sm" />
       </div>
-
 
       <Events concerts={concerts} email='mais.kuis@gmail.com' titleColor="text-white" />
     </Layout>
