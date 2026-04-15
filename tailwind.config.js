@@ -15,12 +15,12 @@ module.exports = {
     extend: {
       dropShadow: {
         glow: [
-          "0 0px 20px rgba(255,255, 255, 0.35)",
-          "0 0px 65px rgba(255, 255,255, 0.2)"
-        ]
+          '0 0px 20px rgba(255,255, 255, 0.35)',
+          '0 0px 65px rgba(255, 255,255, 0.2)',
+        ],
       },
       opacity: {
-        '85': '.87',
+        85: '.87',
       },
       fontFamily: {
         khorla: ['Khorla', 'sans-serif'],
@@ -30,7 +30,7 @@ module.exports = {
         black: '#000000',
         white: '#F2F2F2',
         orange: {
-          500: '#924821'
+          500: '#924821',
         },
         primary: {
           50: '#f5f8fa',
@@ -68,8 +68,5 @@ module.exports = {
       center: true,
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    // require('tailwindcss-selection-variant'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
