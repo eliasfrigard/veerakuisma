@@ -5,28 +5,93 @@ import Hamburger from './Hamburger.js'
 import { useRouter } from 'next/router'
 import { AnimateIn } from 'eliasfrigard-reusable-components/dist/app'
 
-import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
+import {
+  BsFacebook,
+  BsInstagram,
+  BsYoutube,
+  BsSpotify,
+  BsTelephone,
+} from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 
-export default function NavigationHeader({ 
+interface SocialMedia {
+  phone: string
+  email: string
+  facebook: string
+  instagram: string
+  spotify: string
+  youTube: string
+}
+
+function SocialIcons({
+  socialMedia,
+  pageName,
+  size = 'desktop',
+}: {
+  socialMedia: SocialMedia
+  pageName: string
+  size?: 'desktop' | 'mobile'
+}) {
+  const iconSize = size === 'mobile' ? 'text-2xl' : 'text-xl'
+  const mailSize = size === 'mobile' ? 'text-[1.6rem]' : 'text-[1.5rem]'
+  const ytSize = size === 'mobile' ? 'text-[1.8rem]' : 'text-[1.5rem]'
+
+  return (
+    <>
+      {socialMedia?.phone && (
+        <a href={`tel:${socialMedia.phone}`}>
+          <BsTelephone className={`soMeIcon ${iconSize} antialiased`} />
+        </a>
+      )}
+      {socialMedia?.email && (
+        <a href={`mailto:${socialMedia.email}?subject=${pageName} Website`}>
+          <AiOutlineMail className={`soMeIcon ${mailSize} antialiased`} />
+        </a>
+      )}
+      {socialMedia?.facebook && (
+        <a
+          href={socialMedia.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <BsFacebook className={`soMeIcon ${iconSize}`} />
+        </a>
+      )}
+      {socialMedia?.instagram && (
+        <a
+          href={socialMedia.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <BsInstagram className={`soMeIcon ${iconSize}`} />
+        </a>
+      )}
+      {socialMedia?.spotify && (
+        <a href={socialMedia.spotify} target="_blank" rel="noopener noreferrer">
+          <BsSpotify className={`soMeIcon ${iconSize}`} />
+        </a>
+      )}
+      {socialMedia?.youTube && (
+        <a href={socialMedia.youTube} target="_blank" rel="noopener noreferrer">
+          <BsYoutube className={`soMeIcon ${ytSize} translate-y-[1px]`} />
+        </a>
+      )}
+    </>
+  )
+}
+
+export default function NavigationHeader({
   routes = [],
   pageName,
-  socialMedia, 
-  transparent = false, 
-  uppercaseLinks = true, 
+  socialMedia,
+  transparent = false,
+  uppercaseLinks = true,
   fadeIn = false,
-  font
-} : {
-  routes: { href: string, label: string }[]
+  font,
+}: {
+  routes: { href: string; label: string }[]
   pageName: string
-  socialMedia: {
-    phone: string
-    email: string
-    facebook: string
-    instagram: string
-    spotify: string
-    youTube: string
-  }
+  socialMedia: SocialMedia
   transparent?: boolean
   uppercaseLinks?: boolean
   fadeIn?: boolean
@@ -34,7 +99,7 @@ export default function NavigationHeader({
 }) {
   const router = useRouter()
 
-  const [currentYear, setCurrentYear] = React.useState('')
+  const currentYear = new Date().getFullYear()
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
 
   const toggleMobileNav = () => {
@@ -42,24 +107,22 @@ export default function NavigationHeader({
   }
 
   const activeLinkStyling = (path: string) => {
-    if (router.pathname === path ||
-      (path.includes(router.pathname.split('/')[1]) && router.pathname !== '/')) {
+    if (
+      router.pathname === path ||
+      (path.includes(router.pathname.split('/')[1]) && router.pathname !== '/')
+    ) {
       return 'text-accent-500'
     }
   }
-
-  React.useEffect(() => {
-    const year = new Date().getFullYear()
-    setCurrentYear(year.toString())
-  }, [])
 
   return (
     <>
       <AnimateIn
         disabled={!fadeIn}
         delay={1000}
-        className={`w-full flex justify-start fixed top-0 items-center z-50 ${!transparent && 'backdrop-blur bg-primary-950'
-          } bg-opacity-90`}
+        className={`w-full flex justify-start fixed top-0 items-center z-50 ${
+          !transparent && 'backdrop-blur bg-primary-950'
+        } bg-opacity-90`}
       >
         <div
           className={`
@@ -77,12 +140,18 @@ export default function NavigationHeader({
           ${font}
         `}
         >
-          <div id='left' className='text-center'>
-            <Link className='cursor-pointer text-xl font-bold tracking-widest uppercase' href='/'>
+          <div id="left" className="text-center">
+            <Link
+              className="cursor-pointer text-xl font-bold tracking-widest uppercase"
+              href="/"
+            >
               {pageName}
             </Link>
           </div>
-          <div id='center' className='flex gap-1 xl:gap-4 font-medium justify-center tracking-[2px]'>
+          <div
+            id="center"
+            className="flex gap-1 xl:gap-4 font-medium justify-center tracking-[2px]"
+          >
             {routes.map((route) => (
               <Link
                 key={route.href}
@@ -93,44 +162,24 @@ export default function NavigationHeader({
               </Link>
             ))}
           </div>
-          <div id='right' className='flex gap-4 xl:gap-6 justify-end items-center'>
-            {socialMedia?.phone && (
-              <a href={`tel:${socialMedia.phone}`}>
-                <BsTelephone className='soMeIcon text-xl antialiased' />
-              </a>
-            )}
-            {socialMedia?.email && (
-              <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
-                <AiOutlineMail className='soMeIcon text-[1.5rem] antialiased' />
-              </a>
-            )}
-            {socialMedia?.facebook && (
-              <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
-                <BsFacebook className='soMeIcon text-xl' />
-              </a>
-            )}
-            {socialMedia?.instagram && (
-              <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
-                <BsInstagram className='soMeIcon text-xl' />
-              </a>
-            )}
-            {socialMedia?.spotify && (
-              <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
-                <BsSpotify className='soMeIcon text-xl' />
-              </a>
-            )}
-            {socialMedia?.youTube && (
-              <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
-                <BsYoutube className='soMeIcon text-[1.5rem] translate-y-[1px]' />
-              </a>
-            )}
+          <div
+            id="right"
+            className="flex gap-4 xl:gap-6 justify-end items-center"
+          >
+            <SocialIcons
+              socialMedia={socialMedia}
+              pageName={pageName}
+              size="desktop"
+            />
           </div>
         </div>
       </AnimateIn>
 
       {/* MOBILE */}
 
-      <div className={`w-screen flex justify-start fixed items-center z-50 bg-primary-950`}>
+      <div
+        className={`w-screen flex justify-start fixed items-center z-50 bg-primary-950`}
+      >
         <div
           className={`
           lg:hidden
@@ -146,23 +195,27 @@ export default function NavigationHeader({
         `}
         >
           <div>
-            <Link href='/'>
-              <p className='cursor-pointer text-2xl mt-[5px] font-bold tracking-widest uppercase text-primary-100'>
+            <Link href="/">
+              <p className="cursor-pointer text-2xl mt-[5px] font-bold tracking-widest uppercase text-primary-100">
                 {pageName}
               </p>
             </Link>
           </div>
           <div>
-            <Hamburger handleClick={toggleMobileNav} active={mobileNavOpen}></Hamburger>
+            <Hamburger
+              handleClick={toggleMobileNav}
+              active={mobileNavOpen}
+            ></Hamburger>
           </div>
         </div>
       </div>
 
       <div
-        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
-          }`}
+        className={`lg:hidden fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-950 z-40 duration-300 transform ${
+          !mobileNavOpen && '-translate-y-[100vh]'
+        }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla'>
+        <div className="container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla">
           {routes.map((route) => (
             <Link
               key={route.href}
@@ -174,41 +227,21 @@ export default function NavigationHeader({
           ))}
         </div>
 
-        <div className='flex justify-center items-center gap-6 text-primary-100'>
-          {socialMedia?.phone && (
-            <a href={`tel:${socialMedia.phone}`}>
-              <BsTelephone className='soMeIcon text-xl antialiased' />
-            </a>
-          )}
-          {socialMedia?.email && (
-            <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
-              <AiOutlineMail className='soMeIcon text-[1.6rem] antialiased' />
-            </a>
-          )}
-          {socialMedia?.facebook && (
-            <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
-              <BsFacebook className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.instagram && (
-            <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
-              <BsInstagram className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.spotify && (
-            <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
-              <BsSpotify className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.youTube && (
-            <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
-              <BsYoutube className='soMeIcon text-[1.8rem] translate-y-[1px]' />
-            </a>
-          )}
+        <div className="flex justify-center items-center gap-6 text-primary-100">
+          <SocialIcons
+            socialMedia={socialMedia}
+            pageName={pageName}
+            size="mobile"
+          />
         </div>
-        <div className={`tracking-wide text-sm opacity-70 text-center text-primary-100 ${font}`}>
-          <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
-          <a href='mailto:' className='text-xs underline'>
+        <div
+          className={`tracking-wide text-sm opacity-70 text-center text-primary-100 ${font}`}
+        >
+          <p className="text-s mb-2">{`Copyright ${currentYear} © ${pageName}`}</p>
+          <a
+            href={`mailto:${socialMedia?.email}`}
+            className="text-xs underline"
+          >
             {socialMedia?.email}
           </a>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 export default function ContactForm({ className }) {
   const messageRef = React.useRef(null)
@@ -85,7 +84,13 @@ export default function ContactForm({ className }) {
     }
 
     try {
-      await axios.post('/api/sendEmail', formData)
+      const res = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) throw new Error('Failed to send')
 
       setFormSuccess(true)
 
@@ -101,99 +106,119 @@ export default function ContactForm({ className }) {
   return (
     <>
       <div className={`centerContent flex-col contactForm ${className}`}>
-        <div className='flex-col mt-2 md:mt-0 container max-w-4xl roundedShadow h-full'>
-          <form className='w-full'>
-            <div className='flex flex-wrap -mx-3 md:mb-2'>
-              <div className='w-full px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
+        <div className="flex-col mt-2 md:mt-0 container max-w-4xl roundedShadow h-full">
+          <form className="w-full">
+            <div className="flex flex-wrap -mx-3 md:mb-2">
+              <div className="w-full px-3 mb-2 md:mb-0">
+                <label
+                  className="formLabel text-xs md:text-base font-khorla tracking-wider"
+                  htmlFor="contact-name"
+                >
                   Full Name *
                 </label>
                 <input
                   required
                   ref={nameRef}
                   className={`font-khorla tracking-wider appearance-none block w-full  p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70`}
-                  id='grid-first-name'
-                  type='text'
-                  placeholder='What is your name?'
+                  id="contact-name"
+                  type="text"
+                  placeholder="What is your name?"
                   onChange={(event) => validateName(event.target.value)}
                 />
                 {!nameIsValid && (
-                  <p className='font-khorla tracking-wide text-accent-500 ml-1 mb-1 text-xs font-medium'>Name is not valid.</p>
+                  <p className="font-khorla tracking-wide text-accent-500 ml-1 mb-1 text-xs font-medium">
+                    Name is not valid.
+                  </p>
                 )}
               </div>
             </div>
-            <div className='flex flex-wrap -mx-3 md:mb-2'>
-              <div className='w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
+            <div className="flex flex-wrap -mx-3 md:mb-2">
+              <div className="w-full md:w-1/2 px-3 mb-2 md:mb-0">
+                <label
+                  className="formLabel text-xs md:text-base font-khorla tracking-wider"
+                  htmlFor="contact-email"
+                >
                   Email Address *
                 </label>
                 <input
                   required
                   ref={emailRef}
                   className={`font-khorla outline-none tracking-wider appearance-none block w-full p-4 mb-3 leading-tight rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70`}
-                  id='grid-first-name'
-                  type='text'
-                  placeholder='What is your email?'
+                  id="contact-email"
+                  type="email"
+                  placeholder="What is your email?"
                   onBlur={(event) => validateEmail(event.target.value)}
                 />
                 {!emailIsValid && (
-                  <p className='font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium'>Please fill out your email address.</p>
+                  <p className="font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium">
+                    Please fill out your email address.
+                  </p>
                 )}
               </div>
-              <div className='w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
+              <div className="w-full md:w-1/2 px-3 mb-2 md:mb-0">
+                <label
+                  className="formLabel text-xs md:text-base font-khorla tracking-wider"
+                  htmlFor="contact-phone"
+                >
                   Phone Number
                 </label>
                 <input
                   ref={phoneRef}
                   className={`font-khorla tracking-wider appearance-none block w-full p-4 mb-3 leading-tight focus:outline-none rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70`}
-                  id='grid-first-name'
-                  type='text'
-                  placeholder='What is your number?'
+                  id="contact-phone"
+                  type="tel"
+                  placeholder="What is your number?"
                   onChange={(event) => validatePhone(event.target.value)}
                 />
                 {!phoneIsValid && (
-                  <p className='font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium'>
+                  <p className="font-khorla text-accent-500 tracking-wide ml-1 text-xs font-medium">
                     Phone number cannot be more than 25 characters.
                   </p>
                 )}
               </div>
-              <div className='hidden w-full md:w-1/2 px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
+              <div className="hidden w-full md:w-1/2 px-3 mb-2 md:mb-0">
+                <label
+                  className="formLabel text-xs md:text-base font-khorla tracking-wider"
+                  htmlFor="contact-address"
+                >
                   Address
                 </label>
                 <input
                   required
                   ref={addressRef}
-                  className={`font-khorla focus:text-accent-500 tracking-wider appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70'
-                    }`}
-                  id='grid-first-name'
-                  type='text'
-                  placeholder='So we can call you back!'
+                  className="font-khorla focus:text-accent-500 tracking-wider appearance-none block w-full rounded p-4 mb-3 leading-tight focus:outline-none focus:bg-primary-100 placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70"
+                  id="contact-address"
+                  type="text"
+                  placeholder="So we can call you back!"
                   onChange={(event) => validateAddress(event.target.value)}
                 />
                 {!addressIsValid && (
-                  <p className='font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium'>Address cannot be outside Europe.</p>
+                  <p className="font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium">
+                    Address cannot be outside Europe.
+                  </p>
                 )}
               </div>
             </div>
-            <div className='flex flex-wrap -mx-3 mb-2'>
-              <div className='w-full px-3 mb-2 md:mb-0'>
-                <label className='formLabel text-xs md:text-base font-khorla tracking-wider' htmlFor='grid-first-name'>
+            <div className="flex flex-wrap -mx-3 mb-2">
+              <div className="w-full px-3 mb-2 md:mb-0">
+                <label
+                  className="formLabel text-xs md:text-base font-khorla tracking-wider"
+                  htmlFor="contact-message"
+                >
                   Message *
                 </label>
                 <textarea
                   required
                   ref={messageRef}
-                  rows='8'
+                  rows="8"
                   className={`font-khorla tracking-wider resize-none md:resize-y appearance-none block w-full p-4 mb-3 leading-relaxed rounded shadow focus:bg-accent-500 focus:text-primary-50 focus:shadow-xl focus:rounded-lg duration-150 selection:bg-primary-50 selection:text-accent-500 outline-none placeholder:text-primary-950 focus:placeholder:text-primary-100 placeholder:opacity-70`}
-                  id='grid-first-name'
-                  type='text'
-                  placeholder='What is on your mind?'
+                  id="contact-message"
+                  type="text"
+                  placeholder="What is on your mind?"
                   onChange={(event) => validateMessage(event.target.value)}
                 />
                 {!messageIsValid && (
-                  <p className='font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium'>
+                  <p className="font-khorla tracking-wide text-accent-500 ml-1 text-xs font-medium">
                     Message cannot be empty or exceed 4000 characters.
                   </p>
                 )}
@@ -202,23 +227,23 @@ export default function ContactForm({ className }) {
           </form>
           <button
             onClick={handleSubmit}
-            className='roundedShadow w-full h-14 md:mt-2 bg-accent-500 text-primary-100 hover:bg-accent-500 font-bold tracking-wider uppercase duration-150 active:scale-[0.98] select-none font-khorla'
+            className="roundedShadow w-full h-14 md:mt-2 bg-accent-500 text-primary-100 hover:bg-accent-500 font-bold tracking-wider uppercase duration-150 active:scale-[0.98] select-none font-khorla"
           >
             Send message
           </button>
-          <div className='font-khorla tracking-wide flex justify-center items-center'>
+          <div className="font-khorla tracking-wide flex justify-center items-center">
             {!formIsValid && (
-              <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
+              <p className="text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium">
                 Please fill out all the required fields!
               </p>
             )}
             {formSuccess !== null &&
               (!formSuccess ? (
-                <p className='text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
+                <p className="text-accent-500 pt-4 ml-1 text-[14px] tracking-wider font-medium">
                   The message could not be sent, please try again later!
                 </p>
               ) : (
-                <p className='text-green-800 pt-4 ml-1 text-[14px] tracking-wider font-medium'>
+                <p className="text-green-800 pt-4 ml-1 text-[14px] tracking-wider font-medium">
                   Your message has been successfully sent!
                 </p>
               ))}
