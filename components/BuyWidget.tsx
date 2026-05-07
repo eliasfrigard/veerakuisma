@@ -3,6 +3,18 @@ import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { IoClose } from 'react-icons/io5'
 
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'stripe-buy-button': {
+        'buy-button-id': string
+        'publishable-key': string
+        [key: string]: unknown
+      }
+    }
+  }
+}
+
 const BuyWidget = () => {
   const router = useRouter()
   const [mounted, setMounted] = React.useState(false)
