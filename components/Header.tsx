@@ -89,7 +89,7 @@ export default function NavigationHeader({
   fadeIn = false,
   font,
 }: {
-  routes: { href: string; label: string }[]
+  routes: { href: string; label: string; external?: boolean }[]
   pageName: string
   socialMedia: SocialMedia
   transparent?: boolean
@@ -152,15 +152,27 @@ export default function NavigationHeader({
             id="center"
             className="flex gap-1 xl:gap-4 font-medium justify-center tracking-[2px]"
           >
-            {routes.map((route) => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className={`${activeLinkStyling(route.href)} desktopNavLink ${uppercaseLinks && 'uppercase'}`}
-              >
-                {route.label}
-              </Link>
-            ))}
+            {routes.map((route) =>
+              route.external ? (
+                <a
+                  key={route.href}
+                  href={route.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`desktopNavLink ${uppercaseLinks && 'uppercase'} border border-current rounded-lg px-3 py-1 opacity-90`}
+                >
+                  {route.label}
+                </a>
+              ) : (
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  className={`${activeLinkStyling(route.href)} desktopNavLink ${uppercaseLinks && 'uppercase'}`}
+                >
+                  {route.label}
+                </Link>
+              ),
+            )}
           </div>
           <div
             id="right"
@@ -216,15 +228,27 @@ export default function NavigationHeader({
         }`}
       >
         <div className="container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={`${activeLinkStyling(route.href)} mobileNavLink capitalize`}
-            >
-              {route.label}
-            </Link>
-          ))}
+          {routes.map((route) =>
+            route.external ? (
+              <a
+                key={route.href}
+                href={route.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobileNavLink capitalize border border-current rounded-lg px-4 py-1"
+              >
+                {route.label}
+              </a>
+            ) : (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={`${activeLinkStyling(route.href)} mobileNavLink capitalize`}
+              >
+                {route.label}
+              </Link>
+            ),
+          )}
         </div>
 
         <div className="flex justify-center items-center gap-6 text-primary-100">
