@@ -6,6 +6,9 @@ const Player = () => {
 
   const albumId = '55l6sD5fHVOuQmhuVb9dJ5'
 
+  // Hidden for now
+  return null
+
   return (
     <>
       <div

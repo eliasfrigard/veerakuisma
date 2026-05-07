@@ -51,27 +51,42 @@ export default function Layout({
     { href: '/concerts', label: 'concerts' },
     { href: '/gallery', label: 'gallery' },
     { href: '/contact', label: 'contact' },
+    {
+      href: 'https://buy.stripe.com/5kQ14gg0f6By09K1ZO4Rq00',
+      label: 'store',
+      external: true,
+    },
   ]
 
   return (
     <>
       <Head>
-        <meta charSet='UTF-8' />
+        <meta charSet="UTF-8" />
         <title>{title}</title>
-        <link rel='icon' href={faviconUrl} />
-        <link rel='canonical' href={baseUrl + pageUrl} />
-        <meta name='description' content={pageDescription} />
-        <meta name='author' content={author} />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <meta name='robots' content='index,follow' />
-        <meta itemProp='image' content={imageUrl} />
-        <meta property='og:title' content={title} key='title' />
-        <meta property='og:description' content={pageDescription} />
-        <meta property='og:image' content={imageUrl} />
-        <meta property='og:url' content={baseUrl + pageUrl} />
-        <meta property='og:type' content='website' />
+        <link rel="icon" href={faviconUrl} />
+        <link rel="canonical" href={baseUrl + pageUrl} />
+        <meta name="description" content={pageDescription} />
+        <meta name="author" content={author} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index,follow" />
+        <meta itemProp="image" content={imageUrl} />
+        <meta property="og:title" content={title} key="title" />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={baseUrl + pageUrl} />
+        <meta property="og:type" content="website" />
       </Head>
-      <Header currentRoute='/' router={router} routes={routes} pageName={pageName} socialMedia={socialMedia} transparent={transparent} fadeIn={headerFadeIn} uppercaseLinks={false} font='font-khorla' />
+      <Header
+        currentRoute="/"
+        router={router}
+        routes={routes}
+        pageName={pageName}
+        socialMedia={socialMedia}
+        transparent={transparent}
+        fadeIn={headerFadeIn}
+        uppercaseLinks={false}
+        font="font-khorla"
+      />
       <main
         style={{ transition: 'opacity-90 200ms ease-out' }}
         className={`bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'}`}
