@@ -17,7 +17,6 @@ export default function Layout({
   transparent = false,
   headerFadeIn = false,
   socialMedia,
-  stripeCheckoutUrl = 'https://buy.stripe.com/5kQ14gg0f6By09K1ZO4Rq00',
 }) {
   const router = useRouter()
 
@@ -52,9 +51,7 @@ export default function Layout({
     { href: '/concerts', label: 'concerts' },
     { href: '/gallery', label: 'gallery' },
     { href: '/contact', label: 'contact' },
-    ...(stripeCheckoutUrl
-      ? [{ href: stripeCheckoutUrl, label: 'store', external: true }]
-      : []),
+    { href: '/store', label: 'store' },
   ]
 
   return (

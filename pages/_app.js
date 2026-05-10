@@ -4,7 +4,8 @@ import { Montserrat } from 'next/font/google'
 import { ParallaxProvider } from 'react-scroll-parallax' // Import ParallaxProvider
 import '../styles/globals.css'
 import Player from '../components/Player'
-import BuyWidget from '../components/BuyWidget'
+import CartWidget from '../components/CartWidget'
+import { CartProvider } from '../context/CartContext'
 
 // Define Montserrat font
 const mont = Montserrat({
@@ -16,15 +17,17 @@ const mont = Montserrat({
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <ParallaxProvider>
-      <Player />
-      <BuyWidget />
+    <CartProvider>
+      <ParallaxProvider>
+        <Player />
+        <CartWidget />
 
-      <div id="__next" className={`${mont.className} font-mont`}>
-        <Script src="/static/script.js" />
-        <Component {...pageProps} />
-      </div>
-    </ParallaxProvider>
+        <div id="__next" className={`${mont.className} font-mont`}>
+          <Script src="/static/script.js" />
+          <Component {...pageProps} />
+        </div>
+      </ParallaxProvider>
+    </CartProvider>
   )
 }
 
